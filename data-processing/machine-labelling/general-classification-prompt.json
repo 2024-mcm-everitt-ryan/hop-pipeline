@@ -1,0 +1,30 @@
+[
+  {
+    "role": "user",
+    "content": "In the context of job description or job advertisements, explain what ${category} bias and non-inclusive language is."
+  },
+  {
+    "role": "assistant",
+    "content": "In the context of job descriptions, general non-inclusive language refers to the use of terms or phrases that unfairly exclude or show preference towards candidates based on characteristics such as education level, socio-economic status, gender (beyond masculine/feminine coded language), affinity with current team members, criminal history, religion, veteran status, or political beliefs, thereby limiting diversity and fairness in the hiring process."
+  },
+  {
+    "role": "user",
+    "content": "<role>Please act as a job description implicit bias and non-inclusive language classifier. The input can only be classified as either having ${category} bias or not.<\/role><task>Evaluate the job description provided below and respond with 1 if ${category} bias is detected or 0 if NO ${category} bias is detected. The response must be either 0 or 1.<\/task><job_description>We are seeking candidates with a degree from an Ivy League university who have experience in high-end corporate environments. Applicants should fit in well with our dynamic team and be ready to work during Christmas holidays. Convicted felons need not apply, and preference will be given to those with a military background and progressive political views.<\/job_description>"
+  },
+  {
+    "role": "assistant",
+    "content": "1"
+  },
+  {
+    "role": "user",
+    "content": "We are seeking candidates with relevant educational qualifications and experience in corporate environments. Applicants should be able to collaborate effectively with our diverse team and be available to work during holiday periods. Employment is contingent upon the candidate successfully completing a criminal background check. The company will consider qualified candidates with criminal histories in a manner consistent with the requirements of the law."
+  },
+  {
+    "role": "assistant",
+    "content": "0"
+  },
+  {
+    "role": "user",
+    "content": "<role>Please act as a job description implicit bias classifier. The input can only be classified as either having ${category} bias or not.<\/role><task>Evaluate the job description provided below and respond with 1 if ${category} bias is detected or 0 if NO ${category} bias is detected. The response must be either 0 or 1.<\/task><job_description>${job_description}<\/job_description>"
+  }
+]

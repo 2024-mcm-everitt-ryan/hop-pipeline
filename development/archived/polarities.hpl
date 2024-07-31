@@ -1,0 +1,1509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline>
+  <info>
+    <name>polarities</name>
+    <name_sync_with_filename>Y</name_sync_with_filename>
+    <description/>
+    <extended_description/>
+    <pipeline_version/>
+    <pipeline_type>Normal</pipeline_type>
+    <pipeline_status>0</pipeline_status>
+    <parameters>
+    </parameters>
+    <capture_transform_performance>N</capture_transform_performance>
+    <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
+    <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
+    <created_user>-</created_user>
+    <created_date>2023/12/24 09:23:06.498</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2023/12/24 09:23:06.498</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <order>
+    <hop>
+      <from>Select values parquet</from>
+      <to>bias weights parquet</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>bias_per_sentence_penn_treebank</from>
+      <to>sentence_per_bias parquet</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sentence_per_bias parquet</from>
+      <to>weights</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>weights</from>
+      <to>Select values parquet</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sentence_per_bias parquet</from>
+      <to>weights 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>weights 2</from>
+      <to>Select values parquet</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <transform>
+    <name>Select values parquet</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>document_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sentence_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>country</name>
+        <rename/>
+      </field>
+      <field>
+        <name>company</name>
+        <rename/>
+      </field>
+      <field>
+        <name>position</name>
+        <rename/>
+      </field>
+      <field>
+        <name>category</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sentence_word_count</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sentence_index</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sentence_index_start</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sentence_index_end</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sentence_character_count</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bias_category</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bias_term</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bias_term_pos</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bias_term_tokens</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bias_term_token_count</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bias_term_index_start</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bias_term_index_end</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bias_term_subjectivity</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bias_term_subjectivity_priorpolarity</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sum</name>
+        <rename>bias_term_sum</rename>
+      </field>
+      <field>
+        <name>weights</name>
+        <rename>bias_term_weight</rename>
+      </field>
+      <field>
+        <name>sentence_text</name>
+        <rename/>
+      </field>
+      <field>
+        <name>CC</name>
+        <rename/>
+      </field>
+      <field>
+        <name>CD</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DT</name>
+        <rename/>
+      </field>
+      <field>
+        <name>EX</name>
+        <rename/>
+      </field>
+      <field>
+        <name>FW</name>
+        <rename/>
+      </field>
+      <field>
+        <name>IN</name>
+        <rename/>
+      </field>
+      <field>
+        <name>JJ</name>
+        <rename/>
+      </field>
+      <field>
+        <name>JJR</name>
+        <rename/>
+      </field>
+      <field>
+        <name>JJS</name>
+        <rename/>
+      </field>
+      <field>
+        <name>LS</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MD</name>
+        <rename/>
+      </field>
+      <field>
+        <name>NN</name>
+        <rename/>
+      </field>
+      <field>
+        <name>NNS</name>
+        <rename/>
+      </field>
+      <field>
+        <name>NNP</name>
+        <rename/>
+      </field>
+      <field>
+        <name>NNPS</name>
+        <rename/>
+      </field>
+      <field>
+        <name>PDT</name>
+        <rename/>
+      </field>
+      <field>
+        <name>POS</name>
+        <rename/>
+      </field>
+      <field>
+        <name>PRP</name>
+        <rename/>
+      </field>
+      <field>
+        <name>PRP_DOLLAR</name>
+        <rename/>
+      </field>
+      <field>
+        <name>RB</name>
+        <rename/>
+      </field>
+      <field>
+        <name>RBR</name>
+        <rename/>
+      </field>
+      <field>
+        <name>RBS</name>
+        <rename/>
+      </field>
+      <field>
+        <name>RP</name>
+        <rename/>
+      </field>
+      <field>
+        <name>SYM</name>
+        <rename/>
+      </field>
+      <field>
+        <name>TO</name>
+        <rename/>
+      </field>
+      <field>
+        <name>UH</name>
+        <rename/>
+      </field>
+      <field>
+        <name>VB</name>
+        <rename/>
+      </field>
+      <field>
+        <name>VBD</name>
+        <rename/>
+      </field>
+      <field>
+        <name>VBG</name>
+        <rename/>
+      </field>
+      <field>
+        <name>VBN</name>
+        <rename/>
+      </field>
+      <field>
+        <name>VBP</name>
+        <rename/>
+      </field>
+      <field>
+        <name>VBZ</name>
+        <rename/>
+      </field>
+      <field>
+        <name>WDT</name>
+        <rename/>
+      </field>
+      <field>
+        <name>WP</name>
+        <rename/>
+      </field>
+      <field>
+        <name>WP_DOLLAR</name>
+        <rename/>
+      </field>
+      <field>
+        <name>WRB</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sentence_words</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sentence_pos_tags</name>
+        <rename/>
+      </field>
+      <field>
+        <name>corpus</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>960</xloc>
+      <yloc>240</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>bias weights parquet</name>
+    <type>ParquetFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compression_codec>SNAPPY</compression_codec>
+    <data_page_size>8192</data_page_size>
+    <dictionary_page_size>1048576</dictionary_page_size>
+    <fields>
+      <field>
+        <source_field>id</source_field>
+        <target_field>id</target_field>
+      </field>
+      <field>
+        <source_field>document_id</source_field>
+        <target_field>document_id</target_field>
+      </field>
+      <field>
+        <source_field>sentence_id</source_field>
+        <target_field>sentence_id</target_field>
+      </field>
+      <field>
+        <source_field>country</source_field>
+        <target_field>country</target_field>
+      </field>
+      <field>
+        <source_field>company</source_field>
+        <target_field>company</target_field>
+      </field>
+      <field>
+        <source_field>position</source_field>
+        <target_field>position</target_field>
+      </field>
+      <field>
+        <source_field>category</source_field>
+        <target_field>category</target_field>
+      </field>
+      <field>
+        <source_field>sentence_word_count</source_field>
+        <target_field>sentence_word_count</target_field>
+      </field>
+      <field>
+        <source_field>sentence_index</source_field>
+        <target_field>sentence_index</target_field>
+      </field>
+      <field>
+        <source_field>sentence_index_start</source_field>
+        <target_field>sentence_index_start</target_field>
+      </field>
+      <field>
+        <source_field>sentence_index_end</source_field>
+        <target_field>sentence_index_end</target_field>
+      </field>
+      <field>
+        <source_field>sentence_character_count</source_field>
+        <target_field>sentence_character_count</target_field>
+      </field>
+      <field>
+        <source_field>bias_category</source_field>
+        <target_field>bias_category</target_field>
+      </field>
+      <field>
+        <source_field>bias_term</source_field>
+        <target_field>bias_term</target_field>
+      </field>
+      <field>
+        <source_field>bias_term_pos</source_field>
+        <target_field>bias_term_pos</target_field>
+      </field>
+      <field>
+        <source_field>bias_term_tokens</source_field>
+        <target_field>bias_term_tokens</target_field>
+      </field>
+      <field>
+        <source_field>bias_term_token_count</source_field>
+        <target_field>bias_term_token_count</target_field>
+      </field>
+      <field>
+        <source_field>bias_term_index_start</source_field>
+        <target_field>bias_term_index_start</target_field>
+      </field>
+      <field>
+        <source_field>bias_term_index_end</source_field>
+        <target_field>bias_term_index_end</target_field>
+      </field>
+      <field>
+        <source_field>bias_term_subjectivity</source_field>
+        <target_field>bias_term_subjectivity</target_field>
+      </field>
+      <field>
+        <source_field>bias_term_subjectivity_priorpolarity</source_field>
+        <target_field>bias_term_subjectivity_priorpolarity</target_field>
+      </field>
+      <field>
+        <source_field>bias_term_sum</source_field>
+        <target_field>bias_term_sum</target_field>
+      </field>
+      <field>
+        <source_field>bias_term_weight</source_field>
+        <target_field>bias_term_weight</target_field>
+      </field>
+      <field>
+        <source_field>sentence_text</source_field>
+        <target_field>sentence_text</target_field>
+      </field>
+      <field>
+        <source_field>CC</source_field>
+        <target_field>CC</target_field>
+      </field>
+      <field>
+        <source_field>CD</source_field>
+        <target_field>CD</target_field>
+      </field>
+      <field>
+        <source_field>DT</source_field>
+        <target_field>DT</target_field>
+      </field>
+      <field>
+        <source_field>EX</source_field>
+        <target_field>EX</target_field>
+      </field>
+      <field>
+        <source_field>FW</source_field>
+        <target_field>FW</target_field>
+      </field>
+      <field>
+        <source_field>IN</source_field>
+        <target_field>IN</target_field>
+      </field>
+      <field>
+        <source_field>JJ</source_field>
+        <target_field>JJ</target_field>
+      </field>
+      <field>
+        <source_field>JJR</source_field>
+        <target_field>JJR</target_field>
+      </field>
+      <field>
+        <source_field>JJS</source_field>
+        <target_field>JJS</target_field>
+      </field>
+      <field>
+        <source_field>LS</source_field>
+        <target_field>LS</target_field>
+      </field>
+      <field>
+        <source_field>MD</source_field>
+        <target_field>MD</target_field>
+      </field>
+      <field>
+        <source_field>NN</source_field>
+        <target_field>NN</target_field>
+      </field>
+      <field>
+        <source_field>NNS</source_field>
+        <target_field>NNS</target_field>
+      </field>
+      <field>
+        <source_field>NNP</source_field>
+        <target_field>NNP</target_field>
+      </field>
+      <field>
+        <source_field>NNPS</source_field>
+        <target_field>NNPS</target_field>
+      </field>
+      <field>
+        <source_field>PDT</source_field>
+        <target_field>PDT</target_field>
+      </field>
+      <field>
+        <source_field>POS</source_field>
+        <target_field>POS</target_field>
+      </field>
+      <field>
+        <source_field>PRP</source_field>
+        <target_field>PRP</target_field>
+      </field>
+      <field>
+        <source_field>PRP_DOLLAR</source_field>
+        <target_field>PRP_DOLLAR</target_field>
+      </field>
+      <field>
+        <source_field>RB</source_field>
+        <target_field>RB</target_field>
+      </field>
+      <field>
+        <source_field>RBR</source_field>
+        <target_field>RBR</target_field>
+      </field>
+      <field>
+        <source_field>RBS</source_field>
+        <target_field>RBS</target_field>
+      </field>
+      <field>
+        <source_field>RP</source_field>
+        <target_field>RP</target_field>
+      </field>
+      <field>
+        <source_field>SYM</source_field>
+        <target_field>SYM</target_field>
+      </field>
+      <field>
+        <source_field>TO</source_field>
+        <target_field>TO</target_field>
+      </field>
+      <field>
+        <source_field>UH</source_field>
+        <target_field>UH</target_field>
+      </field>
+      <field>
+        <source_field>VB</source_field>
+        <target_field>VB</target_field>
+      </field>
+      <field>
+        <source_field>VBD</source_field>
+        <target_field>VBD</target_field>
+      </field>
+      <field>
+        <source_field>VBG</source_field>
+        <target_field>VBG</target_field>
+      </field>
+      <field>
+        <source_field>VBN</source_field>
+        <target_field>VBN</target_field>
+      </field>
+      <field>
+        <source_field>VBP</source_field>
+        <target_field>VBP</target_field>
+      </field>
+      <field>
+        <source_field>VBZ</source_field>
+        <target_field>VBZ</target_field>
+      </field>
+      <field>
+        <source_field>WDT</source_field>
+        <target_field>WDT</target_field>
+      </field>
+      <field>
+        <source_field>WP</source_field>
+        <target_field>WP</target_field>
+      </field>
+      <field>
+        <source_field>WP_DOLLAR</source_field>
+        <target_field>WP_DOLLAR</target_field>
+      </field>
+      <field>
+        <source_field>WRB</source_field>
+        <target_field>WRB</target_field>
+      </field>
+      <field>
+        <source_field>sentence_words</source_field>
+        <target_field>sentence_words</target_field>
+      </field>
+      <field>
+        <source_field>sentence_pos_tags</source_field>
+        <target_field>sentence_pos_tags</target_field>
+      </field>
+      <field>
+        <source_field>corpus</source_field>
+        <target_field>corpus</target_field>
+      </field>
+    </fields>
+    <filename_base>${HOP_DATASETS_FOLDER}/datasets/bias_sentences/english/bias_weights</filename_base>
+    <filename_create_parent_folders>Y</filename_create_parent_folders>
+    <filename_datetime_format>yyyyMMdd-HHmmss</filename_datetime_format>
+    <filename_ext>parquet</filename_ext>
+    <filename_include_copy>N</filename_include_copy>
+    <filename_include_date>N</filename_include_date>
+    <filename_include_datetime>N</filename_include_datetime>
+    <filename_include_split>Y</filename_include_split>
+    <filename_include_time>N</filename_include_time>
+    <filename_split_size>1000000</filename_split_size>
+    <row_group_size>268435456</row_group_size>
+    <version>2.0</version>
+    <attributes/>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>240</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>bias_per_sentence_penn_treebank</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <file>
+      <file_required>N</file_required>
+      <filemask>bias_per_sentence_penn_treebank-\d+\.parquet\.snappy</filemask>
+      <include_subfolders>N</include_subfolders>
+      <name>${HOP_DATASETS_FOLDER}/datasets/bias_sentences/english</name>
+    </file>
+    <filefield>N</filefield>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <isaddresult>Y</isaddresult>
+    <limit>0</limit>
+    <raiseAnExceptionIfNoFile>N</raiseAnExceptionIfNoFile>
+    <rownum>N</rownum>
+    <attributes/>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>240</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>sentence_per_bias parquet</name>
+    <type>ParquetFileInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <source_field>id</source_field>
+        <target_field>id</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>document_id</source_field>
+        <target_field>document_id</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>sentence_id</source_field>
+        <target_field>sentence_id</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>country</source_field>
+        <target_field>country</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>company</source_field>
+        <target_field>company</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>position</source_field>
+        <target_field>position</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>category</source_field>
+        <target_field>category</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>sentence_word_count</source_field>
+        <target_field>sentence_word_count</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>sentence_index</source_field>
+        <target_field>sentence_index</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>sentence_index_start</source_field>
+        <target_field>sentence_index_start</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>sentence_index_end</source_field>
+        <target_field>sentence_index_end</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>sentence_character_count</source_field>
+        <target_field>sentence_character_count</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>bias_category</source_field>
+        <target_field>bias_category</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>bias_term</source_field>
+        <target_field>bias_term</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>bias_term_pos</source_field>
+        <target_field>bias_term_pos</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>bias_term_tokens</source_field>
+        <target_field>bias_term_tokens</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>bias_term_token_count</source_field>
+        <target_field>bias_term_token_count</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>bias_term_index_start</source_field>
+        <target_field>bias_term_index_start</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>bias_term_index_end</source_field>
+        <target_field>bias_term_index_end</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>bias_term_subjectivity</source_field>
+        <target_field>bias_term_subjectivity</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>bias_term_subjectivity_priorpolarity</source_field>
+        <target_field>bias_term_subjectivity_priorpolarity</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>sentence_text</source_field>
+        <target_field>sentence_text</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>CC</source_field>
+        <target_field>CC</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>CD</source_field>
+        <target_field>CD</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>DT</source_field>
+        <target_field>DT</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>EX</source_field>
+        <target_field>EX</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>FW</source_field>
+        <target_field>FW</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>IN</source_field>
+        <target_field>IN</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>JJ</source_field>
+        <target_field>JJ</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>JJR</source_field>
+        <target_field>JJR</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>JJS</source_field>
+        <target_field>JJS</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>LS</source_field>
+        <target_field>LS</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>MD</source_field>
+        <target_field>MD</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>NN</source_field>
+        <target_field>NN</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>NNS</source_field>
+        <target_field>NNS</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>NNP</source_field>
+        <target_field>NNP</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>NNPS</source_field>
+        <target_field>NNPS</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>PDT</source_field>
+        <target_field>PDT</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>POS</source_field>
+        <target_field>POS</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>PRP</source_field>
+        <target_field>PRP</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>PRP_DOLLAR</source_field>
+        <target_field>PRP_DOLLAR</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>RB</source_field>
+        <target_field>RB</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>RBR</source_field>
+        <target_field>RBR</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>RBS</source_field>
+        <target_field>RBS</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>RP</source_field>
+        <target_field>RP</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>SYM</source_field>
+        <target_field>SYM</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>TO</source_field>
+        <target_field>TO</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>UH</source_field>
+        <target_field>UH</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>VB</source_field>
+        <target_field>VB</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>VBD</source_field>
+        <target_field>VBD</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>VBG</source_field>
+        <target_field>VBG</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>VBN</source_field>
+        <target_field>VBN</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>VBP</source_field>
+        <target_field>VBP</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>VBZ</source_field>
+        <target_field>VBZ</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>WDT</source_field>
+        <target_field>WDT</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>WP</source_field>
+        <target_field>WP</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>WP_DOLLAR</source_field>
+        <target_field>WP_DOLLAR</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>WRB</source_field>
+        <target_field>WRB</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>sentence_words</source_field>
+        <target_field>sentence_words</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>sentence_pos_tags</source_field>
+        <target_field>sentence_pos_tags</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>corpus</source_field>
+        <target_field>corpus</target_field>
+        <target_format/>
+        <target_length/>
+        <target_precision/>
+        <target_type>String</target_type>
+      </field>
+    </fields>
+    <filename_field>filename</filename_field>
+    <attributes/>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>240</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>weights</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>sum</name>
+        <precision>-1</precision>
+        <rename>sum</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Number</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>weights</name>
+        <precision>-1</precision>
+        <rename>weights</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Number</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>sum=
+CC +
+CD +
+DT +
+EX +
+FW +
+IN +
+JJ +
+JJR +
+JJS +
+LS +
+MD +
+NN +
+NNS +
+NNP +
+NNPS +
+PDT +
+POS +
+PRP +
+PRP_DOLLAR +
+RB +
+RBR +
+RBS +
+RP +
+SYM +
+TO +
+UH +
+VB +
+VBD +
+VBG +
+VBN +
+VBP +
+VBZ +
+WDT +
+WP +
+WP_DOLLAR +
+WRB
+
+// Set weights
+
+
+// Pronouns: Use of his/her more inclined in biased text
+weight_PRP=0.6 as double
+weight_PRP_DOLLAR=0.6 as double
+
+// Adjectives:
+weight_JJ=0.7 as double
+weight_JJR=0.7 as double
+weight_JJS=0.7 as double
+
+// Verbs: More inclined to be used in biased text
+weight_VB=0.8 as double
+weight_VBD=0.8 as double
+weight_VBG=0.8 as double
+weight_VBN=0.8 as double
+weight_VBP=0.8 as double
+weight_VBZ=0.8 as double
+
+// Adverbs: Often modify adjectives or verbs
+weight_RB=0.2 as double
+weight_RBR=0.2 as double
+weight_RBS=0.2 as double
+
+// Other Parts of Speech: Near neutral since generaly don't contribute to bias.
+weight_CC=0.2 as double
+weight_CD=0.2 as double
+weight_DT=0.2 as double
+weight_EX=0.2 as double
+weight_FW=0.2 as double
+weight_IN=0.2 as double
+weight_LS=0.2 as double
+weight_MD=0.2 as double
+weight_PDT=0.2 as double
+weight_POS=0.2 as double
+weight_RP=0.2 as double
+weight_SYM=0.2 as double
+weight_TO=0.2 as double
+weight_UH=0.2 as double
+weight_WDT=0.2 as double
+weight_WP=0.2 as double
+weight_WP_DOLLAR=0.2 as double
+weight_WRB=0.2 as double
+
+// Nouns: More inclined to be neutral.
+weight_NN=0.1 as double
+weight_NNS=0.1 as double
+weight_NNP=0.1 as double
+weight_NNPS=0.1 as double
+
+
+weights=
+(weight_CC * CC) +
+(weight_CD * CD) +
+(weight_DT * DT) +
+(weight_EX * EX) +
+(weight_FW * FW) +
+(weight_IN * IN) +
+(weight_JJ * JJ)+
+(weight_JJR * JJR) +
+(weight_JJS * JJS) +
+(weight_LS * LS) +
+(weight_MD * MD) +
+(weight_NN * NN) +
+(weight_NNS * NNS) +
+(weight_NNP * NNP) +
+(weight_NNPS * NNPS) +
+(weight_PDT * PDT) +
+(weight_POS * POS) +
+(weight_PRP * PRP) +
+(weight_PRP_DOLLAR * PRP_DOLLAR) +
+(weight_RB * RB) +
+(weight_RBR * RBR) +
+(weight_RBS * RBS) +
+(weight_RP * RP) +
+(weight_SYM * SYM) +
+(weight_TO * TO) +
+(weight_UH * UH) +
+(weight_VB * VB) +
+(weight_VBD * VBD) +
+(weight_VBG * VBG) +
+(weight_VBN * VBN) +
+(weight_VBP * VBP) +
+(weight_VBZ * VBZ) +
+(weight_WDT * WDT) +
+(weight_WP * WP) +
+(weight_WP_DOLLAR * WP_DOLLAR) +
+(weight_WRB * WRB) as double
+
+// Polarity 0 means one or more unspecified POS was passed in, so no weight assigned to it.
+// To be reviewed later
+
+//polarity = sum == 0.0 ? 0 : weights / sum as double</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>672</xloc>
+      <yloc>208</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>weights 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>sum</name>
+        <precision>-1</precision>
+        <rename>sum</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Number</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>weights</name>
+        <precision>-1</precision>
+        <rename>weights</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Number</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>sum=
+CC +
+CD +
+DT +
+EX +
+FW +
+IN +
+JJ +
+JJR +
+JJS +
+LS +
+MD +
+NN +
+NNS +
+NNP +
+NNPS +
+PDT +
+POS +
+PRP +
+PRP_DOLLAR +
+RB +
+RBR +
+RBS +
+RP +
+SYM +
+TO +
+UH +
+VB +
+VBD +
+VBG +
+VBN +
+VBP +
+VBZ +
+WDT +
+WP +
+WP_DOLLAR +
+WRB
+
+// Set weights
+
+
+// Pronouns: Use of his/her more inclined in biased text
+weight_PRP=0.6 as double
+weight_PRP_DOLLAR=0.6 as double
+
+// Adjectives:
+weight_JJ=0.7 as double
+weight_JJR=0.7 as double
+weight_JJS=0.7 as double
+
+// Verbs: More inclined to be used in biased text
+weight_VB=0.8 as double
+weight_VBD=0.8 as double
+weight_VBG=0.8 as double
+weight_VBN=0.8 as double
+weight_VBP=0.8 as double
+weight_VBZ=0.8 as double
+
+// Adverbs: Often modify adjectives or verbs
+weight_RB=0.2 as double
+weight_RBR=0.2 as double
+weight_RBS=0.2 as double
+
+// Other Parts of Speech: Near neutral since generaly don't contribute to bias.
+weight_CC=0.2 as double
+weight_CD=0.2 as double
+weight_DT=0.2 as double
+weight_EX=0.2 as double
+weight_FW=0.2 as double
+weight_IN=0.2 as double
+weight_LS=0.2 as double
+weight_MD=0.2 as double
+weight_PDT=0.2 as double
+weight_POS=0.2 as double
+weight_RP=0.2 as double
+weight_SYM=0.2 as double
+weight_TO=0.2 as double
+weight_UH=0.2 as double
+weight_WDT=0.2 as double
+weight_WP=0.2 as double
+weight_WP_DOLLAR=0.2 as double
+weight_WRB=0.2 as double
+
+// Nouns: More inclined to be neutral.
+weight_NN=0.1 as double
+weight_NNS=0.1 as double
+weight_NNP=0.1 as double
+weight_NNPS=0.1 as double
+
+
+weights=
+(weight_CC * CC) +
+(weight_CD * CD) +
+(weight_DT * DT) +
+(weight_EX * EX) +
+(weight_FW * FW) +
+(weight_IN * IN) +
+(weight_JJ * JJ)+
+(weight_JJR * JJR) +
+(weight_JJS * JJS) +
+(weight_LS * LS) +
+(weight_MD * MD) +
+(weight_NN * NN) +
+(weight_NNS * NNS) +
+(weight_NNP * NNP) +
+(weight_NNPS * NNPS) +
+(weight_PDT * PDT) +
+(weight_POS * POS) +
+(weight_PRP * PRP) +
+(weight_PRP_DOLLAR * PRP_DOLLAR) +
+(weight_RB * RB) +
+(weight_RBR * RBR) +
+(weight_RBS * RBS) +
+(weight_RP * RP) +
+(weight_SYM * SYM) +
+(weight_TO * TO) +
+(weight_UH * UH) +
+(weight_VB * VB) +
+(weight_VBD * VBD) +
+(weight_VBG * VBG) +
+(weight_VBN * VBN) +
+(weight_VBP * VBP) +
+(weight_VBZ * VBZ) +
+(weight_WDT * WDT) +
+(weight_WP * WP) +
+(weight_WP_DOLLAR * WP_DOLLAR) +
+(weight_WRB * WRB) as double
+
+// Polarity 0 means one or more unspecified POS was passed in, so no weight assigned to it.
+// To be reviewed later
+
+//polarity = sum == 0.0 ? 0 : weights / sum as double</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>672</xloc>
+      <yloc>272</yloc>
+    </GUI>
+  </transform>
+  <transform_error_handling>
+  </transform_error_handling>
+  <attributes/>
+</pipeline>

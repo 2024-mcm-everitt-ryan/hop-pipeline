@@ -1,0 +1,62 @@
+Job Description:
+${text}
+
+Classify the above job description for language that may alienate or discourage candidates from diverse backgrounds or with varying characteristics from applying. Consider the language used, experience and qualification requirements, company culture description. Follow these steps:
+
+1. Assessing the Language Used:
+   - Does the job description include any age-specific terms (e.g., "young", "energetic", "recent graduate")?
+   - Are there phrases that suggest a preference for certain age groups (e.g., "digital native", "mid-career")?
+   - Does the job description include any terms or phrases that might exclude individuals with disabilities (e.g., "must be able to lift", "physically demanding")?
+   - Are there phrases that suggest a preference for individuals without disabilities (e.g., "energetic", "active")?
+   - Does the job description include any race-specific terms (e.g., "native English speaker", "culturally fit")?
+   - Are there phrases that suggest a preference for certain racial groups (e.g., "diverse candidates", "international team")?
+   - etc.
+
+2. Evaluating Experience and Qualification Requirements:
+   - Are the years of experience required reasonable for the job level?
+   - Does the job description require specific qualifications that are more likely to be held by a certain age group (e.g., recent degrees, specific technology skills)?
+   - Are the physical requirements necessary for the job clearly stated, and are they reasonable?
+   - Does the job description require specific qualifications that might disadvantage individuals with disabilities (e.g., "must have a driver's licence", "excellent vision")?
+   - Are the qualifications required inclusive and not biased towards a particular racial group?
+   - Does the job description require specific experiences that could be more common among certain racial groups?
+   - etc.
+
+3. Analysing the Company Culture Description:
+   - Is there a description of the company culture that implies a preferred age group (e.g., "vibrant atmosphere", "play hard, work hard")?
+   - Are benefits and perks listed that could be more appealing to a specific age group (e.g., gym memberships, frequent social events)?
+   - Is there a description of the company culture that implies a preference for individuals without disabilities (e.g., "fast-paced environment", "dynamic team")?
+   - Are benefits and perks listed that could be less accessible or appealing to individuals with disabilities (e.g., extensive travel, sports activities)?
+   - Is there a description of the company culture that implies a preference for a particular racial group (e.g., "inclusive environment", "cultural diversity")?
+   - Are benefits and perks listed that could be more appealing to a specific racial group (e.g., cultural holidays, diversity training)?
+   - etc.
+
+4. Using the analysis, classify the job description into one or more of the following categories:
+    - X (Unknown or unable to determine if bias language is present or not)
+    - 0000000 (None)
+    - 1000000 (age)
+    - 0100000 (disability)
+    - 0010000 (masculine)
+    - 0001000 (feminine)
+    - 0000100 (racial)
+    - 0000010 (sexuality)
+    - 0000001 (general)
+
+5. Convert the results into either an "X" or 7bits (2^7 = 128 permutations) binary number, such as:
+    - 0000000 mean the job description contains no language that may alienate or discourage candidates.
+    - 1000000 means category age bias was detected but not the other categories.
+    - 1000001 means the categories of age and general were detected but not the rest.
+    - 0100010 means the categories of disability and sexuality were detected, but not the rest.
+    - 1111111 means all categories were detected.
+    - X means unable to determine if bias language is present or not.
+
+6. If X, return that else convert the binary number into hexadecimal format, such as
+    - 0000000 -> 0
+    - 0000001 -> 1
+    - ...
+    - 0011001 -> 19
+    - 0011010 -> 1A
+    - ...
+    - 1111111 -> 7F
+
+
+Return only two characters, the hexadecimal value of the classification task.

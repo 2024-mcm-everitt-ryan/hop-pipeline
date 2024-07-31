@@ -1,0 +1,2505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline>
+  <info>
+    <name>html_to_text</name>
+    <name_sync_with_filename>Y</name_sync_with_filename>
+    <description/>
+    <extended_description/>
+    <pipeline_version/>
+    <pipeline_type>Normal</pipeline_type>
+    <pipeline_status>0</pipeline_status>
+    <parameters>
+    </parameters>
+    <capture_transform_performance>N</capture_transform_performance>
+    <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
+    <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
+    <created_user>-</created_user>
+    <created_date>2023/12/18 15:00:31.032</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2023/12/18 15:00:31.032</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <order>
+    <hop>
+      <from>english_dataset</from>
+      <to>english dataset parquet</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>english dataset parquet</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>HTML not NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>HTML not NULL</from>
+      <to>Null HTML</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remove excess dots</from>
+      <to>Split by bad full-stop</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remove excess whitespace</from>
+      <to>add periods</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split by bad full-stop</from>
+      <to>Split by semi-colon</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split by semi-colon</from>
+      <to>Split by bullet points</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split by bullet points</from>
+      <to>Split by CAPITAL LETTERS</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>HTML not NULL</from>
+      <to>Distribute</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Distribute</from>
+      <to>Fix tags</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Distribute</from>
+      <to>Fix tags 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remove excess whitespace 2</from>
+      <to>add periods 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split by bad full-stop 2</from>
+      <to>Split by semi-colon 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split by semi-colon 2</from>
+      <to>Split by bullet points 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split by bullet points 2</from>
+      <to>Split by CAPITAL LETTERS 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remove excess dots 2</from>
+      <to>Split by bad full-stop 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix tags</from>
+      <to>clean_html</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix tags 2</from>
+      <to>clean_html</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>clean_html</from>
+      <to>clean rename</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>clean rename</from>
+      <to>remove excess whitespace</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>clean rename</from>
+      <to>remove excess whitespace 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>add periods 2</from>
+      <to>html to text</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>add periods</from>
+      <to>html to text</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>html to text</from>
+      <to>remove excess dots 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>html to text</from>
+      <to>remove excess dots</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split by CAPITAL LETTERS 2</from>
+      <to>Clean text</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Clean text</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split by CAPITAL LETTERS</from>
+      <to>Clean text 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Clean text 2</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sentences</from>
+      <to>chars > 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>chars > 3</from>
+      <to>chars &lt;= 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3</from>
+      <to>Sentences</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>chars > 3</from>
+      <to>Sort sentence index</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort sentence index</from>
+      <to>Join Sentences</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Pick last phrase</from>
+      <to>Select values 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Sentences</from>
+      <to>Pick last phrase</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 4</from>
+      <to>english_dataset (clean)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>chars &lt;= 3</from>
+      <to>Unique sentence_text</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique sentence_text</from>
+      <to>removed_sentence_text</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>removed_sentence_text</from>
+      <to>removed_sentence_text file</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <transform>
+    <name>Clean text</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import static org.apache.commons.lang3.StringUtils.*
+import java.util.regex.Pattern
+
+
+static String clean(v) {
+
+	v = trimToEmpty(v)
+
+
+	def email = v.contains("@")
+	if(email) {
+	//	println(v)
+	}
+
+	def emailPattern = ~/\b[A-Za-z0-9._%+-]+(@[A-Za-z0-9.-]+\.\s*[A-Za-z]{2,7})\b/
+
+	// Replace the left part of the email address with "***"
+    	v = v.replaceAll(emailPattern) { match, domain ->
+		domain = domain.replaceAll("\\s+", "")
+        	"***${domain}"
+    	}
+
+	if(email) {
+	//	println(v)
+	}
+
+
+	v = v.replaceAll("\\s+", " ")  // Reduce multiple spaces to single space
+	v = v.replaceAll("\\s*([,.!?])\\s*", "\$1 ")  // Fix punctuation spacing
+	v = v.replaceAll("\\s([,.!?])", "\$1")  // Remove space before punctuation
+	v = v.replaceAll("([,.!?])\\s*\$", "\$1")  // Remove trailing space after punctuation
+
+	// Remove excess special characters, mostly used as dividers or attention symbols (e.g. #)
+	v = v.replaceAll("[`¬|\"%^&amp;*\\-_=+\\[\\{\\]\\};:'@#~/\\\\|&lt;&gt;]{2,}", "")
+
+	// Reduce excess punctiations to 1
+	v = v.replaceAll("([\\?£\$€!]){2,}", "\$1")
+
+
+
+	// Replace punctuation-dot-space ":. " with punctuation-space ": "
+	[":", ".","!","?"].eachWithIndex { e, idx ->
+		v = v.replaceAll("\\"+e+"\\.\\s", e +" ")
+	}
+
+	v = v.replaceAll("(\\d+\\.)\\s(\\d+)", "\$1\$2") // Join digits that are split by a dot separator.
+
+
+	if (v &amp;&amp; (v[0] =~ /[`¬|"%^&amp;*\\\-_=+\[\{\]\};:'@#~\/!]/)) {
+	    v = v.substring(1).trim()
+	}
+
+	// Removing accents and diacritical marks
+	// Apache commons might not normalise all ligatures
+	// https://www.baeldung.com/java-remove-accents-from-text
+	v = stripAccents(v)
+
+	// Keep only the necessary characters and symbols to simplify the text further
+	def pattern = "[^0-9a-zA-Z.,;:!?£\\\$€\\/()\\[\\]{}\\- \"%&amp;']"
+	v = v.replaceAll(pattern, "")
+
+	v = trimToEmpty(v)
+
+	// Check if the text ends with a period, if not, add one
+	if (!v.isEmpty() &amp;&amp; !v.endsWith('.')) {
+	    v += '.'
+	}
+
+	return v
+}
+
+
+text = clean(text)
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1264</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Clean text 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import static org.apache.commons.lang3.StringUtils.*
+import java.util.regex.Pattern
+
+
+static String clean(v) {
+
+	v = trimToEmpty(v)
+
+
+	def email = v.contains("@")
+	if(email) {
+	//	println(v)
+	}
+
+	def emailPattern = ~/\b[A-Za-z0-9._%+-]+(@[A-Za-z0-9.-]+\.\s*[A-Za-z]{2,7})\b/
+
+	// Replace the left part of the email address with "***"
+    	v = v.replaceAll(emailPattern) { match, domain ->
+		domain = domain.replaceAll("\\s+", "")
+        	"***${domain}"
+    	}
+
+	if(email) {
+	//	println(v)
+	}
+
+
+	v = v.replaceAll("\\s+", " ")  // Reduce multiple spaces to single space
+	v = v.replaceAll("\\s*([,.!?])\\s*", "\$1 ")  // Fix punctuation spacing
+	v = v.replaceAll("\\s([,.!?])", "\$1")  // Remove space before punctuation
+	v = v.replaceAll("([,.!?])\\s*\$", "\$1")  // Remove trailing space after punctuation
+
+	// Remove excess special characters, mostly used as dividers or attention symbols (e.g. #)
+	v = v.replaceAll("[`¬|\"%^&amp;*\\-_=+\\[\\{\\]\\};:'@#~/\\\\|&lt;&gt;]{2,}", "")
+
+	// Reduce excess punctiations to 1
+	v = v.replaceAll("([\\?£\$€!]){2,}", "\$1")
+
+
+
+	// Replace punctuation-dot-space ":. " with punctuation-space ": "
+	[":", ".","!","?"].eachWithIndex { e, idx ->
+		v = v.replaceAll("\\"+e+"\\.\\s", e +" ")
+	}
+
+	v = v.replaceAll("(\\d+\\.)\\s(\\d+)", "\$1\$2") // Join digits that are split by a dot separator.
+
+
+	if (v &amp;&amp; (v[0] =~ /[`¬|"%^&amp;*\\\-_=+\[\{\]\};:'@#~\/!]/)) {
+	    v = v.substring(1).trim()
+	}
+
+	// Removing accents and diacritical marks
+	// Apache commons might not normalise all ligatures
+	// https://www.baeldung.com/java-remove-accents-from-text
+	v = stripAccents(v)
+
+	// Keep only the necessary characters and symbols to simplify the text further
+	def pattern = "[^0-9a-zA-Z.,;:!?£\\\$€\\/()\\[\\]{}\\- \"%&amp;']"
+	v = v.replaceAll(pattern, "")
+
+	v = trimToEmpty(v)
+
+	// Check if the text ends with a period, if not, add one
+	if (!v.isEmpty() &amp;&amp; !v.endsWith('.')) {
+	    v += '.'
+	}
+
+
+	return v
+}
+
+
+text = clean(text)</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>416</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Distribute</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>336</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Fix tags</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>html</name>
+        <precision>-1</precision>
+        <rename>html</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import static org.apache.commons.lang3.StringUtils.replaceEachRepeatedly
+
+
+html = job_posting_html
+
+String[] searchList = [
+"&amp;nbsp;",
+"&amp;lt;",
+"&amp;gt;",
+"DefSemiHidden=\"",
+"UnhideWhenUsed=\"",
+"\" Name=\"",
+"\"/> Name=\"",
+" classid=\"",
+"table.MsoNormalTable {",
+"\\n",
+"\\xc2\\xa0",
+"\\xe2\\x80\\x99",
+"/n",
+"/xc2/xa0",
+"/xe2/x80/x99",
+"\\xc2\\xb7",
+"/xc2/xb7"
+]
+
+//"&amp;amp;",
+//"&amp;quot;",
+//"&amp;apos;"
+
+String[] replacementList = [
+" ",
+"&lt;",
+">",
+"&lt;Name=\"",
+"&lt;UnhideWhenUsed=\"",
+"\"/>&lt;Name=\"",
+"\"/>&lt;Name=\"",
+"&lt;classid=\"",
+"&lt;style>table.MsoNormalTable {",
+"&lt;br/>",
+" ",
+"'",
+"&lt;br/>",
+" ",
+"'",
+"·",
+"·"
+]
+
+//"&amp;",
+//"\"",
+//"'"
+
+html = replaceEachRepeatedly(html, searchList, replacementList)
+
+html = html.replaceAll("&lt;{2,}", "&lt;")
+
+
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>304</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Fix tags 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>html</name>
+        <precision>-1</precision>
+        <rename>html</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import static org.apache.commons.lang3.StringUtils.replaceEachRepeatedly
+
+
+html = job_posting_html
+
+String[] searchList = [
+"&amp;nbsp;",
+"&amp;lt;",
+"&amp;gt;",
+"DefSemiHidden=\"",
+"UnhideWhenUsed=\"",
+"\" Name=\"",
+"\"/> Name=\"",
+" classid=\"",
+"table.MsoNormalTable {",
+"\\n",
+"\\xc2\\xa0",
+"\\xe2\\x80\\x99",
+"/n",
+"/xc2/xa0",
+"/xe2/x80/x99",
+"\\xc2\\xb7",
+"/xc2/xb7"
+]
+
+//"&amp;amp;",
+//"&amp;quot;",
+//"&amp;apos;"
+
+String[] replacementList = [
+" ",
+"&lt;",
+">",
+"&lt;Name=\"",
+"&lt;UnhideWhenUsed=\"",
+"\"/>&lt;Name=\"",
+"\"/>&lt;Name=\"",
+"&lt;classid=\"",
+"&lt;style>table.MsoNormalTable {",
+"&lt;br/>",
+" ",
+"'",
+"&lt;br/>",
+" ",
+"'",
+"·",
+"·"
+]
+
+//"&amp;",
+//"\"",
+//"'"
+
+html = replaceEachRepeatedly(html, searchList, replacementList)
+
+html = html.replaceAll("&lt;{2,}", "&lt;")
+
+
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>384</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>HTML not NULL</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compare>
+      <condition>
+        <conditions>
+</conditions>
+        <function>IS NOT NULL</function>
+        <leftvalue>job_posting_html</leftvalue>
+        <negated>N</negated>
+        <operator>-</operator>
+      </condition>
+    </compare>
+    <send_false_to>Null HTML</send_false_to>
+    <send_true_to>Distribute</send_true_to>
+    <attributes/>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Join Sentences</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>phrase</name>
+        <precision>-1</precision>
+        <rename>phrase</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>python</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+try:
+  previous_document_id
+  next_document_id
+except NameError:
+  previous_document_id = None
+  next_document_id = None
+
+
+if document_id != previous_document_id:
+  phrase = ""
+  previous_document_id=document_id
+
+phrase=phrase + ' ' + sentence_text
+phrase = phrase.strip()
+
+if next_document_id is None:
+  pipeline_status=CONTINUE_PIPELINE
+else:
+  pipeline_status=SKIP_PIPELINE;</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>2000</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Null HTML</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>80</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Pick last phrase</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <add_linenr>N</add_linenr>
+    <all_rows>N</all_rows>
+    <directory>${java.io.tmpdir}</directory>
+    <fields>
+      <field>
+        <aggregate>country</aggregate>
+        <subject>country</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>locale</aggregate>
+        <subject>locale</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>language</aggregate>
+        <subject>language</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>source</aggregate>
+        <subject>source</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>scraped_date</aggregate>
+        <subject>scraped_date</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>company_id</aggregate>
+        <subject>company_id</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>companyName</aggregate>
+        <subject>companyName</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>city</aggregate>
+        <subject>city</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>dataset_id</aggregate>
+        <subject>dataset_id</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>dataset_type</aggregate>
+        <subject>dataset_type</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>dataset_license</aggregate>
+        <subject>dataset_license</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>dataset_source</aggregate>
+        <subject>dataset_source</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>dataset_title</aggregate>
+        <subject>dataset_title</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>dataset_url</aggregate>
+        <subject>dataset_url</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>category</aggregate>
+        <subject>category</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>position_name</aggregate>
+        <subject>position_name</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>job_posting</aggregate>
+        <subject>job_posting</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>job_posting_html</aggregate>
+        <subject>job_posting_html</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>sentence_text</aggregate>
+        <subject>sentence_text</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>sentence_index</aggregate>
+        <subject>sentence_index</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>sentence_index_start</aggregate>
+        <subject>sentence_index_start</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>sentence_index_end</aggregate>
+        <subject>sentence_index_end</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>sentence_character_count</aggregate>
+        <subject>sentence_character_count</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>sentence_word_count</aggregate>
+        <subject>sentence_word_count</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>phrase</aggregate>
+        <subject>phrase</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+    </fields>
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>document_id</name>
+      </field>
+    </group>
+    <ignore_aggregate>N</ignore_aggregate>
+    <prefix>grp</prefix>
+    <attributes/>
+    <GUI>
+      <xloc>2128</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>document_id</name>
+      </field>
+      <field>
+        <name>country</name>
+      </field>
+      <field>
+        <name>locale</name>
+      </field>
+      <field>
+        <name>language</name>
+      </field>
+      <field>
+        <name>source</name>
+      </field>
+      <field>
+        <name>scraped_date</name>
+      </field>
+      <field>
+        <name>company_id</name>
+      </field>
+      <field>
+        <name>companyName</name>
+      </field>
+      <field>
+        <name>city</name>
+      </field>
+      <field>
+        <name>dataset_id</name>
+      </field>
+      <field>
+        <name>dataset_type</name>
+      </field>
+      <field>
+        <name>dataset_license</name>
+      </field>
+      <field>
+        <name>dataset_source</name>
+      </field>
+      <field>
+        <name>dataset_title</name>
+      </field>
+      <field>
+        <name>dataset_url</name>
+      </field>
+      <field>
+        <name>category</name>
+      </field>
+      <field>
+        <name>position_name</name>
+      </field>
+      <field>
+        <name>job_posting_html</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>document_id</name>
+      </field>
+      <field>
+        <name>country</name>
+      </field>
+      <field>
+        <name>locale</name>
+      </field>
+      <field>
+        <name>language</name>
+      </field>
+      <field>
+        <name>source</name>
+      </field>
+      <field>
+        <name>scraped_date</name>
+      </field>
+      <field>
+        <name>company_id</name>
+      </field>
+      <field>
+        <name>companyName</name>
+      </field>
+      <field>
+        <name>city</name>
+      </field>
+      <field>
+        <name>dataset_id</name>
+      </field>
+      <field>
+        <name>dataset_type</name>
+      </field>
+      <field>
+        <name>dataset_license</name>
+      </field>
+      <field>
+        <name>dataset_source</name>
+      </field>
+      <field>
+        <name>dataset_title</name>
+      </field>
+      <field>
+        <name>dataset_url</name>
+      </field>
+      <field>
+        <name>category</name>
+      </field>
+      <field>
+        <name>position_name</name>
+      </field>
+      <field>
+        <name>text</name>
+        <rename>job_posting</rename>
+      </field>
+      <field>
+        <name>job_posting_html</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values 4</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>document_id</name>
+      </field>
+      <field>
+        <name>country</name>
+      </field>
+      <field>
+        <name>locale</name>
+      </field>
+      <field>
+        <name>language</name>
+      </field>
+      <field>
+        <name>source</name>
+      </field>
+      <field>
+        <name>scraped_date</name>
+      </field>
+      <field>
+        <name>company_id</name>
+      </field>
+      <field>
+        <name>companyName</name>
+      </field>
+      <field>
+        <name>city</name>
+      </field>
+      <field>
+        <name>dataset_id</name>
+      </field>
+      <field>
+        <name>dataset_type</name>
+      </field>
+      <field>
+        <name>dataset_license</name>
+      </field>
+      <field>
+        <name>dataset_source</name>
+      </field>
+      <field>
+        <name>dataset_title</name>
+      </field>
+      <field>
+        <name>dataset_url</name>
+      </field>
+      <field>
+        <name>category</name>
+      </field>
+      <field>
+        <name>position_name</name>
+      </field>
+      <field>
+        <name>phrase</name>
+        <rename>job_posting</rename>
+      </field>
+      <field>
+        <name>job_posting_html</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>2288</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Sentences</name>
+    <type>StanfordSimpleNlp</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <corpusField>job_posting</corpusField>
+    <includePartOfSpeech>N</includePartOfSpeech>
+    <parallelism>N</parallelism>
+    <outputFieldNamePrefix>sentence_</outputFieldNamePrefix>
+    <maxOutputSentences>1</maxOutputSentences>
+    <maxOutputWords>2147483647</maxOutputWords>
+    <attributes/>
+    <GUI>
+      <xloc>1552</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Sort sentence index</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>${HOP_DATASETS_FOLDER}/tmp</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>document_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>Y</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>Y</presorted>
+      </field>
+      <field>
+        <name>sentence_index</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1840</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Split by CAPITAL LETTERS</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+
+// The dilemma:
+// CLIENT RELATIONS ENERGY COORDINATORThe job role requires energy coordination.
+// CLIENT RELATIONS ENERGY COORDINATORthe job role requires energy coordination.
+//
+// GPT-4 is able to handle that split.
+// Conventional way not so easy.  Perhaps attempt both regex and test which one is most probable by
+// looking up the words in the dictionary.  Two dictionary valid words means it is highly probable.
+
+
+//separator = '018cd912-15d4-7d59-b6c9-92932f443496'
+
+//regex = "([A-Z]{5})([A-Z][a-z]{2,}:?,?\\s)" // Include last capital for group 2
+//regex = "([A-Z]{5})([a-z]{2,}:?,?\\s)" // Don't include last capital for group 2
+//text = text.replaceAll(regex2, '$1' + separator + '$2')
+
+//text = text.split(separator).collect {it.trim().capitalize()}.join('. ')</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Split by CAPITAL LETTERS 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+
+// The dilemma:
+// CLIENT RELATIONS ENERGY COORDINATORThe job role requires energy coordination.
+// CLIENT RELATIONS ENERGY COORDINATORthe job role requires energy coordination.
+//
+// GPT-4 is able to handle that split.
+// Conventional way not so easy.  Perhaps attempt both regex and test which one is most probable by
+// looking up the words in the dictionary.  Two dictionary valid words means it is highly probable.
+
+
+//separator = '018cd912-15d4-7d59-b6c9-92932f443496'
+
+//regex = "([A-Z]{5})([A-Z][a-z]{2,}:?,?\\s)" // Include last capital for group 2
+//regex = "([A-Z]{5})([a-z]{2,}:?,?\\s)" // Don't include last capital for group 2
+//text = text.replaceAll(regex2, '$1' + separator + '$2')
+
+//text = text.split(separator).collect {it.trim().capitalize()}.join('. ')</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1264</xloc>
+      <yloc>496</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Split by bad full-stop</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+/*
+Split these examples into two sentences:
+
+with dollies and cartsThis is a safety-sensitive position and
+with dollies and cartsThis, is a safety-sensitive position and
+This is a sentence with Abc.It should not be joined.
+This is a sentence with a full-stop.A should be split into two.
+judgment and quality de-cisionsAch-ieve goals, handle assigned workload
+management philosophy and decisionsCollaborates with City Manager's Office
+
+
+(
+,?\s
+(?:I|A|[A-Z]?[a-z]+-[a-z]{2,}|[A-Z]?[a-z]+)
+[.!?]?
+)
+(
+(?:I|A|[A-Z][a-z]+-[a-z]{2,}|[A-Z][a-z]+)
+,?\s
+)
+
+*/
+
+
+regex="(,?\s(?:I|A|[A-Z]?[a-z]+-[a-z]{2,}|[A-Z]?[a-z]+)[.!?]?)((?:I|A|[A-Z][a-z]+-[a-z]{2,}|[A-Z][a-z]+),?\s)"
+
+text = text.replaceAll(regex, '$1. $2')</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Split by bad full-stop 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+/*
+Split these examples into two sentences:
+
+with dollies and cartsThis is a safety-sensitive position and
+with dollies and cartsThis, is a safety-sensitive position and
+This is a sentence with Abc.It should not be joined.
+This is a sentence with a full-stop.A should be split into two.
+judgment and quality de-cisionsAch-ieve goals, handle assigned workload
+management philosophy and decisionsCollaborates with City Manager's Office
+
+
+(
+,?\s
+(?:I|A|[A-Z]?[a-z]+-[a-z]{2,}|[A-Z]?[a-z]+)
+[.!?]?
+)
+(
+(?:I|A|[A-Z][a-z]+-[a-z]{2,}|[A-Z][a-z]+)
+,?\s
+)
+
+*/
+
+
+regex="(,?\s(?:I|A|[A-Z]?[a-z]+-[a-z]{2,}|[A-Z]?[a-z]+)[.!?]?)((?:I|A|[A-Z][a-z]+-[a-z]{2,}|[A-Z][a-z]+),?\s)"
+
+text = text.replaceAll(regex, '$1. $2')</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>496</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Split by bullet points</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+
+regex="([a-z]?)((?:\\*|\\+|\\-|•|·)\\s+)((?:[A-Z]?[a-z]+-[a-z]{2,}|[A-Z]?[a-z]+|[0-9]+),?\\s)"
+
+text = text.replaceAll(regex, '$1. $3')</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1056</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Split by bullet points 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+
+regex="([a-z]?)((?:\\*|\\+|\\-|•|·)\\s+)((?:[A-Z]?[a-z]+-[a-z]{2,}|[A-Z]?[a-z]+|[0-9]+),?\\s)"
+
+text = text.replaceAll(regex, '$1. $3')</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1056</xloc>
+      <yloc>496</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Split by semi-colon</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+def separator = '018cd912-15d4-7d59-b6c9-92932f443496'
+def wordWindow = 3
+
+//regex = "((?:I|A|[A-Z]?[a-z]+-[a-z]{2,}|[A-Z]?[a-z]+|,?\\s?){$wordWindow});\\s?((?:I|A|[A-Z]?[a-z]+-[a-z]{2,}|[A-Z]?[a-z]+|,?\\s?){$wordWindow})"
+
+regex = "((?:[A-Z][a-z]*|[a-z]+-[a-z]{2,}|,?\\s?){$wordWindow});\\s?((?:[A-Z][a-z]*|[a-z]+-[a-z]{2,}|,?\\s?){$wordWindow})"
+
+
+text = text.replaceAll(regex, '$1' + separator + '$2')
+text = text.split(separator).collect {it.trim().capitalize()}.join('. ')</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Split by semi-colon 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+def separator = '018cd912-15d4-7d59-b6c9-92932f443496'
+def wordWindow = 3
+
+//regex = "((?:I|A|[A-Z]?[a-z]+-[a-z]{2,}|[A-Z]?[a-z]+|,?\\s?){$wordWindow});\\s?((?:I|A|[A-Z]?[a-z]+-[a-z]{2,}|[A-Z]?[a-z]+|,?\\s?){$wordWindow})"
+
+regex = "((?:[A-Z][a-z]*|[a-z]+-[a-z]{2,}|,?\\s?){$wordWindow});\\s?((?:[A-Z][a-z]*|[a-z]+-[a-z]{2,}|,?\\s?){$wordWindow})"
+
+
+text = text.replaceAll(regex, '$1' + separator + '$2')
+text = text.split(separator).collect {it.trim().capitalize()}.join('. ')</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>496</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Unique sentence_text</name>
+    <type>UniqueRowsByHashSet</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <store_values>N</store_values>
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description/>
+    <fields>
+      <field>
+        <name>sentence_text</name>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1984</xloc>
+      <yloc>64</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>add periods</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>html</name>
+        <precision>-1</precision>
+        <rename>html</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+
+opening_tags = ["br","ol","ul","li","div","p"]
+closing_tags = ["li", "div", "p"]
+
+
+//for (String tag : opening_tags) {
+    // Regular Expression Explanation:
+    // (?i) - Case-insensitive matching
+    // (&lt;/" + tag + ">) - Matches the closing tag (e.g., &lt;/li>, &lt;/div>, &lt;/p>)
+    // (.*?) - Matches any characters (non-greedily) before the closing tag
+    // (?&lt;!\\.) - Negative lookbehind to check that the last character is not already a period
+   // html = html.replaceAll("(?i)([^.])&lt;" + tag + ">", "\$1.&lt;" + tag + ">");
+//}
+
+for (String tag : closing_tags) {
+    // Regular Expression Explanation:
+    // (?i) - Case-insensitive matching
+    // (&lt;/" + tag + ">) - Matches the closing tag (e.g., &lt;/li>, &lt;/div>, &lt;/p>)
+    // (.*?) - Matches any characters (non-greedily) before the closing tag
+    // (?&lt;!\\.) - Negative lookbehind to check that the last character is not already a period
+    html = html.replaceAll("(?i)([^.])&lt;/" + tag + ">", "\$1.&lt;/" + tag + ">");
+
+    // "(?i)(?&lt;!\\.)((.*?)&lt;/" + tag + ">)", "\$2.&lt;/" + tag + ">"
+
+}
+
+ html = html.replaceAll("(?i)([^.])&lt;br>", "\$1.&lt;br/>");
+ html = html.replaceAll("(?i)([^.])&lt;br/>", "\$1.&lt;br/>");</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>304</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>add periods 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>html</name>
+        <precision>-1</precision>
+        <rename>html</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+
+opening_tags = ["br","ol","ul","li","div","p"]
+closing_tags = ["li", "div", "p"]
+
+
+//for (String tag : opening_tags) {
+    // Regular Expression Explanation:
+    // (?i) - Case-insensitive matching
+    // (&lt;/" + tag + ">) - Matches the closing tag (e.g., &lt;/li>, &lt;/div>, &lt;/p>)
+    // (.*?) - Matches any characters (non-greedily) before the closing tag
+    // (?&lt;!\\.) - Negative lookbehind to check that the last character is not already a period
+   // html = html.replaceAll("(?i)([^.])&lt;" + tag + ">", "\$1.&lt;" + tag + ">");
+//}
+
+for (String tag : closing_tags) {
+    // Regular Expression Explanation:
+    // (?i) - Case-insensitive matching
+    // (&lt;/" + tag + ">) - Matches the closing tag (e.g., &lt;/li>, &lt;/div>, &lt;/p>)
+    // (.*?) - Matches any characters (non-greedily) before the closing tag
+    // (?&lt;!\\.) - Negative lookbehind to check that the last character is not already a period
+    html = html.replaceAll("(?i)([^.])&lt;/" + tag + ">", "\$1.&lt;/" + tag + ">");
+
+    // "(?i)(?&lt;!\\.)((.*?)&lt;/" + tag + ">)", "\$2.&lt;/" + tag + ">"
+
+}
+
+ html = html.replaceAll("(?i)([^.])&lt;br>", "\$1.&lt;br/>");
+ html = html.replaceAll("(?i)([^.])&lt;br/>", "\$1.&lt;br/>");</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>432</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>chars &lt;= 3</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <GUI>
+      <xloc>1712</xloc>
+      <yloc>64</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>chars > 3</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compare>
+      <condition>
+        <conditions>
+</conditions>
+        <function>&gt;</function>
+        <leftvalue>sentence_character_count</leftvalue>
+        <negated>N</negated>
+        <operator>-</operator>
+        <value>
+          <isnull>N</isnull>
+          <length>-1</length>
+          <mask>####0;-####0</mask>
+          <name>constant</name>
+          <precision>0</precision>
+          <text>3</text>
+          <type>Integer</type>
+        </value>
+      </condition>
+    </compare>
+    <send_false_to>chars &lt;= 3</send_false_to>
+    <send_true_to>Sort sentence index</send_true_to>
+    <attributes/>
+    <GUI>
+      <xloc>1712</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>clean rename</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>document_id</name>
+      </field>
+      <field>
+        <name>country</name>
+      </field>
+      <field>
+        <name>locale</name>
+      </field>
+      <field>
+        <name>language</name>
+      </field>
+      <field>
+        <name>source</name>
+      </field>
+      <field>
+        <name>scraped_date</name>
+      </field>
+      <field>
+        <name>company_id</name>
+      </field>
+      <field>
+        <name>companyName</name>
+      </field>
+      <field>
+        <name>city</name>
+      </field>
+      <field>
+        <name>dataset_id</name>
+      </field>
+      <field>
+        <name>dataset_type</name>
+      </field>
+      <field>
+        <name>dataset_license</name>
+      </field>
+      <field>
+        <name>dataset_source</name>
+      </field>
+      <field>
+        <name>dataset_title</name>
+      </field>
+      <field>
+        <name>dataset_url</name>
+      </field>
+      <field>
+        <name>category</name>
+      </field>
+      <field>
+        <name>position_name</name>
+      </field>
+      <field>
+        <name>job_posting_html</name>
+      </field>
+      <field>
+        <name>clean_html</name>
+        <rename>html</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>304</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>clean_html</name>
+    <type>Html2Text</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <htmlField>html</htmlField>
+    <outputField>clean_html</outputField>
+    <safelistType>basic</safelistType>
+    <cleanOnly>Y</cleanOnly>
+    <parallelism>N</parallelism>
+    <attributes/>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>304</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>english dataset parquet</name>
+    <type>ParquetFileInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <source_field>document_id</source_field>
+        <target_field>document_id</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>country</source_field>
+        <target_field>country</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>locale</source_field>
+        <target_field>locale</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>language</source_field>
+        <target_field>language</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>source</source_field>
+        <target_field>source</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>scraped_date</source_field>
+        <target_field>scraped_date</target_field>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>company_id</source_field>
+        <target_field>company_id</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>companyName</source_field>
+        <target_field>companyName</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>city</source_field>
+        <target_field>city</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_id</source_field>
+        <target_field>dataset_id</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_type</source_field>
+        <target_field>dataset_type</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_license</source_field>
+        <target_field>dataset_license</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_source</source_field>
+        <target_field>dataset_source</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_title</source_field>
+        <target_field>dataset_title</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_url</source_field>
+        <target_field>dataset_url</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>category</source_field>
+        <target_field>category</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>position_name</source_field>
+        <target_field>position_name</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>job_posting_html</source_field>
+        <target_field>job_posting_html</target_field>
+        <target_type>String</target_type>
+      </field>
+    </fields>
+    <filename_field>filename</filename_field>
+    <attributes/>
+    <GUI>
+      <xloc>240</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>english_dataset</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <file>
+      <file_required>N</file_required>
+      <filemask>english_dataset-\d+\.parquet\.snappy</filemask>
+      <include_subfolders>N</include_subfolders>
+      <name>${HOP_DATASETS_FOLDER}/english</name>
+    </file>
+    <filefield>N</filefield>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <isaddresult>Y</isaddresult>
+    <limit>0</limit>
+    <raiseAnExceptionIfNoFile>N</raiseAnExceptionIfNoFile>
+    <rownum>N</rownum>
+    <attributes/>
+    <GUI>
+      <xloc>64</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>english_dataset (clean)</name>
+    <type>ParquetFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compression_codec>SNAPPY</compression_codec>
+    <data_page_size>8192</data_page_size>
+    <dictionary_page_size>1048576</dictionary_page_size>
+    <fields>
+      <field>
+        <source_field>document_id</source_field>
+        <target_field>document_id</target_field>
+      </field>
+      <field>
+        <source_field>country</source_field>
+        <target_field>country</target_field>
+      </field>
+      <field>
+        <source_field>locale</source_field>
+        <target_field>locale</target_field>
+      </field>
+      <field>
+        <source_field>language</source_field>
+        <target_field>language</target_field>
+      </field>
+      <field>
+        <source_field>source</source_field>
+        <target_field>source</target_field>
+      </field>
+      <field>
+        <source_field>scraped_date</source_field>
+        <target_field>scraped_date</target_field>
+      </field>
+      <field>
+        <source_field>company_id</source_field>
+        <target_field>company_id</target_field>
+      </field>
+      <field>
+        <source_field>companyName</source_field>
+        <target_field>companyName</target_field>
+      </field>
+      <field>
+        <source_field>city</source_field>
+        <target_field>city</target_field>
+      </field>
+      <field>
+        <source_field>dataset_id</source_field>
+        <target_field>dataset_id</target_field>
+      </field>
+      <field>
+        <source_field>dataset_type</source_field>
+        <target_field>dataset_type</target_field>
+      </field>
+      <field>
+        <source_field>dataset_license</source_field>
+        <target_field>dataset_license</target_field>
+      </field>
+      <field>
+        <source_field>dataset_source</source_field>
+        <target_field>dataset_source</target_field>
+      </field>
+      <field>
+        <source_field>dataset_title</source_field>
+        <target_field>dataset_title</target_field>
+      </field>
+      <field>
+        <source_field>dataset_url</source_field>
+        <target_field>dataset_url</target_field>
+      </field>
+      <field>
+        <source_field>category</source_field>
+        <target_field>category</target_field>
+      </field>
+      <field>
+        <source_field>position_name</source_field>
+        <target_field>position_name</target_field>
+      </field>
+      <field>
+        <source_field>job_posting</source_field>
+        <target_field>job_posting</target_field>
+      </field>
+      <field>
+        <source_field>job_posting_html</source_field>
+        <target_field>job_posting_html</target_field>
+      </field>
+    </fields>
+    <filename_base>${HOP_DATASETS_FOLDER}/english/english_clean_dataset</filename_base>
+    <filename_create_parent_folders>Y</filename_create_parent_folders>
+    <filename_datetime_format>yyyyMMdd-HHmmss</filename_datetime_format>
+    <filename_ext>parquet</filename_ext>
+    <filename_include_copy>N</filename_include_copy>
+    <filename_include_date>N</filename_include_date>
+    <filename_include_datetime>N</filename_include_datetime>
+    <filename_include_split>Y</filename_include_split>
+    <filename_include_time>N</filename_include_time>
+    <filename_split_size>500000</filename_split_size>
+    <row_group_size>268435456</row_group_size>
+    <version>2.0</version>
+    <attributes/>
+    <GUI>
+      <xloc>2496</xloc>
+      <yloc>192</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>html to text</name>
+    <type>Html2Text</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <htmlField>html</htmlField>
+    <outputField>text</outputField>
+    <safelistType>basic</safelistType>
+    <cleanOnly>N</cleanOnly>
+    <parallelism>N</parallelism>
+    <attributes/>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>remove excess dots</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import static org.apache.commons.lang3.StringUtils.replaceEachRepeatedly
+
+text = text.replaceAll("\\.\\s+\\.", "\\.");
+
+String[] searchList = [
+".."
+]
+
+String[] replacementList = [
+"."
+]
+
+text = replaceEachRepeatedly(text, searchList, replacementList)
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>remove excess dots 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>text</name>
+        <precision>-1</precision>
+        <rename>text</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import static org.apache.commons.lang3.StringUtils.replaceEachRepeatedly
+
+text = text.replaceAll("\\.\\s+\\.", "\\.");
+
+String[] searchList = [
+".."
+]
+
+String[] replacementList = [
+"."
+]
+
+text = replaceEachRepeatedly(text, searchList, replacementList)
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>496</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>remove excess whitespace</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>html</name>
+        <precision>-1</precision>
+        <rename>html</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import static org.apache.commons.lang3.StringUtils.replaceEachRepeatedly
+
+html = html.replaceAll("\\s{2,}", " ")
+html = html.replaceAll(">\\s+&lt;", ">&lt;");
+
+String[] searchList = [
+"&amp;nbsp;",
+" &lt;/p>",
+" &lt;p>",
+" &lt;li>",
+" &lt;/li>",
+" &lt;div>",
+" &lt;/div>",
+" &lt;i>",
+" &lt;/i>",
+" &lt;b>",
+" &lt;/b>"
+]
+
+String[] replacementList = [
+" ",
+"&lt;/p>",
+"&lt;p>",
+"&lt;li>",
+"&lt;/li>",
+"&lt;div>",
+"&lt;/div>",
+"&lt;i>",
+"&lt;/i>",
+"&lt;b>",
+"&lt;/b>"
+]
+
+html = replaceEachRepeatedly(html, searchList, replacementList)
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>304</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>remove excess whitespace 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>html</name>
+        <precision>-1</precision>
+        <rename>html</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import static org.apache.commons.lang3.StringUtils.replaceEachRepeatedly
+
+html = html.replaceAll("\\s{2,}", " ")
+html = html.replaceAll(">\\s+&lt;", ">&lt;");
+
+String[] searchList = [
+"&amp;nbsp;",
+" &lt;/p>",
+" &lt;p>",
+" &lt;li>",
+" &lt;/li>",
+" &lt;div>",
+" &lt;/div>",
+" &lt;i>",
+" &lt;/i>",
+" &lt;b>",
+" &lt;/b>"
+]
+
+String[] replacementList = [
+" ",
+"&lt;/p>",
+"&lt;p>",
+"&lt;li>",
+"&lt;/li>",
+"&lt;div>",
+"&lt;/div>",
+"&lt;i>",
+"&lt;/i>",
+"&lt;b>",
+"&lt;/b>"
+]
+
+html = replaceEachRepeatedly(html, searchList, replacementList)
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>432</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>removed_sentence_text</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>sentence_text</name>
+        <rename>removed_sentence_text</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>2272</xloc>
+      <yloc>64</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>removed_sentence_text file</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <separator>;</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>${HOP_DATASETS_FOLDER}/english/removed_sentence_text</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery/>
+    </file>
+    <fields>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>2496</xloc>
+      <yloc>64</yloc>
+    </GUI>
+  </transform>
+  <transform_error_handling>
+  </transform_error_handling>
+  <attributes/>
+</pipeline>

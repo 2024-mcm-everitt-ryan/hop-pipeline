@@ -1,0 +1,10 @@
+Task Description: You are to generate a term that could potentially appear in job advertisements, but is distinct and not a variant of any terms provided below. Your proposed term should be flagged as non-inclusive. Include a concise justification (no more than two sentences) for why the term is considered non-inclusive. Additionally, suggest a more inclusive alternative that is both relevant and unique to job advertisements. Ensure that your suggested terms avoid implicit bias.
+
+Unconscious Bias Category: age
+
+Prohibited Terms and Their Variants: "elderly", "geezer", "recent graduate"
+
+Guidelines for Responses:
+1) Propose a term that meets the criteria above.
+2) Provide a brief explanation of why the term could be seen as non-inclusive.
+3) Offer one or more inclusive alternatives suitable for professional settings.

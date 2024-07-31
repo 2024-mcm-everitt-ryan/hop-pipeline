@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline>
+  <info>
+    <name>english-sentences</name>
+    <name_sync_with_filename>Y</name_sync_with_filename>
+    <description/>
+    <extended_description/>
+    <pipeline_version/>
+    <pipeline_type>Normal</pipeline_type>
+    <pipeline_status>0</pipeline_status>
+    <parameters>
+    </parameters>
+    <capture_transform_performance>N</capture_transform_performance>
+    <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
+    <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
+    <created_user>-</created_user>
+    <created_date>2023/12/18 21:10:36.086</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2023/12/18 21:10:36.086</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <order>
+    <hop>
+      <from>bias_taxonomies</from>
+      <to>bias_taxonomies parquet</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>english_dataset</from>
+      <to>english dataset parquet</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>english dataset parquet</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>placeholders</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>placeholders</from>
+      <to>sentences</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>bias_taxonomies parquet</from>
+      <to>Select terms</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3</from>
+      <to>id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Unique rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique rows</from>
+      <to>Select values 3 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3 2</from>
+      <to>english_bias_sentences</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>id</from>
+      <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sentences</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select terms</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>containsTerm</from>
+      <to>sentence contains bias term 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sentence contains bias term 3</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sentence contains bias term 3</from>
+      <to>Does not contain term</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>containsTerm 3</from>
+      <to>sentence contains bias term 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>containsTerm 2</from>
+      <to>sentence contains bias term 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join rows (cartesian product)</from>
+      <to>containsTerm 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join rows (cartesian product)</from>
+      <to>containsTerm</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join rows (cartesian product)</from>
+      <to>containsTerm 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sentence contains bias term 3 2</from>
+      <to>Does not contain term 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>containsTerm 2</from>
+      <to>sentence contains bias term 3 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>containsTerm</from>
+      <to>sentence contains bias term 3 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>containsTerm 3</from>
+      <to>sentence contains bias term 3 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sentence contains bias term 3 2</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <transform>
+    <name>Does not contain term</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <GUI>
+      <xloc>1792</xloc>
+      <yloc>1008</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Does not contain term 2</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <GUI>
+      <xloc>928</xloc>
+      <yloc>1008</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Join rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>${HOP_DATASETS_FOLDER}/tmp</directory>
+    <prefix>out</prefix>
+    <cache_size>50000</cache_size>
+    <main/>
+    <compare>
+      <condition>
+        <conditions>
+</conditions>
+        <function>=</function>
+        <negated>N</negated>
+        <operator>-</operator>
+      </condition>
+    </compare>
+    <attributes/>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select terms</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>category</name>
+        <rename>bias_category</rename>
+      </field>
+      <field>
+        <name>term</name>
+        <rename>bias_term</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>416</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>dataset_id</name>
+      </field>
+      <field>
+        <name>dataset_type</name>
+      </field>
+      <field>
+        <name>dataset_source</name>
+      </field>
+      <field>
+        <name>source</name>
+      </field>
+      <field>
+        <name>sequence</name>
+      </field>
+      <field>
+        <name>country</name>
+      </field>
+      <field>
+        <name>companyName</name>
+        <rename>company</rename>
+      </field>
+      <field>
+        <name>category</name>
+      </field>
+      <field>
+        <name>position_name</name>
+        <rename>position</rename>
+      </field>
+      <field>
+        <name>job_posting</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>dataset_id</name>
+        <rename>reference</rename>
+      </field>
+      <field>
+        <name>bias_category</name>
+      </field>
+      <field>
+        <name>bias_term</name>
+      </field>
+      <field>
+        <name>country</name>
+      </field>
+      <field>
+        <name>company</name>
+      </field>
+      <field>
+        <name>category</name>
+      </field>
+      <field>
+        <name>position</name>
+      </field>
+      <field>
+        <name>sentence_index</name>
+      </field>
+      <field>
+        <name>sentence_token_offset_begin</name>
+        <rename>sentence_begin</rename>
+      </field>
+      <field>
+        <name>sentence_token_offset_end</name>
+        <rename>sentence_end</rename>
+      </field>
+      <field>
+        <name>sentence_text</name>
+      </field>
+      <field>
+        <name>job_posting</name>
+        <rename>corpus</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1376</xloc>
+      <yloc>1152</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values 3 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>id</name>
+      </field>
+      <field>
+        <name>reference</name>
+      </field>
+      <field>
+        <name>bias_category</name>
+      </field>
+      <field>
+        <name>bias_term</name>
+      </field>
+      <field>
+        <name>country</name>
+      </field>
+      <field>
+        <name>company</name>
+      </field>
+      <field>
+        <name>category</name>
+      </field>
+      <field>
+        <name>position</name>
+      </field>
+      <field>
+        <name>sentence_index</name>
+      </field>
+      <field>
+        <name>sentence_begin</name>
+      </field>
+      <field>
+        <name>sentence_end</name>
+      </field>
+      <field>
+        <name>sentence_text</name>
+      </field>
+      <field>
+        <name>corpus</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1376</xloc>
+      <yloc>1552</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>${HOP_DATASETS_FOLDER}/tmp</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>sentence_index</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>bias_category</name>
+        <ascending>Y</ascending>
+        <case_sensitive>Y</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>bias_term</name>
+        <ascending>Y</ascending>
+        <case_sensitive>Y</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1376</xloc>
+      <yloc>1360</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Unique rows</name>
+    <type>Unique</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <count_rows>N</count_rows>
+    <fields>
+      <field>
+        <case_insensitive>N</case_insensitive>
+        <name>id</name>
+      </field>
+    </fields>
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <attributes/>
+    <GUI>
+      <xloc>1376</xloc>
+      <yloc>1456</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>bias_taxonomies</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <file>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>${HOP_DATASETS_FOLDER}/outputs/bias_taxonomies/bias_taxonomies.parquet</name>
+    </file>
+    <filefield>N</filefield>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <isaddresult>Y</isaddresult>
+    <limit>0</limit>
+    <raiseAnExceptionIfNoFile>N</raiseAnExceptionIfNoFile>
+    <rownum>N</rownum>
+    <attributes/>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>416</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>bias_taxonomies parquet</name>
+    <type>ParquetFileInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <source_field>category</source_field>
+        <target_field>category</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>term</source_field>
+        <target_field>term</target_field>
+        <target_type>String</target_type>
+      </field>
+    </fields>
+    <filename_field>filename</filename_field>
+    <attributes/>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>416</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>containsTerm</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>containsTerm</name>
+        <precision>-1</precision>
+        <rename>containsTerm</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Boolean</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>//import static org.apache.commons.lang3.StringUtils.*;
+//import static org.apache.commons.text.WordUtils.*;
+
+//containsTerm = containsIgnoreCase(sentence_text, bias_term)
+//containsTerm = containsAllWords(lowerCase(sentence_text), lowerCase(bias_term))
+
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
+
+
+String regex = "\\b" + Pattern.quote(bias_term) + "\\b";
+Pattern pattern = Pattern.compile(regex, CASE_INSENSITIVE);
+Matcher matcher = pattern.matcher(sentence_text);
+
+containsTerm =  matcher.find();</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>800</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>containsTerm 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>containsTerm</name>
+        <precision>-1</precision>
+        <rename>containsTerm</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Boolean</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>//import static org.apache.commons.lang3.StringUtils.*;
+//import static org.apache.commons.text.WordUtils.*;
+
+//containsTerm = containsIgnoreCase(sentence_text, bias_term)
+//containsTerm = containsAllWords(lowerCase(sentence_text), lowerCase(bias_term))
+
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
+
+
+String regex = "\\b" + Pattern.quote(bias_term) + "\\b";
+Pattern pattern = Pattern.compile(regex, CASE_INSENSITIVE);
+Matcher matcher = pattern.matcher(sentence_text);
+
+containsTerm =  matcher.find();</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1184</xloc>
+      <yloc>864</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>containsTerm 3</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>containsTerm</name>
+        <precision>-1</precision>
+        <rename>containsTerm</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Boolean</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>//import static org.apache.commons.lang3.StringUtils.*;
+//import static org.apache.commons.text.WordUtils.*;
+
+//containsTerm = containsIgnoreCase(sentence_text, bias_term)
+//containsTerm = containsAllWords(lowerCase(sentence_text), lowerCase(bias_term))
+
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
+
+
+String regex = "\\b" + Pattern.quote(bias_term) + "\\b";
+Pattern pattern = Pattern.compile(regex, CASE_INSENSITIVE);
+Matcher matcher = pattern.matcher(sentence_text);
+
+containsTerm =  matcher.find();</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1568</xloc>
+      <yloc>864</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>english dataset parquet</name>
+    <type>ParquetFileInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <source_field>country</source_field>
+        <target_field>country</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>locale</source_field>
+        <target_field>locale</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>language</source_field>
+        <target_field>language</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>source</source_field>
+        <target_field>source</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>scraped_date</source_field>
+        <target_field>scraped_date</target_field>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>company_id</source_field>
+        <target_field>company_id</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>companyName</source_field>
+        <target_field>companyName</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>city</source_field>
+        <target_field>city</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_id</source_field>
+        <target_field>dataset_id</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_type</source_field>
+        <target_field>dataset_type</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_license</source_field>
+        <target_field>dataset_license</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_source</source_field>
+        <target_field>dataset_source</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_title</source_field>
+        <target_field>dataset_title</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_url</source_field>
+        <target_field>dataset_url</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>category</source_field>
+        <target_field>category</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>position_name</source_field>
+        <target_field>position_name</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>job_posting</source_field>
+        <target_field>job_posting</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>sequence</source_field>
+        <target_field>sequence</target_field>
+        <target_type>Integer</target_type>
+      </field>
+    </fields>
+    <filename_field>filename</filename_field>
+    <attributes/>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>english_bias_sentences</name>
+    <type>ParquetFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compression_codec>SNAPPY</compression_codec>
+    <data_page_size>8192</data_page_size>
+    <dictionary_page_size>1048576</dictionary_page_size>
+    <fields>
+      <field>
+        <source_field>id</source_field>
+        <target_field>id</target_field>
+      </field>
+      <field>
+        <source_field>reference</source_field>
+        <target_field>reference</target_field>
+      </field>
+      <field>
+        <source_field>bias_category</source_field>
+        <target_field>bias_category</target_field>
+      </field>
+      <field>
+        <source_field>bias_term</source_field>
+        <target_field>bias_term</target_field>
+      </field>
+      <field>
+        <source_field>country</source_field>
+        <target_field>country</target_field>
+      </field>
+      <field>
+        <source_field>company</source_field>
+        <target_field>company</target_field>
+      </field>
+      <field>
+        <source_field>category</source_field>
+        <target_field>category</target_field>
+      </field>
+      <field>
+        <source_field>position</source_field>
+        <target_field>position</target_field>
+      </field>
+      <field>
+        <source_field>sentence_index</source_field>
+        <target_field>sentence_index</target_field>
+      </field>
+      <field>
+        <source_field>sentence_begin</source_field>
+        <target_field>sentence_begin</target_field>
+      </field>
+      <field>
+        <source_field>sentence_end</source_field>
+        <target_field>sentence_end</target_field>
+      </field>
+      <field>
+        <source_field>sentence_text</source_field>
+        <target_field>sentence_text</target_field>
+      </field>
+      <field>
+        <source_field>corpus</source_field>
+        <target_field>corpus</target_field>
+      </field>
+    </fields>
+    <filename_base>${HOP_DATASETS_FOLDER}/outputs/bias_sentences/english_bias_sentences</filename_base>
+    <filename_create_parent_folders>Y</filename_create_parent_folders>
+    <filename_datetime_format>yyyyMMdd-HHmmss</filename_datetime_format>
+    <filename_ext>parquet</filename_ext>
+    <filename_include_copy>N</filename_include_copy>
+    <filename_include_date>N</filename_include_date>
+    <filename_include_datetime>N</filename_include_datetime>
+    <filename_include_split>Y</filename_include_split>
+    <filename_include_time>N</filename_include_time>
+    <filename_split_size>1000000</filename_split_size>
+    <row_group_size>268435456</row_group_size>
+    <version>2.0</version>
+    <attributes/>
+    <GUI>
+      <xloc>1376</xloc>
+      <yloc>1680</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>english_dataset</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <file>
+      <file_required>N</file_required>
+      <filemask>english_dataset-\d+-\d+\.parquet\.snappy</filemask>
+      <include_subfolders>N</include_subfolders>
+      <name>${HOP_DATASETS_FOLDER}/datasets/english</name>
+    </file>
+    <filefield>N</filefield>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <isaddresult>Y</isaddresult>
+    <limit>0</limit>
+    <raiseAnExceptionIfNoFile>N</raiseAnExceptionIfNoFile>
+    <rownum>N</rownum>
+    <attributes/>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>id</name>
+    <type>CheckSum</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <checksumtype>SHA-256</checksumtype>
+    <fields>
+      <field>
+        <name>reference</name>
+      </field>
+      <field>
+        <name>bias_category</name>
+      </field>
+      <field>
+        <name>bias_term</name>
+      </field>
+      <field>
+        <name>country</name>
+      </field>
+      <field>
+        <name>company</name>
+      </field>
+      <field>
+        <name>category</name>
+      </field>
+      <field>
+        <name>position</name>
+      </field>
+      <field>
+        <name>sentence_index</name>
+      </field>
+      <field>
+        <name>sentence_begin</name>
+      </field>
+      <field>
+        <name>sentence_end</name>
+      </field>
+      <field>
+        <name>sentence_text</name>
+      </field>
+      <field>
+        <name>corpus</name>
+      </field>
+    </fields>
+    <resultType>hexadecimal</resultType>
+    <resultfieldName>id</resultfieldName>
+    <attributes/>
+    <GUI>
+      <xloc>1376</xloc>
+      <yloc>1264</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>placeholders</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>sentence_text</name>
+        <precision>-1</precision>
+        <set_empty_string>Y</set_empty_string>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>sentence_index</name>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>sentence_token_offset_begin</name>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>sentence_token_offset_end</name>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>Integer</type>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>sentence contains bias term 3</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compare>
+      <condition>
+        <conditions>
+</conditions>
+        <function>=</function>
+        <leftvalue>containsTerm</leftvalue>
+        <negated>N</negated>
+        <operator>-</operator>
+        <value>
+          <isnull>N</isnull>
+          <length>-1</length>
+          <name>constant</name>
+          <precision>-1</precision>
+          <text>Y</text>
+          <type>Boolean</type>
+        </value>
+      </condition>
+    </compare>
+    <send_false_to>Does not contain term</send_false_to>
+    <send_true_to>Select values 3</send_true_to>
+    <attributes/>
+    <GUI>
+      <xloc>1568</xloc>
+      <yloc>1008</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>sentence contains bias term 3 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compare>
+      <condition>
+        <conditions>
+</conditions>
+        <function>=</function>
+        <leftvalue>containsTerm</leftvalue>
+        <negated>N</negated>
+        <operator>-</operator>
+        <value>
+          <isnull>N</isnull>
+          <length>-1</length>
+          <name>constant</name>
+          <precision>-1</precision>
+          <text>Y</text>
+          <type>Boolean</type>
+        </value>
+      </condition>
+    </compare>
+    <send_false_to>Does not contain term</send_false_to>
+    <send_true_to>Select values 3</send_true_to>
+    <attributes/>
+    <GUI>
+      <xloc>1184</xloc>
+      <yloc>1008</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>sentences</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+</fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import edu.stanford.nlp.simple.*;
+
+import static org.apache.commons.lang3.StringUtils.*;
+import static org.apache.commons.codec.binary.Base64.*;
+
+datasetId_idx = rowMeta.indexOfValue('dataset_id')
+sequence_idx = rowMeta.indexOfValue('sequence')
+country_idx = rowMeta.indexOfValue('country')
+company_idx = rowMeta.indexOfValue('company')
+category_idx = rowMeta.indexOfValue('category')
+position_idx = rowMeta.indexOfValue('position')
+jobPosting_idx = rowMeta.indexOfValue('job_posting')
+
+sentenceText_idx = rowMeta.indexOfValue('sentence_text')
+sentenceIndex_idx = rowMeta.indexOfValue('sentence_index')
+sentenceTokenOffsetBegin_idx = rowMeta.indexOfValue('sentence_token_offset_begin')
+sentenceTokenOffsetEnd_idx = rowMeta.indexOfValue('sentence_token_offset_end')
+
+
+Document doc = new Document(job_posting);
+for (Sentence sent : doc.sentences()) {
+
+	outputRow = createOutputRow()
+
+	dsId = dataset_source+"::"+dataset_type+"::"+dataset_id+"::"+source
+	outputRow[datasetId_idx] = encodeBase64String(dsId.getBytes("UTF-8"))
+        outputRow[sequence_idx] = sequence
+        outputRow[country_idx] = country
+        outputRow[company_idx] = trim(company)
+        outputRow[category_idx] = trim(category)
+        outputRow[position_idx] = trim(position)
+        outputRow[jobPosting_idx] = trim(job_posting)
+
+        outputRow[sentenceText_idx] = trim(sent.text())
+        outputRow[sentenceIndex_idx] = sent.sentenceIndex() as long
+        outputRow[sentenceTokenOffsetBegin_idx] = sent.sentenceTokenOffsetBegin() as long
+        outputRow[sentenceTokenOffsetEnd_idx] = sent.sentenceTokenOffsetEnd() as long
+
+        transform.putRow(outputRowMeta, outputRow)
+}
+
+
+def createOutputRow() {
+    return RowDataUtil.allocateRowData(28)
+}
+
+
+pipeline_status = SKIP_PIPELINE;</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>912</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform_error_handling>
+  </transform_error_handling>
+  <attributes/>
+</pipeline>

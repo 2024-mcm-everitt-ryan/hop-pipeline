@@ -1,0 +1,28 @@
+{
+  "phrases": [
+    {
+      "biased": "At ${company_name}, we are looking for a fresh-faced ${job_title} who can bring new ideas and youthful enthusiasm to our team. Our company, leading in the ${company_industry} industry, prefers candidates who are recent graduates, ideally not seasoned geezers who might struggle with our innovative pace.",
+      "unbiased": "${company_name} is seeking an ${job_title} who is eager to innovate and contribute fresh ideas. Operating in the ${company_industry} industry, we value creativity and enthusiasm, open to professionals from all career stages who can handle a dynamic and innovative work environment.",
+      "analysis": [
+        {
+          "bias": "age",
+          "reason": "The use of 'fresh-faced' and 'recent graduates' alongside the derogatory 'not seasoned geezers' explicitly prefers younger candidates, showing age bias."
+        }
+      ]
+    },
+    {
+      "biased": "${company_name}, an avant-garde firm in the ${company_industry} sector, is on the lookout for a ${job_title} to join our dynamic team. With our catchphrase, ${company_catch_phrase}, we lead the market with innovative solutions. The ideal candidate must have a U.S. Passport, demonstrating an ability to work within various regions without restrictions. This role requires a professional with confidence, adept at designing healthcare facilities that cater to the specific needs of diverse populations. The successful candidate will be responsible for overseeing projects from conception to completion, ensuring all designs comply with international healthcare standards and embody the excellence ${company_name} is known for. Ideal for a fresh graduate eager to make their mark, not suited for the seasoned geezer.",
+      "unbiased": "${company_name} invites seasoned professionals to apply for the role of ${job_title} at our enterprise within the ${company_industry} industry. Our catchphrase, ${company_catch_phrase}, embodies our commitment to pioneering solutions. We are looking for a globally-minded individual with the confidence to design and implement healthcare infrastructure across varied regions. Candidates should have the ability to legally work across different countries. The appointed candidate will manage project lifecycles, ensuring designs are culturally inclusive and uphold international healthcare standards, reflecting the ${company_name}'s dedication to excellence.  Suitable for anyone thriving in a dynamic work environment.",
+      "analysis": [
+        {
+          "bias": "age",
+          "reason": "The phrase shows age bias by explicitly preferring 'young' candidates and derogatorily referring to 'geezer'."
+        },
+        {
+          "bias": "racial",
+          "reason": "'Must have a U.S. Passport' implies a preference for U.S. nationals, which can exclude non-U.S. applicants and show nationality bias."
+        }
+      ]
+    }
+  ]
+}

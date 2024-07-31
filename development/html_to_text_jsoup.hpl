@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline>
+  <info>
+    <name>html_to_text_jsoup</name>
+    <name_sync_with_filename>Y</name_sync_with_filename>
+    <description/>
+    <extended_description/>
+    <pipeline_version/>
+    <pipeline_type>Normal</pipeline_type>
+    <pipeline_status>0</pipeline_status>
+    <parameters>
+    </parameters>
+    <capture_transform_performance>N</capture_transform_performance>
+    <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
+    <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
+    <created_user>-</created_user>
+    <created_date>2023/12/18 15:00:31.032</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2023/12/18 15:00:31.032</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <order>
+    <hop>
+      <from>Generate rows 4</from>
+      <to>feasible</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate rows 5</from>
+      <to>feasible</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate rows 6</from>
+      <to>feasible</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>feasible</from>
+      <to>placeholders</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>outstanding</from>
+      <to>placeholders</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate rows</from>
+      <to>feasible</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate rows 3</from>
+      <to>outstanding</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate rows 2</from>
+      <to>outstanding</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate rows 3 2</from>
+      <to>outstanding</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>placeholders</from>
+      <to>Fix tags</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate rows 7</from>
+      <to>outstanding</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate rows 7 2</from>
+      <to>feasible</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate rows 7 3</from>
+      <to>placeholders</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix tags</from>
+      <to>clean_html</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>add periods</from>
+      <to>html to text</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remove excess whitespace</from>
+      <to>add periods</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>clean_html</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>remove excess whitespace</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <transform>
+    <name>Fix tags</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>html</name>
+        <precision>-1</precision>
+        <rename>html</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import static org.apache.commons.lang3.StringUtils.replaceEachRepeatedly
+
+
+html = job_posting_html
+
+String[] searchList = [
+"&amp;nbsp;",
+"&amp;lt;",
+"&amp;gt;",
+"DefSemiHidden=\"",
+"UnhideWhenUsed=\"",
+"\" Name=\"",
+"\"/> Name=\"",
+" classid=\"",
+"table.MsoNormalTable {",
+"\\n",
+"\\xc2\\xa0",
+"\\xe2\\x80\\x99",
+"/n",
+"/xc2/xa0",
+"/xe2/x80/x99",
+"\\xc2\\xb7",
+"/xc2/xb7"
+]
+
+//"&amp;amp;",
+//"&amp;quot;",
+//"&amp;apos;"
+
+String[] replacementList = [
+" ",
+"&lt;",
+">",
+"&lt;Name=\"",
+"&lt;UnhideWhenUsed=\"",
+"\"/>&lt;Name=\"",
+"\"/>&lt;Name=\"",
+"&lt;classid=\"",
+"&lt;style>table.MsoNormalTable {",
+"&lt;br/>",
+" ",
+"'",
+"&lt;br/>",
+" ",
+"'",
+"·",
+"·"
+]
+
+//"&amp;",
+//"\"",
+//"'"
+
+html = replaceEachRepeatedly(html, searchList, replacementList)
+
+html = html.replaceAll("&lt;{2,}", "&lt;")
+
+
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>304</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting_html</name>
+        <nullif>
+&lt;html>&lt;head>&lt;title>HTML: Kaggle::techmap::6155a66fce541c23aa02211b::careerbuilder_us&lt;/title>&lt;/head>&lt;body>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> &lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Normal&lt;p> 0&lt;p> false&lt;p>&lt;p>&lt;p>&lt;p> false&lt;p> false&lt;p> false&lt;p>&lt;p> EN-US&lt;p> X-NONE&lt;p> X-NONE&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> DefSemiHidden="false" DefQFormat="false" DefPriority="99"&lt;p> LatentStyleCount="371">&lt;p>&lt;p>&lt;p> UnhideWhenUsed="true" QFormat="true" Name="heading 2"/>&lt;p> UnhideWhenUsed="true" QFormat="true" Name="heading 3"/>&lt;p> UnhideWhenUsed="true" QFormat="true" Name="heading 4"/>&lt;p> UnhideWhenUsed="true" QFormat="true" Name="heading 5"/>&lt;p> UnhideWhenUsed="true" QFormat="true" Name="heading 6"/>&lt;p> UnhideWhenUsed="true" QFormat="true" Name="heading 7"/>&lt;p> UnhideWhenUsed="true" QFormat="true" Name="heading 8"/>&lt;p> UnhideWhenUsed="true" QFormat="true" Name="heading 9"/>&lt;p> Name="index 1"/>&lt;p> Name="index 2"/>&lt;p> Name="index 3"/>&lt;p> Name="index 4"/>&lt;p> Name="index 5"/>&lt;p> Name="index 6"/>&lt;p> Name="index 7"/>&lt;p> Name="index 8"/>&lt;p> Name="index 9"/>&lt;p> UnhideWhenUsed="true" Name="toc 1"/>&lt;p> UnhideWhenUsed="true" Name="toc 2"/>&lt;p> UnhideWhenUsed="true" Name="toc 3"/>&lt;p> UnhideWhenUsed="true" Name="toc 4"/>&lt;p> UnhideWhenUsed="true" Name="toc 5"/>&lt;p> UnhideWhenUsed="true" Name="toc 6"/>&lt;p> UnhideWhenUsed="true" Name="toc 7"/>&lt;p> UnhideWhenUsed="true" Name="toc 8"/>&lt;p> UnhideWhenUsed="true" Name="toc 9"/>&lt;p> Name="Normal Indent"/>&lt;p> Name="footnote text"/>&lt;p> Name="annotation text"/>&lt;p> UnhideWhenUsed="true" Name="header"/>&lt;p> UnhideWhenUsed="true" Name="footer"/>&lt;p> Name="index heading"/>&lt;p> UnhideWhenUsed="true" QFormat="true" Name="caption"/>&lt;p> Name="table of figures"/>&lt;p> Name="envelope address"/>&lt;p> Name="envelope return"/>&lt;p> Name="footnote reference"/>&lt;p> Name="annotation reference"/>&lt;p> Name="line number"/>&lt;p> Name="page number"/>&lt;p> Name="endnote reference"/>&lt;p> Name="endnote text"/>&lt;p> Name="table of authorities"/>&lt;p> Name="macro"/>&lt;p> Name="toa heading"/>&lt;p> Name="List"/>&lt;p> Name="List Bullet"/>&lt;p> Name="List Number"/>&lt;p> Name="List 2"/>&lt;p> Name="List 3"/>&lt;p> Name="List 4"/>&lt;p> Name="List 5"/>&lt;p> Name="List Bullet 2"/>&lt;p> Name="List Bullet 3"/>&lt;p> Name="List Bullet 4"/>&lt;p> Name="List Bullet 5"/>&lt;p> Name="List Number 2"/>&lt;p> Name="List Number 3"/>&lt;p> Name="List Number 4"/>&lt;p> Name="List Number 5"/>&lt;p>&lt;p> Name="Closing"/>&lt;p> Name="Signature"/>&lt;p> UnhideWhenUsed="true" Name="Default Paragraph Font"/>&lt;p> Name="Body Text"/>&lt;p> Name="Body Text Indent"/>&lt;p> Name="List Continue"/>&lt;p> Name="List Continue 2"/>&lt;p> Name="List Continue 3"/>&lt;p> Name="List Continue 4"/>&lt;p> Name="List Continue 5"/>&lt;p> Name="Message Header"/>&lt;p>&lt;p> Name="Salutation"/>&lt;p> Name="Date"/>&lt;p> Name="Body Text First Indent"/>&lt;p> Name="Body Text First Indent 2"/>&lt;p> Name="Note Heading"/>&lt;p> Name="Body Text 2"/>&lt;p> Name="Body Text 3"/>&lt;p> Name="Body Text Indent 2"/>&lt;p> Name="Body Text Indent 3"/>&lt;p> Name="Block Text"/>&lt;p> UnhideWhenUsed="true" Name="Hyperlink"/>&lt;p> Name="FollowedHyperlink"/>&lt;p>&lt;p>&lt;p> Name="Document Map"/>&lt;p> Name="Plain Text"/>&lt;p> Name="E-mail Signature"/>&lt;p> Name="HTML Top of Form"/>&lt;p> Name="HTML Bottom of Form"/>&lt;p> UnhideWhenUsed="true" Name="Normal (Web)"/>&lt;p> Name="HTML Acronym"/>&lt;p> Name="HTML Address"/>&lt;p> Name="HTML Cite"/>&lt;p> Name="HTML Code"/>&lt;p> Name="HTML Definition"/>&lt;p> Name="HTML Keyboard"/>&lt;p> Name="HTML Preformatted"/>&lt;p> Name="HTML Sample"/>&lt;p> Name="HTML Typewriter"/>&lt;p> Name="HTML Variable"/>&lt;p> Name="Normal Table"/>&lt;p> Name="annotation subject"/>&lt;p> Name="No List"/>&lt;p> Name="Outline List 1"/>&lt;p> Name="Outline List 2"/>&lt;p> Name="Outline List 3"/>&lt;p> Name="Table Simple 1"/>&lt;p> Name="Table Simple 2"/>&lt;p> Name="Table Simple 3"/>&lt;p> Name="Table Classic 1"/>&lt;p> Name="Table Classic 2"/>&lt;p> Name="Table Classic 3"/>&lt;p> Name="Table Classic 4"/>&lt;p> Name="Table Colorful 1"/>&lt;p> Name="Table Colorful 2"/>&lt;p> Name="Table Colorful 3"/>&lt;p> Name="Table Columns 1"/>&lt;p> Name="Table Columns 2"/>&lt;p> Name="Table Columns 3"/>&lt;p> Name="Table Columns 4"/>&lt;p> Name="Table Columns 5"/>&lt;p> Name="Table Grid 1"/>&lt;p> Name="Table Grid 2"/>&lt;p> Name="Table Grid 3"/>&lt;p> Name="Table Grid 4"/>&lt;p> Name="Table Grid 5"/>&lt;p> Name="Table Grid 6"/>&lt;p> Name="Table Grid 7"/>&lt;p> Name="Table Grid 8"/>&lt;p> Name="Table List 1"/>&lt;p> Name="Table List 2"/>&lt;p> Name="Table List 3"/>&lt;p> Name="Table List 4"/>&lt;p> Name="Table List 5"/>&lt;p> Name="Table List 6"/>&lt;p> Name="Table List 7"/>&lt;p> Name="Table List 8"/>&lt;p> Name="Table 3D effects 1"/>&lt;p> Name="Table 3D effects 2"/>&lt;p> Name="Table 3D effects 3"/>&lt;p> Name="Table Contemporary"/>&lt;p> Name="Table Elegant"/>&lt;p> Name="Table Professional"/>&lt;p> Name="Table Subtle 1"/>&lt;p> Name="Table Subtle 2"/>&lt;p> Name="Table Web 1"/>&lt;p> Name="Table Web 2"/>&lt;p> Name="Table Web 3"/>&lt;p> Name="Balloon Text"/>&lt;p>&lt;p> Name="Table Theme"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="List Paragraph"/>&lt;p>&lt;p> Name="Intense Quote"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p&gt;&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="Subtle Emphasis"/>&lt;p> Name="Intense Emphasis"/>&lt;p> Name="Subtle Reference"/>&lt;p> Name="Intense Reference"/>&lt;p>&lt;p> UnhideWhenUsed="true" Name="Bibliography"/>&lt;p> UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="Grid Table 1 Light Accent 1"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="Grid Table 6 Colorful Accent 1"/>&lt;p> Name="Grid Table 7 Colorful Accent 1"/>&lt;p> Name="Grid Table 1 Light Accent 2"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="Grid Table 6 Colorful Accent 2"/>&lt;p> Name="Grid Table 7 Colorful Accent 2"/>&lt;p> Name="Grid Table 1 Light Accent 3"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="Grid Table 6 Colorful Accent 3"/>&lt;p> Name="Grid Table 7 Colorful Accent 3"/>&lt;p> Name="Grid Table 1 Light Accent 4"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="Grid Table 6 Colorful Accent 4"/>&lt;p> Name="Grid Table 7 Colorful Accent 4"/>&lt;p> Name="Grid Table 1 Light Accent 5"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="Grid Table 6 Colorful Accent 5"/>&lt;p> Name="Grid Table 7 Colorful Accent 5"/>&lt;p> Name="Grid Table 1 Light Accent 6"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="Grid Table 6 Colorful Accent 6"/>&lt;p> Name="Grid Table 7 Colorful Accent 6"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="List Table 1 Light Accent 1"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="List Table 6 Colorful Accent 1"/>&lt;p> Name="List Table 7 Colorful Accent 1"/>&lt;p> Name="List Table 1 Light Accent 2"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="List Table 6 Colorful Accent 2"/>&lt;p> Name="List Table 7 Colorful Accent 2"/>&lt;p> Name="List Table 1 Light Accent 3"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="List Table 6 Colorful Accent 3"/>&lt;p> Name="List Table 7 Colorful Accent 3"/>&lt;p> Name="List Table 1 Light Accent 4"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="List Table 6 Colorful Accent 4"/>&lt;p> Name="List Table 7 Colorful Accent 4"/>&lt;p> Name="List Table 1 Light Accent 5"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="List Table 6 Colorful Accent 5"/>&lt;p> Name="List Table 7 Colorful Accent 5"/>&lt;p> Name="List Table 1 Light Accent 6"/>&lt;p>&lt;p>&lt;p>&lt;p>&lt;p> Name="List Table 6 Colorful Accent 6"/>&lt;p> Name="List Table 7 Colorful Accent 6"/>&lt;p>&lt;p>&lt;object&lt;p> classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui>&lt;p>&lt;p>st1\:*{behavior:url(#ieooui) }&lt;p>&lt;p>&lt;p>&lt;p> /* Style Definitions */&lt;p> table.MsoNormalTable&lt;p>    {mso-style-name:"Table Normal";&lt;p>    mso-tstyle-rowband-size:0;&lt;p>    mso-tstyle-colband-size:0;&lt;p>    mso-style-noshow:yes;&lt;p>    mso-style-priority:99;&lt;p>    mso-style-parent:"";&lt;p>    mso-padding-alt:0in 5.4pt 0in 5.4pt;&lt;p>    mso-para-margin-top:0in;&lt;p>    mso-para-margin-right:0in;&lt;p>    mso-para-margin-bottom:8.0pt;&lt;p>    mso-para-margin-left:0in;&lt;p>    line-height:107%;&lt;p>    mso-pagination:widow-orphan;&lt;p>    font-size:11.0pt;&lt;p>    font-family:"Calibri",sans-serif;&lt;p>    mso-ascii-font-family:Calibri;&lt;p>    mso-ascii-theme-font:minor-latin;&lt;p>    mso-hansi-font-family:Calibri;&lt;p>    mso-hansi-theme-font:minor-latin;&lt;p>    mso-bidi-font-family:"Times New Roman";&lt;p>    mso-bidi-theme-font:minor-bidi;}&lt;p>&lt;p>&lt;p>&lt;em>Looking to &lt;strong>redefine the skyline&lt;/strong> or to be a part of a team who does? &lt;/em>.&lt;/p>&lt;p>&lt;em> &lt;/em>.&lt;/p>&lt;p>&lt;em>We are currently recruiting for a Jr. Derivative Designer to join our Windsor team!&lt;/em>.&lt;/p>&lt;p>&lt;br />.&lt;/p>&lt;p>&lt;strong>Job Summary: &lt;/strong> As an &lt;strong>Jr. Derivative Designer&lt;/strong> at Permasteelisa North America, you will be challenged by the unique nature of every project we create. You will be a key member of a project team that inspires passion, embraces quality, pursues growth, delivers on commitment and works with respect. If you are the right candidate for this position, you will use your engineering background to assist the Derivative Designer by transforming the initial conceptual design using CAD into working submittal documents, and to produce fabrication documents from these submittal documents.&lt;/p>&lt;p>.&lt;/p>&lt;p>&lt;strong>The Company:&lt;/strong> In less than two decades, Permasteelisa North America has become North America’s leading Contractor in the engineering, project management, manufacturing and installation of architectural envelopes. These products change the skylines of cities and become the focus of famous photographs on magazine covers. Find more information on the company at [Link available when viewing the job] or by visiting our LinkedIn page at [Link available when viewing the job].&lt;/p>&lt;p>&lt;strong>Responsibilities:  &lt;/strong>.&lt;/p>&lt;p>&lt;br>•         Responsible for developing an overall understanding of project specifications, including the typologies, areas and systems used in various projects.&lt;/p>&lt;p>&lt;br>•         Responsible for adhering to the project “Phases” determined by the Design Project Manager.&lt;/p>&lt;p>&lt;br>•         Study and develop shop drawings, fabrication drawings and PMF.&lt;/p>&lt;p>&lt;br>•         To report to DDL &amp; PDM any slips or deviations from program which might occur.&lt;/p>&lt;p>&lt;strong> &lt;/strong>.&lt;/p>&lt;p>&lt;strong>Minimum qualifications:&lt;/strong>.&lt;/p>&lt;p>&lt;br>•         Bachelor degree preferred, or Associate degree (with relevant experience) in Architecture, Mechanical Engineering, or Civil Engineering.&lt;/p>&lt;p>&lt;br>•         Must be proficient in Auto CAD, and/or Solidworks; experience with Microsoft Office.&lt;/p>&lt;p>&lt;strong> &lt;/strong>.&lt;/p>&lt;p>&lt;strong>Preferred qualifications:&lt;/strong>.&lt;/p>&lt;p>&lt;br>•         Ability to work collaboratively in a team environment.  Excellent communication skills are a must.&lt;/p>&lt;p>.&lt;/p>&lt;p>&lt;strong> &lt;/strong>.&lt;/p>&lt;p>&lt;strong>PNA is committed to workplace diversity and is an AA/EEO employer. The company participates in E-Verify.&lt;/strong>.&lt;/p>&lt;p>.&lt;/p>&lt;p>&lt;br />.&lt;/p>&lt;/p>.&lt;/p>&lt;p>.&lt;/p>&lt;p> &lt;/body>&lt;/html></nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <interval_in_ms>5000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>16</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows 2</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting_html</name>
+        <nullif>
+&lt;html>&lt;head>&lt;title>HTML: Kaggle::techmap::61412cbe8be8df1fa24b73af::careerbuilder_us&lt;/title>&lt;/head>&lt;body>&lt;ol>&lt;li>Normal 0 false false false false EN-US X-NONE X-NONE DefSemiHidden="false" DefQFormat="false" DefPriority="99" LatentStyleCount="371"> UnhideWhenUsed="true" QFormat="true" Name="heading 2"/> UnhideWhenUsed="true" QFormat="true" Name="heading 3"/> UnhideWhenUsed="true" QFormat="true" Name="heading 4"/> UnhideWhenUsed="true" QFormat="true" Name="heading 5"/> UnhideWhenUsed="true" QFormat="true" Name="heading 6"/> UnhideWhenUsed="true" QFormat="true" Name="heading 7"/> UnhideWhenUsed="true" QFormat="true" Name="heading 8"/> UnhideWhenUsed="true" QFormat="true" Name="heading 9"/> Name="index 1"/> Name="index 2"/> Name="index 3"/> Name="index 4"/> Name="index 5"/> Name="index 6"/> Name="index 7"/> Name="index 8"/> Name="index 9"/> UnhideWhenUsed="true" Name="toc 1"/> UnhideWhenUsed="true" Name="toc 2"/> UnhideWhenUsed="true" Name="toc 3"/> UnhideWhenUsed="true" Name="toc 4"/> UnhideWhenUsed="true" Name="toc 5"/> UnhideWhenUsed="true" Name="toc 6"/> UnhideWhenUsed="true" Name="toc 7"/> UnhideWhenUsed="true" Name="toc 8"/> UnhideWhenUsed="true" Name="toc 9"/> Name="Normal Indent"/> Name="footnote text"/> Name="annotation text"/> UnhideWhenUsed="true" Name="header"/> UnhideWhenUsed="true" Name="footer"/> Name="index heading"/> UnhideWhenUsed="true" QFormat="true" Name="caption"/> Name="table of figures"/> Name="envelope address"/> Name="envelope return"/> Name="footnote reference"/> Name="annotation reference"/> Name="line number"/> Name="page number"/> Name="endnote reference"/> Name="endnote text"/> Name="table of authorities"/> Name="macro"/> Name="toa heading"/> Name="List"/> Name="List Bullet"/> Name="List Number"/> Name="List 2"/> Name="List 3"/> Name="List 4"/> Name="List 5"/> Name="List Bullet 2"/> Name="List Bullet 3"/> Name="List Bullet 4"/> Name="List Bullet 5"/> Name="List Number 2"/> Name="List Number 3"/> Name="List Number 4"/> Name="List Number 5"/> Name="Closing"/> Name="Signature"/> UnhideWhenUsed="true" Name="Default Paragraph Font"/> Name="Body Text"/> Name="Body Text Indent"/> Name="List Continue"/> Name="List Continue 2"/> Name="List Continue 3"/> Name="List Continue 4"/> Name="List Continue 5"/> Name="Message Header"/> Name="Salutation"/> Name="Date"/> Name="Body Text First Indent"/> Name="Body Text First Indent 2"/> Name="Note Heading"/> Name="Body Text 2"/> Name="Body Text 3"/> Name="Body Text Indent 2"/> Name="Body Text Indent 3"/> Name="Block Text"/> UnhideWhenUsed="true" Name="Hyperlink"/> Name="FollowedHyperlink"/> Name="Document Map"/> Name="Plain Text"/> Name="E-mail Signature"/> Name="HTML Top of Form"/> Name="HTML Bottom of Form"/> UnhideWhenUsed="true" Name="Normal (Web)"/> Name="HTML Acronym"/> Name="HTML Address"/> Name="HTML Cite"/> Name="HTML Code"/> Name="HTML Definition"/> Name="HTML Keyboard"/> Name="HTML Preformatted"/> Name="HTML Sample"/> Name="HTML Typewriter"/> Name="HTML Variable"/> Name="Normal Table"/> Name="annotation subject"/> Name="No List"/> Name="Outline List 1"/> Name="Outline List 2"/> Name="Outline List 3"/> Name="Table Simple 1"/> Name="Table Simple 2"/> Name="Table Simple 3"/> Name="Table Classic 1"/> Name="Table Classic 2"/> Name="Table Classic 3"/> Name="Table Classic 4"/> Name="Table Colorful 1"/> Name="Table Colorful 2"/> Name="Table Colorful 3"/> Name="Table Columns 1"/> Name="Table Columns 2"/> Name="Table Columns 3"/> Name="Table Columns 4"/> Name="Table Columns 5"/> Name="Table Grid 1"/> Name="Table Grid 2"/> Name="Table Grid 3"/> Name="Table Grid 4"/> Name="Table Grid 5"/> Name="Table Grid 6"/> Name="Table Grid 7"/> Name="Table Grid 8"/> Name="Table List 1"/> Name="Table List 2"/> Name="Table List 3"/> Name="Table List 4"/> Name="Table List 5"/> Name="Table List 6"/> Name="Table List 7"/> Name="Table List 8"/> Name="Table 3D effects 1"/> Name="Table 3D effects 2"/> Name="Table 3D effects 3"/> Name="Table Contemporary"/> Name="Table Elegant"/> Name="Table Professional"/> Name="Table Subtle 1"/> Name="Table Subtle 2"/> Name="Table Web 1"/> Name="Table Web 2"/> Name="Table Web 3"/> Name="Balloon Text"/> Name="Table Theme"/> Name="List Paragraph"/> Name="Intense Quote"/> Name="Subtle Emphasis"/> Name="Intense Emphasis"/> Name="Subtle Reference"/> Name="Intense Reference"/> UnhideWhenUsed="true" Name="Bibliography"/> UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/> Name="Grid Table 1 Light Accent 1"/> Name="Grid Table 6 Colorful Accent 1"/> Name="Grid Table 7 Colorful Accent 1"/> Name="Grid Table 1 Light Accent 2"/> Name="Grid Table 6 Colorful Accent 2"/> Name="Grid Table 7 Colorful Accent 2"/> Name="Grid Table 1 Light Accent 3"/> Name="Grid Table 6 Colorful Accent 3"/> Name="Grid Table 7 Colorful Accent 3"/> Name="Grid Table 1 Light Accent 4"/> Name="Grid Table 6 Colorful Accent 4"/> Name="Grid Table 7 Colorful Accent 4"/> Name="Grid Table 1 Light Accent 5"/> Name="Grid Table 6 Colorful Accent 5"/> Name="Grid Table 7 Colorful Accent 5"/> Name="Grid Table 1 Light Accent 6"/> Name="Grid Table 6 Colorful Accent 6"/> Name="Grid Table 7 Colorful Accent 6"/> Name="List Table 1 Light Accent 1"/> Name="List Table 6 Colorful Accent 1"/> Name="List Table 7 Colorful Accent 1"/> Name="List Table 1 Light Accent 2"/> Name="List Table 6 Colorful Accent 2"/> Name="List Table 7 Colorful Accent 2"/> Name="List Table 1 Light Accent 3"/> Name="List Table 6 Colorful Accent 3"/> Name="List Table 7 Colorful Accent 3"/> Name="List Table 1 Light Accent 4"/> Name="List Table 6 Colorful Accent 4"/> Name="List Table 7 Colorful Accent 4"/> Name="List Table 1 Light Accent 5"/> Name="List Table 6 Colorful Accent 5"/> Name="List Table 7 Colorful Accent 5"/> Name="List Table 1 Light Accent 6"/> Name="List Table 6 Colorful Accent 6"/> Name="List Table 7 Colorful Accent 6"/> classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui> st1\:*{behavior:url(#ieooui) } /* Style Definitions */ table.MsoNormalTable {mso-style-name:"Table Normal"; mso-tstyle-rowband-size:0; mso-tstyle-colband-size:0; mso-style-noshow:yes; mso-style-priority:99; mso-style-parent:""; mso-padding-alt:0in 5.4pt 0in 5.4pt; mso-para-margin-top:0in; mso-para-margin-right:0in; mso-para-margin-bottom:8.0pt; mso-para-margin-left:0in; line-height:107%; mso-pagination:widow-orphan; font-size:11.0pt; font-family:"Calibri",sans-serif; mso-ascii-font-family:Calibri; mso-ascii-theme-font:minor-latin; mso-hansi-font-family:Calibri; mso-hansi-theme-font:minor-latin; mso-bidi-font-family:"Times New Roman"; mso-bidi-theme-font:minor-bidi;} Looking to redefine the skyline or to be a part of a team who does?&lt;li>Structural Engineer at Permasteelisa North America, you will be a key member of a project team challenged by the unique nature of every project we create.&lt;li>If you are the right candidate for this position, you will use your engineering background to performs façade calculations under the direction of a licensed engineer for high performance custom curtain wall projects.&lt;li>The Company: In less than two decades, Permasteelisa North America has become North America’s leading Contractor in the engineering, project management, manufacturing and installation of architectural envelopes.&lt;li>• Perform structural analysis and design of custom curtain wall and field equipment including load determination, frame analysis, FEA, connections, and anchorages for custom curtain wall projects.&lt;li>• Provide technical support for production modeling, shop activities, and field activities.&lt;li>• Travel to project site as required to observe/evaluate/inspect construction and provide engineering support.&lt;li>• MS Office (Excel, Word, PowerPoint, Project), Mathcad, AutoCAD, some experience with RSTAB/RISA or other frame analysis software and FEA software preferred, ability to learn PNA proprietary software.&lt;li>• Strong Communication skills.&lt;li>PNA is committed to workplace diversity and is an AA/EEO employer.&lt;/ol>&lt;/body>&lt;/html></nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <interval_in_ms>5000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>176</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows 3</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting_html</name>
+        <nullif>
+&lt;html>&lt;head>&lt;title>HTML: Kaggle::techmap::6151de26d92a83180c203779::careerbuilder_us&lt;/title>&lt;/head>&lt;body>&lt;p>Are you interested in a position that is challenging and innovative?  For over 75 years, &lt;strong>Oil States Industries, Inc. &lt;/strong>has been a highly respected technology and solutions pioneer manufacturing diverse products for offshore platforms, subsea pipelines, defense, and general industrial applications worldwide.&lt;/p>&lt;p>Oil States Industries, Inc. recognizes that our diverse workforce is our greatest asset.  We offer a competitive pay package, including an annual incentive bonus program for all employees.  When we contribute to the company’s success, we all win.&lt;/p>&lt;p>&lt;strong>Oil States is currently looking for a qualified candidate for the position of Shipping/Receiving Clerk I in Lampasas, TX to verify and keep records on outgoing shipments and prepare items for shipment.&lt;/strong>.&lt;/p>&lt;p>&lt;strong>ESSENTIAL DUTIES AND RESPONSIBILITIES: &lt;/strong>.&lt;/p>&lt;ul>&lt;li>Pull parts according to purchase order, packing list, or sales order.&lt;/li>&lt;li>Box parts per purchase order, packing list, or sales order.&lt;/li>&lt;li>Package and label products per sales order or traveler.&lt;/li>&lt;li>Maintain warehouse work area.&lt;/li>&lt;li>Loads and /or unloads trucks as necessary.&lt;/li>&lt;li>Perform other duties as assigned by supervisor.&lt;/li>&lt;/ul>&lt;p>&lt;strong> QUALIFICATION REQUIREMENTS:&lt;/strong>.&lt;/p>&lt;ul>&lt;li>&lt;strong> &lt;/strong>Entry level.&lt;/li>&lt;li>Good driving record.&lt;/li>&lt;li>Basic verbal and written communication skills, able to follow verbal and written directions and procedures.&lt;/li>&lt;li>Basic mathematical skills such as addition, subtraction, multiplication and division.&lt;/li>&lt;li>Ability to handle multiple tasks.&lt;/li>&lt;li>Ability to follow safe work practices.&lt;/li>&lt;/ul>&lt;p>&lt;strong>PHYSICAL REQUIREMENTS:  &lt;/strong>.&lt;/p>&lt;ul>&lt;li>Prolonged standing and walking.&lt;/li>&lt;li>Lifting up to 50 pounds.&lt;/li>&lt;li>Frequent kneeling, bending, pushing and pulling.&lt;/li>&lt;li>Must be able to work in temperatures over 100 degrees.&lt;/li>&lt;/ul>','EqualOpportunityEmployerDescription':'Equal Opportunity Employer/Protected Veterans/Individuals with Disabilities','PayTransparencyPolicyStatement':'The contractor will not discharge or in any other manner discriminate against employees or applicants because they have inquired about, discussed, or disclosed their own pay or the pay of another employee or applicant. However, employees who have access to the compensation information of other employees or applicants as a part of their essential job functions cannot disclose the pay of other employees or applicants to individuals who do not otherwise have access to compensation information, unless the disclosure is (a) in response to a formal complaint or charge, (b) in furtherance of an investigation, proceeding, hearing, or action, including an investigation conducted by the employer, or (c) consistent with the contractor’s legal duty to furnish information. 41 CFR 60-1.35(c)','MatchScore':1.0,'HasApplied':false,'ApplicationJobBoardName':null,'ApplicationJobBoardId':null,'DateApplied':null,'Salaried':false,'CompensationAmount':null,'PublishingStatus':1,'Links':[],'BehaviorCriteria':[{'BehaviorId':'4a260901-80e2-ae4e-816b-1d3138ea2fbd','BehaviorName':'Dedicated','BehaviorDescription':'Devoted to a task or purpose with loyalty or integrity','Required':false,'IsArchived':false},{'BehaviorId':'d52944f2-5606-09d3-c286-f1d9a2acece7','BehaviorName':'Detail Oriented','BehaviorDescription':'Capable of carrying out a given task with all details necessary to get the task done well','Required':false,'IsArchived':false},{'BehaviorId':'4b369347-cb56-412e-daa3-bc02bf4df98c','BehaviorName':'Enthusiastic','BehaviorDescription':'Shows intense and eager enjoyment and interest','Required':false,'IsArchived':false},{'BehaviorId':'354b11a3-9b71-ea88-bff2-4610102578aa','BehaviorName':'Loyal','BehaviorDescription':'Shows firm and constant support to a cause','Required':false,'IsArchived':false},{'BehaviorId':'c48d3249-d974-535e-ba32-4b247d221c8f','BehaviorName':'Team Player','BehaviorDescription':'Works well as a member of a group','Required':false,'IsArchived':false}],'MotivationCriteria':[{'MotivationId':'15b85524-0631-d40a-8e27-57167b187877','MotivationName':'Ability to Make an Impact','MotivationDescription':'Inspired to perform well by the ability to contribute to the success of a project or the organization','Required':false,'IsArchived':false},{'MotivationId':'1c209130-560e-8849-c163-b222ee8fff77','MotivationName':'Flexibility','MotivationDescription':'Inspired to perform well when granted the ability to set your own schedule and goals','Required':false,'IsArchived':false},{'MotivationId':'44af5811-b2f7-949d-296f-fd604a876a61','MotivationName':'Goal Completion','MotivationDescription':'Inspired to perform well by the completion of tasks','Required':false,'IsArchived':false},{'MotivationId':'8afe4579-3830-d558-032b-e37a52175be0','MotivationName':'Work-Life Balance','MotivationDescription':'Inspired to perform well by having ample time to pursue work and interests outside of work','Required':false,'IsArchived':false}],'EducationCriteria':[],'LicenseAndCertificationCriteria':[],'SkillCriteria':[{'Required':false,'SkillId':'42b8919e-4c80-4c7f-896c-bd9d3a411664','SkillName':'Warehouse','SkillDescription':null,'MinimumScaleValueId':'3582b4f8-568c-7ae6-f450-a3045775c952','MinimumScaleValueCode':'Novice','MinimumScaleValueDescription':'Novice','MinimumScaleValue':1},{'Required':false,'SkillId':'38558ba6-692a-4c78-8ee3-1a[Phone number shown when applying]','SkillName':'Teamwork','SkillDescription':null,'MinimumScaleValueId':'3582b4f8-568c-7ae6-f450-a3045775c952','MinimumScaleValueCode':'Novice','MinimumScaleValueDescription':'Novice','MinimumScaleValue':1},{'Required':false,'SkillId':'17e8d6ab-f663-4b16-be6b-e4271ddbe9ff','SkillName':'Shipping and Receiving','SkillDescription':null,'MinimumScaleValueId':'3582b4f8-568c-7ae6-f450-a3045775c952','MinimumScaleValueCode':'Novice','MinimumScaleValueDescription':'Novice','MinimumScaleValue':1},{'Required':false,'SkillId':'399a6b8a-44e0-4278-b5d0-f27001c0ecd6','SkillName':'Materials Handling','SkillDescription':null,'MinimumScaleValueId':'3582b4f8-568c-7ae6-f450-a3045775c952','MinimumScaleValueCode':'Novice','MinimumScaleValueDescription':'Novice','MinimumScaleValue':1}],'WorkExperienceCriteria':[],'JobBoardMemberships':[{'JobBoardId':'c14a57a2-0d7a-46e3-a3be-97e2b8a48ac7','PublishedInternal':false,'PublishedExternal':true,'ExternalPostedDate':'2021-09-22T22:07:00.874Z','InternalPostedDate':null},{'JobBoardId':'db65c907-0c03-4705-9894-b6385fdde36e','PublishedInternal':true,'PublishedExternal':true,'ExternalPostedDate':'2021-09-22T22:07:00.874Z','InternalPostedDate':'2021-09-22T22:07:00.874Z'}],'AssessmentUri':null,'AssessmentStatus':null,'OpportunityIsClosed':false,'TravelRequired':null,'TravelDescription':null,'SupervisorName':null,'Assessments':[],'ApplicationId':null,'CompensationAnnualMinimum':null,'CompensationAnnualMaximum':null,'CompensationHourlyMinimum':null,'CompensationHourlyMaximum':null,'CompensationCurrency':null}); var applicantSourceId = null; if (applicantSourceId) { US.utils.sessionStorage.setItem('applicantSourceId', applicantSourceId); } var renderer = new US.Opportunity.OpportunityRenderViewModel({ opportunity: opportunity, currentJobBoardId: 'c14a57a2-0d7a-46e3-a3be-97e2b8a48ac7', isViewingInternal: false }); US.CurrentOpportunityDetailViewModel = new US.Opportunity.OpportunityDetailViewModel({ currentJobBoardId: 'c14a57a2-0d7a-46e3-a3be-97e2b8a48ac7', opportunity: opportunity, renderer: renderer, candidatePresenceState: null, opportunityApplyRedirectUrl: '/OIL1000OIL/JobBoard/c14a57a2-0d7a-46e3-a3be-97e2b8a48ac7/Account/Register?redirectUrl=%2FOIL1000OIL%2FJobBoard%2Fc14a57a2-0d7a-46e3-a3be-97e2b8a48ac7%2FOpportunityApply%3FopportunityId%3Dc3e9e0b1-d73d-4fe5-9594-fae00323d2d4&amp;cancelUrl=%2FOIL1000OIL%2FJobBoard%2Fc14a57a2-0d7a-46e3-a3be-97e2b8a48ac7%2FOpportunityDetail%3FopportunityId%3Dc3e9e0b1-d73d-4fe5-9594-fae00323d2d4', opportunityApplyOnBehalfRedirectUrl: '/OIL1000OIL/JobBoard/c14a57a2-0d7a-46e3-a3be-97e2b8a48ac7/Recruiter/Candidates', opportunitiesUrl: '/OIL1000OIL/JobBoard/c14a57a2-0d7a-46e3-a3be-97e2b8a48ac7', tenantAlias: 'OIL1000OIL', featureConfigurationGroups: [{'Id':'fd4df64a-3708-fd62-3d37-f75a739d9200','Name':'Recruitment.OpportunityManagement.PublishingAndJobBoards','Features':[{'Name':'FeaturedOpportunities','Enabled':true,'HelpTooltipMessageKey':null,'TurnOffWarningMessageKey':null,'ConsentMessageKey':null,'ConsentTitleKey':null,'ToggleableFeature':null},{'Name':'Approvals','Enabled':true,'HelpTooltipMessageKey':null,'TurnOffWarningMessageKey':null,'ConsentMessageKey':null,'ConsentTitleKey':null,'ToggleableFeature':null},{'Name':'Parallel','Enabled':false,'HelpTooltipMessageKey':null,'TurnOffWarningMessageKey':null,'ConsentMessageKey':null,'ConsentTitleKey':null,'ToggleableFeature':null},{'Name':'Evergreen','Enabled':false,'HelpTooltipMessageKey':'RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PublishingAndJobBoards.EvergreenHelpTooltip','TurnOffWarningMessageKey':null,'ConsentMessageKey':null,'ConsentTitleKey':null,'ToggleableFeature':null},{'Name':'FTE','Enabled':true,'HelpTooltipMessageKey':'RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PublishingAndJobBoards.FTEHelpTooltip','TurnOffWarningMessageKey':'RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PublishingAndJobBoards.FTEDisableWarningMessage','ConsentMessageKey':null,'ConsentTitleKey':null,'ToggleableFeature':null},{'Name':'IncludeHiringManagersInOnboardingOwnerField','Enabled':true,'HelpTooltipMessageKey':null,'TurnOffWarningMessageKey':null,'ConsentMessageKey':null,'ConsentTitleKey':null,'ToggleableFeature':null},{'Name':'IncludeHiringManagersInRecruiterField','Enabled':true,'HelpTooltipMessageKey':null,'TurnOffWarningMessageKey':null,'ConsentMessageKey':null,'ConsentTitleKey':null,'ToggleableFeature':null}]},{'Id':'559907e0-2645-526e-132f-e88323d67d65','Name':'Recruitment.OpportunityManagement.PageFeatures','Features':[{'Name':'PersonalizedJobSearch','Enabled':true,'HelpTooltipMessageKey':'RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PageFeatures.PersonalizedJobSearchTooltip','TurnOffWarningMessageKey':null,'ConsentMessageKey':null,'ConsentTitleKey':null,'ToggleableFeature':null},{'Name':'JobSearchAgent','Enabled':true,'HelpTooltipMessageKey':'RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PageFeatures.JobSearchAgentTooltip','TurnOffWarningMessageKey':null,'ConsentMessageKey':'RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PageFeatures.JobSearchAgentConsentMessage','ConsentTitleKey':'RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PageFeatures.JobSearchAgentConsentTitle','ToggleableFeature':null}]}], linkedInRedirectUrl: '[Link available when viewing the job] currentUserRequiresReconsent: false, userIsRecOrHM: false, loggedInPersonName: '', assessmentsUrl: '/OIL1000OIL/JobBoard/c14a57a2-0d7a-46e3-a3be-97e2b8a48ac7/ApplicationAssessments' }); }); [Link available when viewing the job] [Link available when viewing the job] &lt;hr>&lt;br />&lt;br />&lt;b>&lt;i>&lt;/i>&lt;i>&lt;/i>&lt;/b>&lt;br />&lt;br />&lt;strong>&lt;/strong>&lt;strong>:&lt;/strong>&lt;strong>&lt;/strong>&lt;strong>:&lt;/strong>&lt;strong>&lt;/strong>&lt;strong>:&lt;/strong>&lt;a>&lt;/a>&lt;a>&lt;/a>&lt;br />&lt;br />&lt;br />&lt;ul>&lt;li>&lt;ul>&lt;li> :.&lt;/li>&lt;li> :.&lt;/li>&lt;/ul>.&lt;/li>&lt;li>.&lt;/li>&lt;li> : :.&lt;/li>&lt;li> :.&lt;/li> 0 -->&lt;li&gt;&lt;br />&lt;br />&lt;a> 1 &amp;&amp; showAllLocations() == false, text: $.t('Opportunity.Opportunities.MoreLocations', { count : Locations().length - 1 }), click: function(){showAllLocations(true)}, event: {keypress: function(data, e){if(e.keyCode === 13 || e.keyCode === 32){return true} else{return false}} ? function(){showAllLocations(true)} : null}'>&lt;/a>&lt;a> 1 &amp;&amp; showAllLocations() == true, text: $.t('Opportunity.Opportunities.Less'), click: function(){showAllLocations(false)}, event: {keypress: function(data, e){if(e.keyCode === 13 || e.keyCode === 32){return true} else{return false}} ? function(){showAllLocations(false)} : null}'>&lt;/a>.&lt;/li>&lt;li> :.&lt;/li>&lt;li>&lt;ul>&lt;li>&lt;a>&lt;/a>.&lt;/li>&lt;/ul>.&lt;/li>&lt;/ul>&lt;br />&lt;br />&lt;br />&lt;br />&lt;p>.&lt;/p>&lt;br />&lt;br /> . &lt;br />&lt;br /> 0'>&lt;br />&lt;br /> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p>&lt;strong>&lt;/strong>&lt;em>&lt;/em>&lt;p>.&lt;/p> 0'>&lt;br />&lt;br /> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p>&lt;p>&lt;strong>&lt;/strong>&lt;strong>:&lt;/strong>.&lt;/p> 0'>&lt;br />&lt;br /> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p>&lt;p>&lt;strong>&lt;/strong>&lt;strong>:&lt;/strong>.&lt;/p> 0'>&lt;br />&lt;br /> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p>&lt;p>.&lt;/p> 0'>&lt;br />&lt;br /> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p>&lt;p>&lt;strong>&lt;/strong>.&lt;/p> 0'>&lt;br />&lt;br /> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p> 0'>&lt;p>&lt;strong>&lt;/strong>.&lt;/p>&lt;p>.&lt;/p>&lt;hr>&lt;p>.&lt;/p>&lt;p>.&lt;/p>&lt;i>&lt;/i>&lt;br />&lt;br />&lt;p>.&lt;/p>&lt;p>.&lt;/p>&lt;p>.&lt;/p>&lt;br />&lt;br />&lt;p>.&lt;/p>&lt;ul>&lt;li>&lt;strong>&lt;/strong>.&lt;/li>&lt;/ul>&lt;i>&lt;/i>&lt;br />&lt;br />&lt;p>.&lt;/p>&lt;ul> 1, foreach: errors'>&lt;li>.&lt;/li>&lt;/ul>&lt;p>.&lt;/p> [Link available when viewing the job]&lt;b>You are using an unsupported browser.&lt;/b>&lt;br />&lt;br /> To use this site, please use a supported browser. &lt;strong>&lt;a href="[Link available when viewing the job] Download Firefox &lt;/a>&lt;/strong>&lt;strong>&lt;a href="[Link available when viewing the job] Download Chrome &lt;/a>&lt;/strong>&lt;strong>&lt;a href="[Link available when viewing the job] Download Internet Explorer &lt;/a>&lt;/strong> $(function () { // Clears out Matchinator session data $('#LogOutButton').click(function () { US.utils.localStorage.removeItem('personalizedSearchProfile'); return true; }); $(window).resize(function () { if ($(window).width() &lt;/body>&lt;/html></nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <interval_in_ms>5000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>208</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows 3 2</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting_html</name>
+        <nullif>
+&lt;html>&lt;head>&lt;title>HTML: Kaggle::techmap::6155c60bd198905e9e617eb4::monster_us&lt;/title>&lt;/head>&lt;body>Description
+&lt;p>&lt;b>About GGA - Our mission is advancing yours&lt;/b>.&lt;/p>&lt;p>GGA is a full-service philanthropic management consulting firm with 60 years of industry-defining leadership in helping our clients realize the full potential of their missions through the growth of philanthropic support. Our primary mission is to assist our clients in the substantial improvement and acceleration of their fundraising programs. We seek to align those programs with the institutionâ€™s core mission and ensure their sustainability.&lt;/p>&lt;p>GGA is an international resource for data-driven best practices in all areas of advancement, including fundraising, engagement, communications, and advancement services. We provide counsel to a global constituency of nonprofits, specifically in the areas of higher education, academic medicine/healthcare, independent schools, arts, and culture, select humanitarian institutions, and a range of charities and nonprofit organizations.&lt;/p>&lt;p>GGA embodies a high-performance and entrepreneurial culture. We are client-centric, rigorous, creative, and data-driven in our practices, and committed to responding swiftly and effectively to client needs and requirements. We offer a challenging environment and seek intelligent, energetic, and self-motivated individuals who are achievement-oriented and have high integrity.&lt;/p>&lt;p>&lt;b>Position Summary&lt;/b>.&lt;/p>&lt;p>The firm seeks an entrepreneurial and energetic advancement professional to fill the position of Vice President for the Higher Education practice area. This person will have a minimum of 10 years frontline development experience preferably in public university and liberal arts college environments. The optimal candidate will bring prior experience managing fundraising programs in campaign environments.&lt;/p>&lt;p>The Vice President will receive a high level of support from the firmâ€™s corporate headquarters in Chicago. Our Consulting Resources Team provides contract administration, client services, knowledge management, and marketing.&lt;/p>&lt;p>All GGA consultants deploy evidenced-based consulting methodologies and develop sophisticated analytics tools in close collaboration with the firm's integrated, large-scale client engagement teams. A Vice President may function as a member of various project teams and/or be assigned as lead a Project Director, leading data collection, performing rigorous analysis, and producing clear, compelling, insightful, and accurate reports for the firmâ€™s clients. The Vice President will also collaborate with colleagues and contribute to innovative product/service development to drive sustained growth and profitability, while ensuring that client deliverables meet the highest standards of quality.&lt;/p>&lt;p>Vice Presidents are self-starters with strong leadership skills. They possess business and entrepreneurial acumen with demonstrated ability to initiate and sustain client relationships. It is essential that our Vice Presidents exhibit a high level of flexibility, perseverance, and a tenacious work ethic.&lt;/p>&lt;p>&lt;b>Key Responsibilities&lt;/b>.&lt;/p>&lt;p>To perform this job successfully, an individual must be able to perform each essential duty satisfactorily. The requirements listed below are representative of the knowledge, skill and/or ability required. Reasonable accommodations may be made to enable individuals with disabilities to perform the essential functions. Other duties may be assigned.&lt;/p>&lt;p>&lt;b>&lt;i>Core Mission&lt;/i>&lt;/b>.&lt;/p>&lt;p>&lt;i>Contribute to the GGA Higher Education practice area by developing strategies, products and capabilities, marketing and sales plans, and delivery methodologies that enhance the ability to initiate, sustain and steward the philanthropic missions of our clients.&lt;/i>.&lt;/p>&lt;p>&lt;b>&lt;i>Leadership&lt;/i>&lt;/b>.&lt;/p>&lt;ul>&lt;li>Leverage a wide range of skills, experience, and leadership approaches to effectively collaborate with a group of talented, creative consulting resources professionals, who will build upon existing programs and create new programs and client offerings.&lt;/li>&lt;li>Ensure a focus on strategic and operational leadership and management, ensuring quality of deliverables against exacting deadlines.&lt;/li>&lt;li>Motivate others in the firm to identify and implement specific integrated projects intended to enhance the visibility of the group in their competitive arena and develop a dominant position in marketplace.&lt;/li>&lt;li>Optimize value and service delivery to clients, increase and secure profitable business, and motivate and develop a high-performing team.&lt;/li>&lt;/ul>&lt;p>&lt;b>&lt;i>Consulting&lt;/i>&lt;/b>.&lt;/p>&lt;ul>&lt;li>Provide consulting services to client institutions which might including fundraising program assessments, strategic planning (feasibility) studies, campaign planning, major gift program planning and execution, staff and volunteer training, strategic planning, alumni relations assessments, case for support development, etc.&lt;/li>&lt;li>Liaise with client organization staff and leaders with respect and confidence, including senior leadership across and beyond advancement functions.&lt;/li>&lt;li>Demonstrate strong commitment to working as part of a team on client engagements across a spectrum of non-profit institutions that vary by size, mission, and sector.&lt;/li>&lt;li>Compile and present clear, compelling, cohesive, accurate, and persuasive presentations and reports, independently or with the support of others. Such compilation and review usually includes: reconciliation of anecdotal findings, benchmarking data, Major Gifts Portfolio Analysis (MGPA), and other analytics (if included) to ensure alignment throughout the report/presentation.&lt;/li>&lt;/ul>&lt;p>&lt;b>&lt;i>Operations&lt;/i>&lt;/b>.&lt;/p>&lt;ul>&lt;li>Ensure that practice area products and services support GGAâ€™s overall strategy and revenue goals.&lt;/li>&lt;li>Grow and guide support of the widening range of products, services, and client deliverables.&lt;/li>&lt;li>Collaborate with GGA Consulting Team in process improvement and management methodologies to increase efficiencies, cost effectiveness, and workflow optimization.&lt;/li&gt;&lt;li>Contribute to continuous improvement in all areas including systems, policies and procedures, client service and technical support, quality control and management reporting in order to improve the overall effectiveness of the practice area.&lt;/li>&lt;/ul>&lt;p>&lt;b>&lt;i>Business and Product Development&lt;/i>&lt;/b>.&lt;/p>&lt;ul>&lt;li>Create, design, and implement strategies to drive revenue growth and profitability.&lt;/li>&lt;li>Share strategic business development and planning ideas, including new product development and ongoing innovation of existing products.&lt;/li>&lt;li>Positively and proactively support the drive for teamwork, cooperation, and results-oriented outcomes with consulting professionals across the firm.&lt;/li>&lt;li>Collaborate with the Business Development Team to develop, review/edit proposals for consulting services to prospective clients and review/edit proposals prepared by other teams.&lt;/li>&lt;li>Lead and/or participate in sales presentations as appropriate.&lt;/li>&lt;li>Pursue opportunities to support the overall marketing/business development objectives of product portfolio by creating lead-generating content, articles, webinars, speaking at professional conferences, writing white papers, and/or other similar activities.&lt;/li>&lt;/ul>&lt;p>&lt;b>Education, Experience and Attributes&lt;/b>.&lt;/p>&lt;ul>&lt;li>Bachelorâ€™s degree required; advanced degree preferred.&lt;/li>&lt;li>Minimum of ten (10) years of frontline development experience with exposure to major campaign planning and leading high performing fundraising teams.&lt;/li>&lt;li>Prior experience managing fundraising programs in campaign environments.&lt;/li>&lt;li>Prefer direct experience from public university (preferably with a state flagship institution) and/or Liberal arts college.&lt;/li>&lt;li>Demonstrate strategic thinking applied to a rigorous, analytic approach to client situations, tailoring delivery to a clientâ€™s specific culture or need.&lt;/li>&lt;li>Demonstrate understanding of fundraising best practices and the non-profit sector.&lt;/li>&lt;li>Demonstrate broad insight of philanthropic management.&lt;/li>&lt;li>Ability to take a hands-on approach to consulting with the ultimate goal of providing an individualized, long-term, sustainable solution for each client.&lt;/li>&lt;li>Client-focused with an intense intellectual curiosity about each individual organization and what makes it unique.&lt;/li>&lt;li>Demonstrate a high level of flexibility, stamina and perseverance with an unbridled passion and commitment to the field of philanthropy, as well as a strong and tenacious work ethic.&lt;/li>&lt;li>Experience with Salesforce Customer Relationship Management (CRM) and SharePoint.&lt;/li>&lt;li>Demonstrate proficiency with Microsoft Office tools, specifically with Word, PowerPoint, Outlook, and Excel.&lt;/li>&lt;li>Ability to travel up 3-4 days per week, as needed.&lt;/li>&lt;/ul>&lt;p>&lt;b>Communication and Relationship Skills&lt;/b>.&lt;/p>&lt;ul>&lt;li>Ability to establish, cultivate and nurture high value relationships with clients, vendors, and internal stakeholders at all levels.&lt;/li>&lt;li>Ability to influence leadership by providing data-driven recommendations that show clients the â€œwhyâ€ as well as the â€œhowâ€.&lt;/li>&lt;li>Demonstrate judgment and poise to present findings and recommendations in a confident, inspiring manner.&lt;/li>&lt;li>Demonstrate discretion when dealing with highly confidential issues.&lt;/li>&lt;li>Demonstrate effective emotional intelligence and intuition necessary to appropriately engage with multiple personalities in a variety of client environments.&lt;/li>&lt;li>Professional and polished executive presence and business acumen; verbal/written communication skills.&lt;/li>&lt;li>Demonstrated ability to effectively collaborate with consulting professionals and clients.&lt;/li>&lt;li>Strong sales skills and a significant drive to build a client base in the higher education practice area.&lt;/li>&lt;li>Poise and maturity to present findings and recommendations in a confident, inspiring manner.&lt;/li>&lt;li>Ability to produce top-quality work under pressure, with minimal direction, while dealing with competing priorities and exacting deadlines.&lt;/li>&lt;li>Ability to provide highly valued client-service for both internal and external clients, with focus on continual improvement.&lt;/li>&lt;li>Strong interpersonal skills and ability to motivate teams and individuals.&lt;/li>&lt;li>Ability to read, write, speak and comprehend English fluently.&lt;/li>&lt;/ul>&lt;p>&lt;b>Reasoning Ability&lt;/b>.&lt;/p>&lt;ul>&lt;li>Critical thinking that enables effective data review and ability to generate narrative observations, findings and recommendations.&lt;/li>&lt;li>Ability to think strategically (see big picture) as well as execute tactically (know the details).&lt;/li>&lt;li>Ability to use diplomacy and tact when dealing with problems.&lt;/li>&lt;li>Ability to anticipate problems and determine the best course of action for their resolution.&lt;/li>&lt;li>Ability to anticipate possible risks and develop a mitigation plan in preparation.&lt;/li>&lt;li>Demonstrated organizational and project management skills, including the ability to manage multiple projects and competing priorities in a fast-paced, deadline-driven environment.&lt;/li>&lt;li>Demonstrates sound discretion and professional judgement in decision making.&lt;/li>&lt;/ul>&lt;p>&lt;b>Physical and Travel Requirements&lt;/b>.&lt;/p>&lt;p>The physical requirements described here are representative of those that must be met by an employee to successfully perform the essential functions of this job. Reasonable accommodations may be made to enable individuals with disabilities to perform the essential functions.&lt;/p>&lt;ul>&lt;li>Ability to use office equipment such as computer, keyboard, mouse technology.&lt;/li>&lt;li>Repetitive motion activities such as heavy typing and using a mouse.&lt;/li>&lt;li>Ability to adjust focus quickly from one medium to another.&lt;/li>&lt;li>Flexible hours may be required to accommodate global clients.&lt;/li>&lt;li>Client related travel could be as much as 3 to 4 days/week.&lt;/li>&lt;li>GGA has a strong work culture, evidenced by the deep commitment and extraordinary work ethic of its staff. Our work ethic and culture are established and reinforced by key leadership roles such as this.&lt;/li>&lt;/ul>&lt;p>&lt;b>&lt;i>GGA is proud to be an Equal Opportunity Employer, committed to creating a diverse and inclusive workforce. We consider all qualified applicants without regard to race, religion, color, sex, national origin, age, sexual orientation, gender identity, disability, veteran status or other legally protected classifications.&lt;/i>&lt;/b>.&lt;/p>&lt;p>.&lt;/p>&lt;p>Powered by JazzHR.&lt;/p>&lt;/body>&lt;/html></nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <interval_in_ms>5000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>1000000</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>240</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows 4</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting_html</name>
+        <nullif>
+&lt;html>&lt;head>&lt;title>HTML: Kaggle::techmap::6141bb4988a1d36b25a9ca48::linkedin_us&lt;/title>&lt;/head>&lt;body>&lt;ol>&lt;li>&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Benefits &lt;ul style= box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; list-style-position: inside; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >&lt;li style= box-sizing: border-box; font-size: 14px; >Bonus Incentive Plan&lt;li style= box-sizing: border-box; font-size: 14px; >Health insurance including medical, dental and vision&lt;li style= box-sizing: border-box; font-size: 14px; >Competitive Hourly Rate&lt;li style= box-sizing: border-box; font-size: 14px; >No Evenings&lt;li style= box-sizing: border-box; font-size: 14px; >Paid Time Off&lt;li style= box-sizing: border-box; font-size: 14px; >401(k) matching&lt;li style= box-sizing: border-box; font-size: 14px; >Life Insurance | Disability Insurance&lt;li style= box-sizing: border-box; font-size: 14px; >Employee assistance program&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Assistant Store Manager Essential Job Functions and Responsibilities &lt;ul style= box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; list-style-position: inside; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >&lt;li style= box-sizing: border-box; font-size: 14px; >Rental of storage units&lt;li style= box-sizing: border-box; font-size: 14px; >Preparing rental agreements&lt;li style= box-sizing: border-box; font-size: 14px; >Handling financial transactions and banking activities&lt;li style= box-sizing: border-box; font-size: 14px; >Maintaining a working knowledge of all product and services&lt;li style= box-sizing: border-box; font-size: 14px; >Maintaining general curb appeal&lt;li style= box-sizing: border-box; font-size: 14px; >Other duties as assigned by the Company&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Assistant Store Manager Qualifications and Skills &lt;ul style= box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; list-style-position: inside; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >&lt;li style= box-sizing: border-box; font-size: 14px; >Minimum 1 year of customer service experience&lt;li style= box-sizing: border-box; font-size: 14px; >Excellent sales and customer service skills&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to work weekends&lt;li style= box-sizing: border-box; font-size: 14px; >Valid driver’s license and proof of automobile insurance&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to lift/carry 50 lbs.&lt;li>&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Assistant Store Manager Job Summary &lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >We are seeking highly motivated, energetic, friendly and sales-oriented individual for an Assistant Store Manager position.&lt;li>The position is full-time and responsible for the management and daily operation of a self-storage facility.&lt;li>Assistant Store Managers contribute to a successful property by running an organized office, engaging positively with customers, earnestly following up on leads, maintaining existing business relationships with clients and vendors, and communicating clearly with the entire management team.&lt;li>&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >The right candidate pays attention to details, stays organized, and takes delight in finding great solutions for problems.&lt;li>This position is involved in all phases of the operation, including: leasing storage &amp; parking, managing a team, assisting with maintenance, supervising onsite projects, and maintaining good relationships with tenants.&lt;li>&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Assistant Store Manager Physical Requirements &lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >The physical demands described here are representative of those that must be met by an employee to successfully perform the essential functions of this job.&lt;li>Reasonable accommodations will be made to enable individuals with disabilities to perform the essential functions of this job.&lt;li>&lt;ul style= box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; list-style-position: inside; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to work both indoors and outdoors in varying temperature and weather&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to work closely with a diverse customer population&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to read, write, and speak fluent English&lt;li style= box-sizing: border-box; font-size: 14px; >Walking extended distances - up to 200 yards&lt;li style= box-sizing: border-box; font-size: 14px; >Navigating multiple surfaces: indoors and outdoors; carpet, tile, linoleum, cement, pavement, dirt - surfaces may uneven, hot, icy, snowy&lt;li style= box-sizing: border-box; font-size: 14px; >Standing for extended periods of time&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to lift and carry 40 pounds&lt;li style= box-sizing: border-box; font-size: 14px; >Fine motor functions, use of keyboard for extended periods of time&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to operate a motor vehicle&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >About SmartStop Self Storage &lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >SmartStop® Self Storage is a diversified real estate company in the self-storage industry.&lt;li>SmartStop is the tenth-largest self-storage company in the U.S., with approximately $1.7 billion of real estate assets under management, including an owned and managed portfolio of 150 properties in 19 states and Toronto, Canada comprising of approximately 101,000 units and 11.5 million rentable square feet.&lt;li>&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Diversity &lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >SmartStop® Self Storage , is committed to diversity, equity and inclusion.&lt;li>We will not tolerate discrimination in employment, employment decisions, or in business dealings on the basis of race, color, creed, genetic information, age, sex, sexual orientation, religion, disability, ethnicity, national origin, ancestry, citizenship status, veteran status, marital status, pregnancy, political affiliation, status as a parent or any other legally protected status.&lt;li>We believe in fostering an environment of inclusion, and seek contributors from all backgrounds to join our dynamic team.&lt;/ol>&lt;/body>&lt;/html></nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <interval_in_ms>5000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>16</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows 5</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting_html</name>
+        <nullif>
+&lt;html>&lt;head>&lt;title>HTML: Kaggle::techmap::6140a0593649a841ed3ef4cd::linkedin_us&lt;/title>&lt;/head>&lt;body>&lt;ol>&lt;li>&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Benefits &lt;ul style= box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; list-style-position: inside; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >&lt;li style= box-sizing: border-box; font-size: 14px; >Bonus Incentive Plan&lt;li style= box-sizing: border-box; font-size: 14px; >Health insurance including medical, dental and vision&lt;li style= box-sizing: border-box; font-size: 14px; >Competitive Hourly Rate&lt;li style= box-sizing: border-box; font-size: 14px; >No Evenings&lt;li style= box-sizing: border-box; font-size: 14px; >Paid Time Off&lt;li style= box-sizing: border-box; font-size: 14px; >401(k) matching&lt;li style= box-sizing: border-box; font-size: 14px; >Life Insurance | Disability Insurance&lt;li style= box-sizing: border-box; font-size: 14px; >Employee assistance program&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Assistant Store Manager Essential Job Functions and Responsibilities &lt;ul style= box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; list-style-position: inside; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >&lt;li style= box-sizing: border-box; font-size: 14px; >Rental of storage units&lt;li style= box-sizing: border-box; font-size: 14px; >Preparing rental agreements&lt;li style= box-sizing: border-box; font-size: 14px; >Handling financial transactions and banking activities&lt;li style= box-sizing: border-box; font-size: 14px; >Maintaining a working knowledge of all product and services&lt;li style= box-sizing: border-box; font-size: 14px; >Maintaining general curb appeal&lt;li style= box-sizing: border-box; font-size: 14px; >Other duties as assigned by the Company&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Assistant Store Manager Qualifications and Skills &lt;ul style= box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; list-style-position: inside; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >&lt;li style= box-sizing: border-box; font-size: 14px; >Minimum 1 year of customer service experience&lt;li style= box-sizing: border-box; font-size: 14px; >Excellent sales and customer service skills&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to work weekends&lt;li style= box-sizing: border-box; font-size: 14px; >Valid driver’s license and proof of automobile insurance&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to lift/carry 50 lbs.&lt;li>&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Assistant Store Manager Job Summary &lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >We are seeking highly motivated, energetic, friendly and sales-oriented individual for an Assistant Store Manager position.&lt;li>The position is full-time and responsible for the management and daily operation of a self-storage facility.&lt;li>Assistant Store Managers contribute to a successful property by running an organized office, engaging positively with customers, earnestly following up on leads, maintaining existing business relationships with clients and vendors, and communicating clearly with the entire management team.&lt;li>&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >The right candidate pays attention to details, stays organized, and takes delight in finding great solutions for problems.&lt;li>This position is involved in all phases of the operation, including: leasing storage &amp; parking, managing a team, assisting with maintenance, supervising onsite projects, and maintaining good relationships with tenants.&lt;li>&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Assistant Store Manager Physical Requirements &lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >The physical demands described here are representative of those that must be met by an employee to successfully perform the essential functions of this job.&lt;li>Reasonable accommodations will be made to enable individuals with disabilities to perform the essential functions of this job.&lt;li>&lt;ul style= box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; list-style-position: inside; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to work both indoors and outdoors in varying temperature and weather&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to work closely with a diverse customer population&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to read, write, and speak fluent English&lt;li style= box-sizing: border-box; font-size: 14px; >Walking extended distances - up to 200 yards&lt;li style= box-sizing: border-box; font-size: 14px; >Navigating multiple surfaces: indoors and outdoors; carpet, tile, linoleum, cement, pavement, dirt - surfaces may uneven, hot, icy, snowy&lt;li style= box-sizing: border-box; font-size: 14px; >Standing for extended periods of time&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to lift and carry 40 pounds&lt;li style= box-sizing: border-box; font-size: 14px; >Fine motor functions, use of keyboard for extended periods of time&lt;li style= box-sizing: border-box; font-size: 14px; >Ability to operate a motor vehicle&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >About SmartStop Self Storage &lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >SmartStop® Self Storage is a diversified real estate company in the self-storage industry.&lt;li>SmartStop is the tenth-largest self-storage company in the U.S., with approximately $1.7 billion of real estate assets under management, including an owned and managed portfolio of 150 properties in 19 states and Toronto, Canada comprising of approximately 101,000 units and 11.5 million rentable square feet.&lt;li>&lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >Diversity &lt;p style= margin-top: 0px; margin-bottom: 15px; line-height: 1.42857; box-sizing: border-box; color: rgb(0, 0, 0); font-family: ProximaNova, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; >SmartStop® Self Storage , is committed to diversity, equity and inclusion.&lt;li>We will not tolerate discrimination in employment, employment decisions, or in business dealings on the basis of race, color, creed, genetic information, age, sex, sexual orientation, religion, disability, ethnicity, national origin, ancestry, citizenship status, veteran status, marital status, pregnancy, political affiliation, status as a parent or any other legally protected status.&lt;li>We believe in fostering an environment of inclusion, and seek contributors from all backgrounds to join our dynamic team.&lt;/ol>&lt;/body>&lt;/html></nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <interval_in_ms>5000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>32</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows 6</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting_html</name>
+        <nullif>
+&lt;html>&lt;head>&lt;title>HTML: Kaggle::techmap::61377ee82c8a4256ad5d5e2b::itjobslist_us&lt;/title>&lt;/head>&lt;body>&lt;ol>&lt;li>\xc2\xa0\xc2\xa0 \xc2\xa0\n\nThe\xc2\xa0Treasury Services Sales Associate is an integral Treasury Solutions coverage team member who contributes to new sales origination and achieving portfolio growth objectives.&lt;li>The position is primarily geared to providing support to Treasury Management Officers (TMOs) and accountability for briefing memos, account plans and Pitch Books, while ensuring coordination among product partners, TMOs and other internal partners to develop client solutions.&lt;li>\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\nThis role allows an individual to develop skills over time for a successful career within the firm and to pursue more senior roles within the Treasury Solutions such as a TMO position.&lt;li>\xc2\xa0\n\nPrimary responsibilities include:\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n\n * Work with the TMO on client proposals including Treasury solutions, cost/benefit analysis, pricing and profitability models, etc.\xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n * Assist with client call preparation by creating relationship review materials, pitch books, account plans, and conducting customer research\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n * Understand clients' Treasury cash management structure and objectives\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n * Coordinate with product partners to develop comprehensive Treasury solutions\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n * Develop and understand\xc2\xa0\xc2\xa0competitors\xe2\x80\x99 products and positioning within the client &amp; market\n * Work with TMOs throughout the sales cycle to manage pipeline \xc2\xa0and ensure services and pricing are set up timely and accurately\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n * Coordinate with internal partners to ensure successful implementation, product ramp-up and accurate pricing/billing\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n\nQualifications:\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n\n * Bachelor's Degree\xc2\xa0required\n * 3 to 6 years of banking background\n * Strong interest in working with experienced Treasury partners in order to recognize a client's cash flow needs and apply appropriate banking solutions\n * Demonstrates the ability to understand Treasury Services products, pricing philosophy, and billing process and procedures\n * Strong drive/ambition to develop into an individual contributor salesperson \xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n * Superior\xc2\xa0verbal and written communication skills with the ability to mobilize internal networks and resources \xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0\n * Time management, organizational and planning skills with proven ability to multitask and meet deadlines in a fast-paced environment\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\xc2\xa0\xc2\xa0 \xc2\xa0\n * Highly proficient in Microsoft Office (PowerPoint, Excel and Word) and superior analytical and quantitative skills\n\n\nABOUT US\n\nJPMorgan Chase &amp; Co., one of the oldest financial institutions, offers innovative financial solutions to millions of consumers, small businesses and many of the world\xe2\x80\x99s most prominent corporate, institutional and government clients under the J.P. Morgan and Chase brands.&lt;/ol>&lt;/body>&lt;/html></nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <interval_in_ms>5000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>864</xloc>
+      <yloc>112</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows 7</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting_html</name>
+        <nullif>
+&lt;html>&lt;head>&lt;title>HTML: Kaggle::techmap::613e9ce224976a7e537fcb01::aarp_us&lt;/title>&lt;/head>&lt;body>POSITION PURPOSE / IMPORTANT APPLICATION INFORMATIONThe Parks, Recreation and Libraries (PR&amp;amp;L) Director is a City leader who serves as a key member of the Executive Leadership Team translating City Council s strategic plan into action through development of policies, financial management, leadership, care of people, innovation and an entrepreneurial spirit. The position is expected to direct department activities in fulfillment of the City Mission Statement, which is: Our job is to deliver exceptional value and quality of life through Service, Pride, Integrity, Responsibility, Innovation, and Teamwork (SPIRIT). The PR&amp;amp;L Director is responsible for establishing major departmental policies, planning long-term programs, and making executive-level decisions that are congruent with the direction of the organization as defined by City Council. Primary duties involve overseeing all administrative and professional work in planning, organizing and directing the City of Westminster's Department of Parks, Recreation and Libraries. Work involves responsibility for managing and administering twenty-first century year around parks, open space, golf, recreation and library facilities and programs, including overall planning, coordinating and supervising of these divisions, which provide enhancement for the quality of life in Westminster. Work includes ensuring that the parks, open space, golf recreation, and library services' objectives are accomplished through the direct and indirect supervision of all personnel assigned to specific aspects of this interdisciplinary department.Work is performed with wide latitude for independent judgment and action, and is reviewed by the City Manager and Deputy City Manager through conferences, reports, and success of the department's facilities and activities.Parks and open spaces are a significant brand of the City and the director is expected to deliver facilities which set a national standard for parks and open space brand identity in a municipality.The full salary range for 2021 for this position is stated above. Starting wages are negotiable and dependent on the qualifications and experience of each individual candidate. The City of Westminster offers a bonus of up to $1,500 per year depending on the employee s fluency in Spanish, Hmong, and/or Laotian.Applications will be accepted electronically by The Novak Consulting Group at thenovakconsultinggroup.comCandidates complete a brief online form and are prompted to provide a cover letter and resume. Interested candidates are encouraged to apply early, with applications accepted through September 13, 2021.Download recruitment brochureORGANIZATIONAL COMPETENCIES AND CULTURAL VALUES/GENERAL COMPETENCIESThe mission of every employee at the City of Westminster is to deliver exceptional value and quality of life through SPIRIT. Each employee is measured by the ability to adhere to the City's core values of Service, Pride, Integrity, Responsibility, Innovation, and Teamwork.This position promotes the mission and values of the City of Westminster by supporting the goals of the Parks, Recreation and Libraries Department, which enhances the quality of life for all Westminster citizens by providing diverse leisure, recreational and informational services and resources; and acquiring, developing and maintaining first-class parks, facilities, open space and trails.Every employee is accountable to:Demonstrate a high level of customer service; encourage others to focus on the customer; foster an environment where customer service is a priorityCommunicate with customers to ensure that, where possible, they are satisfied, and that their needs are being addressed; solicit and evaluate customer feedbackAct as an ambassador by understanding and fostering the organization's mission and visionExhibit pride in self, the department, the city, and the community; conduct self in a professional mannerDemonstrate integrity and build trust through credibility, reliability, commitment, loyalty, and ethical behaviorAddress difficult or contentious issues in a constructive mannerSupport and promote change; demonstrate flexibility and take calculated risks when appropriateParticipate in personal growth opportunities, and attend trainings designed to enhance capacity to bring new skills and ideas to the job and the organizationWork to continuously improve the efficiency and effectiveness of the service or product being deliveredDemonstrate support for team efforts by accepting new roles and responsibilities, and helping others achieve objectivesValue diversity; demonstrate an awareness of differences; demonstrate sensitivity, and adapt behaviors and communication to accommodate these differencesGENERAL COMPETENCIESExecutive-level managers serve at the will of the City Manager, and are accountable to:Embrace public service to the community and demonstrate a global perspective in decisionsCollaborate with City Manager s Office, Executive Leadership Team, and City Management Team members to develop innovative solutions that support and promote a high-performing organizationEffectively participate on the Executive Leadership Team by demonstrating strategic and systemic problem-solving skills; collaboration and cooperation are expectations required of City leadershipSupport the City Council s goals and Strategic Plan while working with the City Manager to explain City leadership s viewpointSupport and promote diversity, equity, and inclusivity (D, E and I) goals Represent the City and PR&amp;amp;L Department in a professional manner and positive light Develop performance measures based on critical operational outcomes in an effort to meet City strategic objectivesDevelop policies, procedures, and best practices that demonstrate exceptional customer service and prudent stewardship of City revenuesRespond to contentious issues in a timely manner that reflects and supports City management philosophy and decisionsBe a visible leader in Westminster s neighborhood, business, and all service communitiesSupport and encourage ongoing employee development through City training, continuing education, and job-specific trainingModel and encourage employees to demonstrate ownership in support of the City by fostering a collegial and supportive work environmentProvide a picture of the City s vision to departmental employeesChampion City initiatives within the departmentHelp employees understand their part in meeting City-wide strategic goalsEncourage department employees to participate in partnerships and collaborative efforts throughout the organizationCoach and mentor key management employees within the departmentHave a comprehensive understanding and command of all elements of their department budgetDevelop a department management team that supports the goals and objective of ongoing learning and employee developmentCitywide The employee in this position is accountable to:Establish effective interpersonal relationships through honest, open communication and follow-through on commitmentsRecognize personal strengths and weaknesses, and target areas for personal self-developmentDemonstrate initiative in performing job tasksExhibit problem-solving skills leading to sound judgment and quality decisionsAchieve goals, handle assigned workload and new assignments effectively; demonstrate an ability to work independentlyCommunicate effectively with individuals and groups using clear and concise verbal and written communicationsModel communication, collaboration and team approaches for the department and organizationDemonstrate accountability for work and take ownership in job performanceDemonstrate concern for the accuracy and quality of work; take steps to correct mistakes and improve the overall productBe effective in providing constructive feedback and even a challenging different viewpointDevelop a clear plan to set priorities which support City mission, vision and strategic planJob Specific The employee in this position must be able to:Demonstrate creativity and passion for innovation; develop and facilitate internal innovative solutions to achieve strategic organizational goalsPartner with the City Manager s Office, Executive Leadership Team, and Chief Sustainability Officer in achieving sustainability goals through new innovative solutionsDevelop and foster relationships with leaders from other state, city, county, school, special district, non-profits and businesses to identify opportunities to support innovation goals through collaborative effortsDemonstrate extensive knowledge of:the principles, practices, and techniques of, and ability to apply this knowledge to administrative problemsthe rules and regulations of the department and the City, and of parks, open space, golf, recreation and library laws and ordinancesthe principles of public administration with reference to personnel administration, budget preparation and administration, and overall management conceptscurrent literature, research, and developments in the fields of PR&amp;amp;L administrationProvide effective oversight and leadership, and to plan, assign, and efficiently direct the work of a number of subordinates, divisions and programsExpress oneself clearly and concisely orally and in writingEstablish and maintain effective working relationships with City Council, civic groups, the public, and all City employeesCommunicate in an effective and professional manner with the City CouncilFoster cooperative working relationships among staff members and emphasize positive customer relations approaches with citizens, vendors/suppliers, and those conducting business with WestminsterCoach and hold employees accountable to conduct their work and activities in a manner that embraces the City s SPIRIT valuesEmpower employees by:conducting day-to-day business in an inclusive and participatory manner;ensuring respectful, fair, consistent, and equal treatment of all employees, citizens, and business associates; andencouraging open, two-way communication among all employeesDemonstrate extensive knowledge of the principles and objectives of public parks, open space, golf, recreation and library administration and activities which make up a community programDemonstrate knowledge of or ability to learn, library organization, management, services, objectives, methods and proceduresDemonstrate extensive knowledge of or ability to learn, golf course operations, including turf management, golf shop revenue and merchandising, restaurant operations services, objectives, methods and proceduresDemonstrate extensive knowledge or ability to learn about the facilities and equipment needed in a broad parks, open space, golf, recreation, and library program and of the most effective arrangement of these areasDemonstrate extensive knowledge of the techniques and equipment involved in the major components of construction, maintenance and operation of public areas and facilitiesDemonstrate thorough knowledge of parks, open space, golf, recreation and library management activities and human behavior as applied to varied group activitiesAnticipate the Community's needs for parks, open space, golf, recreation and library services based upon these needs to plan and implement their deliveryBe persuasive to City Council when proposing legislation and policyThe employee in this position must have proven abilities to:Promote that public spaces are one of the most important planned and designed element of sustainable development projectsAlways have a save the planet lens to all work; being a champion of environmental values and understand their application to all parks, recreation, open space and library workStrategize and execute methods to ensure that diversity, equity and inclusivity goals are valued in all workWork closely with financial and economic planning leaders to identify value (objectively and subjectively) and can attach metrics when measurableMaintain high quality standards while ideating strategies to reduce costs through innovationRoutinely adapts to the unforeseen by adjusting facility and activity delivery systems to meet new normsBe entrepreneurial and put collaborative interest-based deals together to achieve large goalsLeadership/Supervisory The employee in this position is accountable to:Foster a participatory organizational climate that is open, positive, reinforcing, and supportiveEncourage employees to be accountable for their work and take ownership in what they doDemonstrate leadership and courage by making or supporting decisions that reflect the organizational mission and goals even when the decision may be unpopular to someDemonstrate collaboration and conflict resolution skills with other departments and employeesHelp employees see the value of developing their skills, and assist them in eliminating barriers to their development; encourage employees to step outside of their comfort zone to develop their skillsProvide meaningful, timely employee feedback and appraisals, and effectively address employee performance problemsEffectively supervise, mentor, and motivate in a team environmentDevelop relationships with colleagues which encourage constructive feedback and new ways to look at projects, policies, service delivery, etc.JOB SPECIFIC FUNCTIONSEssential Job Functions, Duties, Responsibilities, and Tasks1. Executive-level management duties:Partners with City Manager s Office, and other departments and divisions, to advocate and promote fulfillment of City s mission statement and City visionDirects departmental personnel and operations in such a manner as to meet City s strategic plan and goals established by City CouncilEmbodies City s SPIRIT values in all interactions and discussions with citizens, employees, vendors, and intra-departmentallyRepresents the City and PR&amp;amp;L Department in a professional manner and positive lightDevelops policies, procedures, and best practices that demonstrate exceptional customer service and prudent stewardship of City revenueDeals with contentious issues in a timely manner that reflects and supports City management philosophy and decisionsCollaborates with City Manager s Office, Executive Leadership Team, and Management Team members to develop innovative solutions that support and promote a high performing organizationModels and encourages employees to demonstrate ownership and support of the City by fostering a collegial and supportive work environmentSupports and encourages on-going employee development through City-wide training, on-going education, and job-specific trainingDevelops department management team that supports the goals and objectives of on-going learning and employee developmentAttends City Council meetings as appropriate and takes necessary action regarding Council agenda items2. Staff management and development duties:Demonstrates a long-term perspective through coaching and development of employees to meet succession management goalsSupervises personnel and takes necessary actions to ensure proper personnel administration throughout the departmentDirects allocation of manpower and equipment for maximum effectivenessProvides for a comprehensive program of department trainingKeeps informed as to personnel, property, and operations by observation, reports and management input and acts on such information in order to improve operationsCommunicates effectively with department staff, other city employees, the general public, members of civic organizations or other agencies3. Administrative and Operational management duties:Provides day-to-day managerial decisions on problems and issues that arise, ensures cost effective operations, and promotes inter-departmental cooperation on common projects and functions within the divisions of PR&amp;amp;LMaintains and promotes department public relations through regular interactions with public groups, schools, clubs and organizationsOversees the department's Inter-Governmental Agreements (IGA), programs and services with other agencies, municipalities and counties operating within the areaDevelops innovative, state of the art methods of providing services to the citizenry including investigation, evaluation and development of outside City funding sourcesSupervises the preparation of departmental budget, the procurement of materials, supplies, and equipment, and the maintenance of the necessary recordsGathers information about the latest innovations in professional parks, open space, golf, recreation and libraries management and administration in order to best meet the needs of the communityDirects related administrative activities including PR&amp;amp;L budget preparation and execution, purchasing, personnel selection, reports, employee training, and correspondence in administration of projectsDirects all divisions planning activities (both short range and long range); prepares and implements comprehensive plans and planning policiesReviews plans, technical reports, budget estimates, and proposed ordinances and regulations submitted by division heads4. Maintains regular and punctual attendanceOther Duties and ResponsibilitiesAttends some of the regular evening City Council meetings and study sessions; may attend evening or weekend community meetings. Incumbent is accountable for all duties of this job, and other projects and responsibilities may be added at the City s discretion.POSITION REQUIREMENTS/WORKING CONDITIONS/PRE-EMPLOYMENT REQUIREMENTSEducation, Experience, Skills, Formal Training, Licenses, and CertificationsRequired:Bachelor s Degree from an accredited university or college with major coursework in Parks and/or Recreation Management, Public Administration, Library Science, Business, Landscape Architecture or a related fieldMinimum ten (10) years senior management and administrative experience overseeing any combination of parks, open space, golf recreation and/or library operations in a public sector, non-profit, higher education or military setting or environmentPreferred:Master s Degree in Public Administration, Parks and/or Recreation Management, Library Science or a related fieldAny equivalent combination of education, training, and experience, which would provide the required knowledge and skills, may be considered.Physical RequirementsWork is sedentary in nature and requires sufficient physical stamina and strength for:Constant sitting to perform daily tasks; occasional walking through a multilevel facility to retrieve information; frequent standing, sometimes for extended periodsFrequent squatting, reaching above shoulder, and twisting to file documents and lift supplies and materials; occasional bending, kneeling, climbing, balancing, and reaching below shoulder to store documents, materials, and suppliesConstant light grasp, fine manipulation, and handling to perform daily duties; occasional firm grasp to safely use equipmentFrequent lifting, carrying, pushing, and pulling of up to ten (10) pounds to move materials and supplies; occasional lifting, pushing, and pulling of up to twenty-five (25) pounds with dollies and cartsThis is a safety-sensitive position and subject to City safety-sensitive requirementsWORKING CONDITIONSWork is constantly performed indoors. This is primarily sedentary office work. Must demonstrate the ability to meet the physical demands of the job including the ability to retrieve information from various locations in the office when needed. Exposure to periods of high activity and high stress under demanding conditions. The position requires a great deal of communication with City employees, the public, and outside agencies.Required Materials and EquipmentGeneral office equipment including personal computers, telephone, copy machine, and calculator.PRE-EMPLOYMENT REQUIREMENTSBackground checks will include employment references and criminal history, credit check, driver s license record, and education verificationPre-employment drug screenMust be legally entitled to work in the United StatesJob DetailsSalary$156,443.00 - $195,554.00 AnnuallyLocationCity Hall, 4800 W 92nd Ave., Westminster, COWestminster, COJob TypeFull-time Benefited, 40 hours/week (1.0 FTE)DepartmentParks, Rec and LibrariesJob Number21-00175Closing date and time9/13/2021 at 8:30 AM Mountain Time (US &amp;amp; Canada)Agency infoAgencyCity of Westminster, COPhone303-###-####WebsiteAddress4800 West 92nd AvenueWestminster, Colorado, 80031&lt;br />&lt;/body>&lt;/html></nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <interval_in_ms>5000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>448</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows 7 2</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting_html</name>
+        <nullif>
+&lt;html>&lt;head>&lt;title>HTML: Kaggle::techmap::6144588a65b00469c02eea9b::itjobslist_us&lt;/title>&lt;/head>&lt;body>b'3RD SHIFT/xc2/xa0 NEEDED!/n/n/nOverview of Position:/n/nThe Production Manager provides support for the General Manager./xc2/xa0They work to exceed customer expectations, foster an ethic of teamwork, develop staff members/xe2/x80/x99 abilities and competencies, and achieve the financial objectives established for their assigned location./xc2/xa0Their long-term objective is to develop their own skills towards becoming a General Manager./n/n/xc2/xa0/n/nPrincipal Duties and Responsibilities:/n/nProduction/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Understand and implement procedures to maximize efficiencies and control variances in daily production of product and overall commissary performance/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Understand and implement commissary quality control procedures, including standards/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Coordinate production schedules to meet customer demands and minimize labor hours/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Inspect, troubleshoot, and assess any production or equipment problems/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Ensure all products meet Krispy Kreme quality standards/n/nSales/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Work with the General Manager to achieve business plan objectives and profitability as set forth in the commissary operating plan and in the established financial goals/n/nSafety and Sanitation/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Demonstrate safety consciousness and promote commissary safety, e.g. shoes, floor cones, etc./n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Maintain a high level of commissary sanitation and cleanliness, e.g. cleaning schedules, training, etc./n/nEquipment/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Oversee proper upkeep of commissary facility and equipment/n/nPersonnel/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Assist the General Manager in recruiting, hiring, training, and dispute resolution/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Supervise all shift personnel/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Build a team of customer-focused employees and foster teamwork/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Demonstrate leadership in employee development, including that of Supervisor/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Assist in communicating to commissary employees and enforcing all commissary policies, standards, and practices/n/n/xc2/xa0/n/nAccounting/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Assist General Manager in completing and managing income and expense budgets, profit and loss, etc./n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Assist General Manager in completing required corporate reporting documentation, both financial and operational/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Manage company resources responsibly including, inventory control/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Manage financial duties/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Protect company assets/n/n/xc2/xa0/n/nLeadership/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Communicate and model company standards and policies/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Implement efficiently and effectively directives from commissary, corporate, and divisional management/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Develop and maintain commissary organization to promote efficient operations/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Interface with corporate office personnel/n/n/xc2/xa0/n/nEssential skills and Experience:/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0High school diploma or GED required/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Experience with sales, management, production, and customer service/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Strong communication, organizational, and leadership skills/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Pleasant disposition, sociable, accommodating nature, and enthusiasm/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Self-motivation, creativity, and adaptability/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Basic computer, telephone, and fax knowledge/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Must be available for full time (40+ hours/wk)/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Completion of Krispy Kreme sponsored training programs/n/n/n/n/nNonessential skills and Experience:/n/n/xc2/xb7/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0/xc2/xa0Post Secondary Education strongly preferred'&lt;/body>&lt;/html></nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <interval_in_ms>5000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>96</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows 7 3</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting_html</name>
+        <nullif>* Model the enterprise-wide business and technology capabilities using enterprise architecture techniques and tools* Collaborate with other stakeholders in the IT and business divisions to evaluate goals, identify process problems, and propose innovative solutions* Enable strategic and transitional planning of applications, technology, information and business functions across the enterprise* Consult with internal and external resources during the selection and implementation of business systems* Leads the developement of Passenger Service System as well as some Customer Technology Platform solutions with both internal and external resources* Works independently with multiple projects to provide definition, direction and align solution architectures to enterprise strategy &amp; multi-year plan* Develop detailed business and functional requirements* Works to ensure that projects are grouped to gain synergies where possible and to ensure that all projects maintain system integrity* Coordinates communication of PSS changes to IT and business stakeholders to ensure seamless deliveries* Decompose business strategies and initiatives into actionable multi-year roadmaps* Ensures PSS development is scalable and will support future needs* Facilitate open communication and fact-based decision making* Research, identify, and recommend industry best practices for solving business and technology problems* Clarify, define, coordinate and direct the work of others* Mentor other team membersRequired* Bachelors degree or equivalent work experience* Minimum of 5 years leading PSS developement* Experience in leading or coordinating work across multiple teams* Knowledge of airline PSS systems, functionality, and industry standards* Demonstrates a commitment to increasing knowledge and skills in current technical/functional area* Keeps up to date on technical developments* Stays informed as to industry practices* Knows how to apply relevant technical processes to appropriate business needs* Expert knowledge of SHARES and the PSS environment* Expertise in design and implementation of complex IT solutions* Awareness of industry best practices* Ability to make insightful, successful business decisions and tradeoffs assessing the internal and external business landscape, strategies, opportunities, strengths and weaknesses* Knowledge of the industry and awareness of the key trends shaping the future of the corporation* Ability to define new, original ideas and successfully implement them across an organization* Ability to think "outside-in", assess conventional work products and processes, define new concepts, and manage change across the organization in implementing them* Ability to maintain perspective and establish context* Able to recognize patterns and predict outcomes - and leverage them to redirect personal and/or team work effort in the optimal direction* Ability to visualize and plan for outcomes in the future, and sustain work in achieving the outcomes* Ability to support short-term trade-offs in order to achieve longer term gain* Ability to communicate verbally and in writing with all levels of employees and management* Capable of successful formal and informal communication* Ability to speak and write clearly and understandably at the right level* Ability to understand, communicate and engage effectively with multiple stakeholders and interactions* Strong problem-solving, listening, written and verbal communication, and decision-making skills* Must be legally authorized to work in the United States for any employer without sponsorship* Successful completion of interview required to meet job qualification* Reliable, punctual attendance is an essential function of the positionPreferred* The ability to successfully manage multiple competing work efforts across multiple teams* Assesses impacts, importance and urgency and setting direction and expectations in order to meet or exceed expectations for timeliness and quality of work* Ability to resolve disputes and produce an agreement that is perceived as a collective advantage to all parties involved* Ability to tailor the process, behavior and substance of the negotiation in order to reach agreement* Widely trusted* Seen as a direct, truthful individual* Presents the unvarnished truth in an appropriate and helpful manner* Keeps confidences, admits mistakes, and doesn't misrepresent him/herself for personal gain* Ability to manage external vendor relationships professionally, to United's best interests* Manages and negotiates contracts, statements of work and financials* Ability to hold vendors accountable to high standards of performance* Ability to engage and enroll others in an initiative - both individually and in a group setting* Articulates the new possibility for others* Leads and engages others in direct, positive, meaningful conversations.</nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <interval_in_ms>5000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>400</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>clean_html</name>
+        <rename>html</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>960</xloc>
+      <yloc>416</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>add periods</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>html</name>
+        <precision>-1</precision>
+        <rename>html</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>
+
+opening_tags = ["br","ol","ul","li","div","p"]
+closing_tags = ["li", "div", "p"]
+
+
+//for (String tag : opening_tags) {
+    // Regular Expression Explanation:
+    // (?i) - Case-insensitive matching
+    // (&lt;/" + tag + ">) - Matches the closing tag (e.g., &lt;/li>, &lt;/div>, &lt;/p>)
+    // (.*?) - Matches any characters (non-greedily) before the closing tag
+    // (?&lt;!\\.) - Negative lookbehind to check that the last character is not already a period
+   // html = html.replaceAll("(?i)([^.])&lt;" + tag + ">", "\$1.&lt;" + tag + ">");
+//}
+
+for (String tag : closing_tags) {
+    // Regular Expression Explanation:
+    // (?i) - Case-insensitive matching
+    // (&lt;/" + tag + ">) - Matches the closing tag (e.g., &lt;/li>, &lt;/div>, &lt;/p>)
+    // (.*?) - Matches any characters (non-greedily) before the closing tag
+    // (?&lt;!\\.) - Negative lookbehind to check that the last character is not already a period
+    html = html.replaceAll("(?i)([^.])&lt;/" + tag + ">", "\$1.&lt;/" + tag + ">");
+
+    // "(?i)(?&lt;!\\.)((.*?)&lt;/" + tag + ">)", "\$2.&lt;/" + tag + ">"
+
+}
+
+ html = html.replaceAll("(?i)([^.])&lt;br>", "\$1.&lt;br/>");
+ html = html.replaceAll("(?i)([^.])&lt;br/>", "\$1.&lt;br/>");</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1328</xloc>
+      <yloc>416</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>clean_html</name>
+    <type>Html2Text</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <htmlField>html</htmlField>
+    <outputField>clean_html</outputField>
+    <safelistType>basic</safelistType>
+    <cleanOnly>Y</cleanOnly>
+    <parallelism>N</parallelism>
+    <attributes/>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>416</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>feasible</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>112</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>html to text</name>
+    <type>Html2Text</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <htmlField>html</htmlField>
+    <outputField>text</outputField>
+    <safelistType>basic</safelistType>
+    <cleanOnly>N</cleanOnly>
+    <parallelism>N</parallelism>
+    <attributes/>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>416</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>outstanding</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>304</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>placeholders</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>job_posting</name>
+        <precision>-1</precision>
+        <set_empty_string>Y</set_empty_string>
+        <type>String</type>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>304</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>remove excess whitespace</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>html</name>
+        <precision>-1</precision>
+        <rename>html</rename>
+        <replace>Y</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>Groovy</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import static org.apache.commons.lang3.StringUtils.replaceEachRepeatedly
+
+html = html.replaceAll("\\s{2,}", " ")
+html = html.replaceAll(">\\s+&lt;", ">&lt;");
+
+String[] searchList = [
+"&amp;nbsp;",
+" &lt;/p>",
+" &lt;p>",
+" &lt;li>",
+" &lt;/li>",
+" &lt;div>",
+" &lt;/div>",
+" &lt;i>",
+" &lt;/i>",
+" &lt;b>",
+" &lt;/b>"
+]
+
+String[] replacementList = [
+" ",
+"&lt;/p>",
+"&lt;p>",
+"&lt;li>",
+"&lt;/li>",
+"&lt;div>",
+"&lt;/div>",
+"&lt;i>",
+"&lt;/i>",
+"&lt;b>",
+"&lt;/b>"
+]
+
+html = replaceEachRepeatedly(html, searchList, replacementList)
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>416</yloc>
+    </GUI>
+  </transform>
+  <transform_error_handling>
+  </transform_error_handling>
+  <attributes/>
+</pipeline>

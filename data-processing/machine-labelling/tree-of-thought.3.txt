@@ -1,0 +1,65 @@
+Job Description:
+${text}
+
+Classify the above job description for language that may alienate or discourage candidates from diverse backgrounds or with varying characteristics from applying. Consider language used, experience and qualification requirements, company culture description, and relevance. Include considerations for age, disability, masculine, feminine, race, sexuality, disability, and general non-inclusive language. Follow these six steps:
+
+1. Assessing Language for Bias:
+   - Age-Related Terms: Identify age-specific terms and phrases (e.g., "young", "energetic", "recent graduate", "digital native").
+   - Disability Terms: Look for exclusionary phrases (e.g., "must lift", "physically demanding") and avoid terms like "confined to a wheelchair" or "handicapped".
+   - Race-Related Language: Spot race-specific terms and phrases that suggest preference (e.g., "native English speaker", "must have U.S. passport").
+   - Gender-Specific Terms: Check for gendered language (e.g., "chairman", "he/his") and phrases indicating gender preference (e.g., "strong male candidate", "female-oriented team").
+   - Sexuality-Related Terms: Identify terms that might alienate based on sexuality (e.g., "family-oriented", "heteronormative") and seek inclusive language (e.g., "LGBTQ+ friendly").
+   - General Non-Inclusive Language: Look for terms that may exclude based on socio-economic status, criminal history, religion, veteran status, or political beliefs (e.g., "elite university graduate", "no felons", "Christian values", "civilian only", "no activists").
+
+2. Evaluating Experience and Qualifications:
+   - Reasonableness of Experience: Ensure the required experience matches the job level.
+   - Age Bias in Qualifications: Check if qualifications favour a specific age group (e.g., "recent degrees", "specific technology skills").
+   - Physical Requirements: Ensure physical demands are necessary and reasonable.
+   - Disability Considerations: Avoid qualifications that exclude individuals with disabilities (e.g., "must have a driver's license", "excellent vision").
+   - Racial Neutrality: Ensure qualifications are unbiased towards any racial group.
+   - Gender-Neutral Requirements: Avoid qualifications that disadvantage based on gender (e.g., "strong leadership", often associated with male traits).
+   - Sexuality-Inclusive Criteria: Avoid qualifications that exclude based on sexuality (e.g., "must be married").
+   - Socio-Economic Considerations: Avoid requirements that favour a particular socio-economic status (e.g., "must own professional wardrobe").
+   - Criminal History Considerations: Avoid qualifications that exclude based on criminal history (e.g., "no felons").
+   - Religious Neutrality: Avoid requirements that favour or exclude based on religion (e.g., "must work religious holidays").
+   - Veteran Status Neutrality: Avoid preferences or exclusions based on veteran status (e.g., "no military experience needed").
+   - Political Neutrality: Avoid requirements indicating political bias (e.g., "must be non-partisan").
+
+3. Analysing Company Culture:
+   - Age Bias in Culture: Check if the culture favours a specific age group (e.g., "vibrant atmosphere", "play hard, work hard").
+   - Accessibility of Benefits: Ensure benefits and perks are inclusive (e.g., gym memberships, travel opportunities).
+   - Disability-Friendly Culture: Avoid culture descriptions that imply preference for individuals without disabilities (e.g., "fast-paced environment").
+   - Racial Inclusivity: Look for language that promotes diversity (e.g., "inclusive environment", "cultural diversity").
+   - Gender Inclusivity: Check for gender preferences in the culture (e.g., "bro culture", "supportive women's network").
+   - Sexuality Inclusivity: Ensure culture supports diverse sexualities (e.g., "LGBTQ+ inclusive", "partner benefits").
+   - Education Level Neutrality: Avoid culture descriptions that favour certain education levels (e.g., "highly educated team").
+   - Socio-Economic Inclusivity: Avoid descriptions indicating socio-economic bias (e.g., "luxury office space", "exclusive events").
+   - Criminal History Neutrality: Avoid descriptions implying exclusion based on criminal history (e.g., "clean background required").
+   - Religious Neutrality: Avoid references favouring specific religions (e.g., "Christian values", "faith-based initiatives").
+   - Veteran Status Neutrality: Avoid cultural preferences for or against veterans (e.g., "civilian team", "veteran-friendly").
+   - Political Neutrality: Avoid descriptions indicating political bias (e.g., "apolitical stance", "social justice initiatives").
+
+4. Evaluate Context and Relevance:
+   - Descriptive vs. Prescriptive: Distinguish between descriptions of individuals (e.g., patient descriptions) and prescriptive job requirements or preferences.
+   - Necessity and Relevance: Assess whether the identified terms are necessary for the job role or if they introduce unnecessary bias.
+
+5. Using the analysis, classify the job description into one or more of the following categories:
+   - X (Unknown or unable to determine if bias language is present or not)
+   - 0000000 (None)
+   - 1000000 (age)
+   - 0100000 (disability)
+   - 0010000 (masculine)
+   - 0001000 (feminine)
+   - 0000100 (racial)
+   - 0000010 (sexuality)
+   - 0000001 (general)
+
+6. Convert the results into either an "X" or 7bits (2^7 = 128 permutations) binary number, such as:
+   - 0000000 mean the job description contains no language that may alienate or discourage candidates.
+   - 1000000 means category age bias was detected but not the other categories.
+   - 1000001 means the categories of age and general were detected but not the rest.
+   - 0100010 means the categories of disability and sexuality were detected, but not the rest.
+   - 1111111 means all categories were detected.
+   - X means unable to determine if bias language is present or not.
+
+What is the binary number? Don't provide any explanation or anything, only the binary number.

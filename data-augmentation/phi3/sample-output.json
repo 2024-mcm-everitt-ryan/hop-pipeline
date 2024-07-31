@@ -1,0 +1,34 @@
+{
+  "phrases": [
+    {
+      "biased": "Cummerata, Morissette and Haag seeks a Principal Architect with a keen eye for youthful trends in the Civil Engineering industry. We prefer professionals who can relate to the younger demographic and bring a modern edge to our projects, ideally someone not too far from their college days.",
+      "unbiased": "Cummerata, Morissette and Haag is looking for a Principal Architect who is forward-thinking and innovative, capable of adapting to new trends in the Civil Engineering industry. We value diverse experiences and perspectives that enhance our project's appeal to all demographics.",
+      "analysis": [
+        {
+          "bias": "age",
+          "reason": "Preferring professionals who can relate to younger demographics and hinting at recent college graduates subtly excludes older candidates."
+        }
+      ]
+    },
+    {
+      "biased": "At Cummerata, Morissette and Haag, we are in search of a Principal Architect who can inject fresh, energetic ideas into our projects. This role is perfect for individuals who are at the early stages of their careers and possess a vibrant, innovative approach.",
+      "unbiased": "Cummerata, Morissette and Haag invites applications for a Principal Architect position from individuals eager to contribute innovative and energetic ideas to our projects. We welcome candidates at all stages of their careers who are committed to excellence and creativity.",
+      "analysis": [
+        {
+          "bias": "age",
+          "reason": "Mentioning that the role is perfect for those at early stages of their careers implicitly discourages more experienced professionals."
+        }
+      ]
+    },
+    {
+      "biased": "Join Cummerata, Morissette and Haag as a Principal Architect, where we value fresh perspectives often found in the newer generation of engineers. Our dynamic environment suits those who are recently qualified and ready to tackle challenging projects.",
+      "unbiased": "Cummerata, Morissette and Haag is seeking a Principal Architect to bring fresh perspectives and innovative solutions to our team. We appreciate insights from all generations of engineers and encourage applications from candidates with various levels of experience and backgrounds.",
+      "analysis": [
+        {
+          "bias": "age",
+          "reason": "The emphasis on 'newer generation' and 'recently qualified' subtly suggests a preference for younger professionals."
+        }
+      ]
+    }
+  ]
+}

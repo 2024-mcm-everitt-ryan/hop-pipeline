@@ -1,0 +1,1591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline>
+  <info>
+    <name>sentences_only</name>
+    <name_sync_with_filename>Y</name_sync_with_filename>
+    <description/>
+    <extended_description/>
+    <pipeline_version/>
+    <pipeline_type>Normal</pipeline_type>
+    <pipeline_status>0</pipeline_status>
+    <parameters>
+    </parameters>
+    <capture_transform_performance>N</capture_transform_performance>
+    <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
+    <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
+    <created_user>-</created_user>
+    <created_date>2023/12/18 21:10:36.086</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2023/12/18 21:10:36.086</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <order>
+    <hop>
+      <from>english_dataset (clean)</from>
+      <to>english dataset parquet</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>english dataset parquet</from>
+      <to>Sentences</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sentences</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>english_dataset (clean)</from>
+      <to>english dataset parquet</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Join Sentences</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Sentences</from>
+      <to>Select values 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2</from>
+      <to>Pick last phrase</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>taxonomies</from>
+      <to>taxonomies parquet</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>taxonomies parquet</from>
+      <to>Select taxonomies</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select taxonomies</from>
+      <to>Join Sentences 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Sentences 3</from>
+      <to>Pick last phrase 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Pick last phrase 2</from>
+      <to>Switch / case</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Switch / case</from>
+      <to>age</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Switch / case</from>
+      <to>disability</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Switch / case</from>
+      <to>general</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Switch / case</from>
+      <to>racial</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>racial</from>
+      <to>Join Categories</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Switch / case</from>
+      <to>sexuality</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sexuality</from>
+      <to>Join Categories</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Switch / case</from>
+      <to>masculine</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>masculine</from>
+      <to>Join Categories</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Switch / case</from>
+      <to>feminine</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>feminine</from>
+      <to>Join Categories</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>general</from>
+      <to>Join Categories</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>disability</from>
+      <to>Join Categories</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>age</from>
+      <to>Join Categories</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Categories</from>
+      <to>Blocking transform</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Pick last phrase</from>
+      <to>Phrase/Known Terms</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Blocking transform</from>
+      <to>Phrase/Known Terms</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Phrase/Known Terms</from>
+      <to>Term Matching</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Term Matching</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Phrase/Known Terms</from>
+      <to>Term Matching 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Term Matching 2</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3</from>
+      <to>Sort phrases</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <transform>
+    <name>Blocking transform</name>
+    <type>BlockingTransform</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cache_size>5000</cache_size>
+    <compress>Y</compress>
+    <directory>${java.io.tmpdir}</directory>
+    <pass_all_rows>N</pass_all_rows>
+    <prefix>block</prefix>
+    <attributes/>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>976</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Join Categories</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main/>
+    <compare>
+      <condition>
+        <conditions>
+</conditions>
+        <function>=</function>
+        <negated>N</negated>
+        <operator>-</operator>
+      </condition>
+    </compare>
+    <attributes/>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>880</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Join Sentences</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>phrase</name>
+        <precision>-1</precision>
+        <rename>phrase</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>phrase_word_count</name>
+        <precision>-1</precision>
+        <rename>phrase_word_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>phrase_index</name>
+        <precision>-1</precision>
+        <rename>phrase_index</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+    </fields>
+    <scriptLanguage>python</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>max_word_count = 400
+
+try:
+  previous_document_id
+  next_document_id
+  phrase_word_count
+  phrase_index
+except NameError:
+  previous_document_id = None
+  next_document_id = None
+  phrase_word_count = 0
+  phrase_index = 0
+
+
+if document_id != previous_document_id:
+  phrase = ""
+  previous_document_id=document_id
+  phrase_index = 0
+  phrase_word_count = 0
+
+if phrase_word_count + sentence_word_count &lt;= max_word_count:
+  phrase=phrase + ' ' + sentence_text
+  phrase = phrase.strip()
+  phrase_word_count = phrase_word_count + sentence_word_count
+else:
+  phrase= sentence_text
+  phrase = phrase.strip()
+  phrase_word_count = sentence_word_count
+  phrase_index = phrase_index + 1
+
+#if next_document_id is None:
+#  pipeline_status=CONTINUE_PIPELINE
+#else:
+#  pipeline_status=SKIP_PIPELINE;</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>800</xloc>
+      <yloc>1056</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Join Sentences 3</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>terms</name>
+        <precision>-1</precision>
+        <rename>terms</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+    </fields>
+    <scriptLanguage>python</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>delimiter = '|#|'
+
+try:
+  previous_category
+  next_category
+  terms
+except NameError:
+  previous_category = None
+  next_category = None
+  terms = ""
+
+
+if category != previous_category:
+  terms = ""
+  previous_category=category
+
+terms=terms + delimiter + term
+terms = terms.strip()
+
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>912</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Phrase/Known Terms</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main/>
+    <compare>
+      <condition>
+        <conditions>
+</conditions>
+        <function>=</function>
+        <negated>N</negated>
+        <operator>-</operator>
+      </condition>
+    </compare>
+    <attributes/>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>1056</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Pick last phrase</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <add_linenr>N</add_linenr>
+    <all_rows>N</all_rows>
+    <directory>${java.io.tmpdir}</directory>
+    <fields>
+      <field>
+        <aggregate>sentence_word_count</aggregate>
+        <subject>sentence_word_count</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>phrase_word_count</aggregate>
+        <subject>phrase_word_count</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>sentence_text</aggregate>
+        <subject>sentence_text</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>phrase</aggregate>
+        <subject>phrase</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+      <field>
+        <aggregate>html</aggregate>
+        <subject>html</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+    </fields>
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>document_id</name>
+      </field>
+      <field>
+        <name>phrase_index</name>
+      </field>
+    </group>
+    <ignore_aggregate>N</ignore_aggregate>
+    <prefix>grp</prefix>
+    <attributes/>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>1056</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Pick last phrase 2</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <add_linenr>N</add_linenr>
+    <all_rows>N</all_rows>
+    <directory>${java.io.tmpdir}</directory>
+    <fields>
+      <field>
+        <aggregate>terms</aggregate>
+        <subject>terms</subject>
+        <type>LAST_INCL_NULL</type>
+      </field>
+    </fields>
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>category</name>
+      </field>
+    </group>
+    <ignore_aggregate>N</ignore_aggregate>
+    <prefix>grp</prefix>
+    <attributes/>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select taxonomies</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>category</name>
+      </field>
+      <field>
+        <name>term</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>document_id</name>
+      </field>
+      <field>
+        <name>sentence_word_count</name>
+      </field>
+      <field>
+        <name>sentence_text</name>
+      </field>
+      <field>
+        <name>job_posting_html</name>
+        <rename>html</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>1056</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>document_id</name>
+      </field>
+      <field>
+        <name>sentence_word_count</name>
+      </field>
+      <field>
+        <name>phrase_word_count</name>
+      </field>
+      <field>
+        <name>phrase_index</name>
+      </field>
+      <field>
+        <name>sentence_text</name>
+      </field>
+      <field>
+        <name>phrase</name>
+      </field>
+      <field>
+        <name>html</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>1056</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>document_id</name>
+      </field>
+      <field>
+        <name>phrase_index</name>
+      </field>
+      <field>
+        <name>phrase_word_count</name>
+      </field>
+      <field>
+        <name>terms_age</name>
+      </field>
+      <field>
+        <name>terms_age_count</name>
+      </field>
+      <field>
+        <name>terms_disability</name>
+      </field>
+      <field>
+        <name>terms_disability_count</name>
+      </field>
+      <field>
+        <name>terms_general</name>
+      </field>
+      <field>
+        <name>terms_general_count</name>
+      </field>
+      <field>
+        <name>terms_masculine</name>
+      </field>
+      <field>
+        <name>terms_masculine_count</name>
+      </field>
+      <field>
+        <name>terms_feminine</name>
+      </field>
+      <field>
+        <name>terms_feminine_count</name>
+      </field>
+      <field>
+        <name>terms_racial</name>
+      </field>
+      <field>
+        <name>terms_racial_count</name>
+      </field>
+      <field>
+        <name>terms_sexuality</name>
+      </field>
+      <field>
+        <name>terms_sexuality_count</name>
+      </field>
+      <field>
+        <name>phrase</name>
+      </field>
+      <field>
+        <name>html</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1632</xloc>
+      <yloc>1056</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Sentences</name>
+    <type>StanfordSimpleNlp</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <corpusField>job_posting</corpusField>
+    <includePartOfSpeech>N</includePartOfSpeech>
+    <parallelism>N</parallelism>
+    <outputFieldNamePrefix>sentence_</outputFieldNamePrefix>
+    <maxOutputSentences>1</maxOutputSentences>
+    <maxOutputWords>2147483647</maxOutputWords>
+    <attributes/>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>1056</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Sort phrases</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>${java.io.tmpdir}</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>document_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>Y</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>Y</presorted>
+      </field>
+      <field>
+        <name>phrase_index</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1776</xloc>
+      <yloc>1056</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Switch / case</name>
+    <type>SwitchCase</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <case_value_type>String</case_value_type>
+    <cases>
+      <case>
+        <target_transform>age</target_transform>
+        <value>age</value>
+      </case>
+      <case>
+        <target_transform>disability</target_transform>
+        <value>disability</value>
+      </case>
+      <case>
+        <target_transform>general</target_transform>
+        <value>general</value>
+      </case>
+      <case>
+        <target_transform>racial</target_transform>
+        <value>racial</value>
+      </case>
+      <case>
+        <target_transform>sexuality</target_transform>
+        <value>sexuality</value>
+      </case>
+      <case>
+        <target_transform>masculine</target_transform>
+        <value>masculine</value>
+      </case>
+      <case>
+        <target_transform>feminine</target_transform>
+        <value>feminine</value>
+      </case>
+    </cases>
+    <fieldname>category</fieldname>
+    <use_contains>N</use_contains>
+    <attributes/>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Term Matching</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>terms_age</name>
+        <precision>-1</precision>
+        <rename>terms_age</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_disability</name>
+        <precision>-1</precision>
+        <rename>terms_disability</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_general</name>
+        <precision>-1</precision>
+        <rename>terms_general</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_masculine</name>
+        <precision>-1</precision>
+        <rename>terms_masculine</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_feminine</name>
+        <precision>-1</precision>
+        <rename>terms_feminine</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_racial</name>
+        <precision>-1</precision>
+        <rename>terms_racial</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_sexuality</name>
+        <precision>-1</precision>
+        <rename>terms_sexuality</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_age_count</name>
+        <precision>-1</precision>
+        <rename>terms_age_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_disability_count</name>
+        <precision>-1</precision>
+        <rename>terms_disability_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_general_count</name>
+        <precision>-1</precision>
+        <rename>terms_general_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_masculine_count</name>
+        <precision>-1</precision>
+        <rename>terms_masculine_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_feminine_count</name>
+        <precision>-1</precision>
+        <rename>terms_feminine_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_racial_count</name>
+        <precision>-1</precision>
+        <rename>terms_racial_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_sexuality_count</name>
+        <precision>-1</precision>
+        <rename>terms_sexuality_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+    </fields>
+    <scriptLanguage>python</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import re
+
+delimiter = '|#|'
+phrase_test = phrase #phrase.lower()
+
+def term_matching(known_terms):
+  split_terms = [term for term in known_terms.split(delimiter) if term]
+  matched_terms = []
+  for term in split_terms:
+    term_test = term #term.lower()
+    # Create a regex pattern for exact match
+    pattern = r'\b' + re.escape(term_test) + r'\b'
+    # Check if the term matches exactly in the phrase
+    if re.search(pattern, phrase_test):
+      matched_terms.append(term)
+  return matched_terms
+
+# Age
+terms = term_matching(known_terms_age)
+terms_age = delimiter.join(terms)
+terms_age_count = len(terms)
+
+# Disability
+terms = term_matching(known_terms_disability)
+terms_disability = delimiter.join(terms)
+terms_disability_count = len(terms)
+
+# General
+terms = term_matching(known_terms_general)
+terms_general = delimiter.join(terms)
+terms_general_count = len(terms)
+
+# Masculine
+terms = term_matching(known_terms_masculine)
+terms_masculine = delimiter.join(terms)
+terms_masculine_count = len(terms)
+
+# Feminine
+terms = term_matching(known_terms_feminine)
+terms_feminine = delimiter.join(terms)
+terms_feminine_count = len(terms)
+
+# Racial
+terms = term_matching(known_terms_racial)
+terms_racial = delimiter.join(terms)
+terms_racial_count = len(terms)
+
+# Sexuality
+terms = term_matching(known_terms_sexuality)
+terms_sexuality = delimiter.join(terms)
+terms_sexuality_count = len(terms)</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>1008</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Term Matching 2</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <length>-1</length>
+        <name>terms_age</name>
+        <precision>-1</precision>
+        <rename>terms_age</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_disability</name>
+        <precision>-1</precision>
+        <rename>terms_disability</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_general</name>
+        <precision>-1</precision>
+        <rename>terms_general</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_masculine</name>
+        <precision>-1</precision>
+        <rename>terms_masculine</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_feminine</name>
+        <precision>-1</precision>
+        <rename>terms_feminine</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_racial</name>
+        <precision>-1</precision>
+        <rename>terms_racial</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_sexuality</name>
+        <precision>-1</precision>
+        <rename>terms_sexuality</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>String</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_age_count</name>
+        <precision>-1</precision>
+        <rename>terms_age_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_disability_count</name>
+        <precision>-1</precision>
+        <rename>terms_disability_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_general_count</name>
+        <precision>-1</precision>
+        <rename>terms_general_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_masculine_count</name>
+        <precision>-1</precision>
+        <rename>terms_masculine_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_feminine_count</name>
+        <precision>-1</precision>
+        <rename>terms_feminine_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_racial_count</name>
+        <precision>-1</precision>
+        <rename>terms_racial_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+      <field>
+        <length>-1</length>
+        <name>terms_sexuality_count</name>
+        <precision>-1</precision>
+        <rename>terms_sexuality_count</rename>
+        <replace>N</replace>
+        <scriptResult>N</scriptResult>
+        <type>Integer</type>
+      </field>
+    </fields>
+    <scriptLanguage>python</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody>import re
+
+delimiter = '|#|'
+phrase_test = phrase #phrase.lower()
+
+def term_matching(known_terms):
+  split_terms = [term for term in known_terms.split(delimiter) if term]
+  matched_terms = []
+  for term in split_terms:
+    term_test = term #term.lower()
+    # Create a regex pattern for exact match
+    pattern = r'\b' + re.escape(term_test) + r'\b'
+    # Check if the term matches exactly in the phrase
+    if re.search(pattern, phrase_test):
+      matched_terms.append(term)
+  return matched_terms
+
+# Age
+terms = term_matching(known_terms_age)
+terms_age = delimiter.join(terms)
+terms_age_count = len(terms)
+
+# Disability
+terms = term_matching(known_terms_disability)
+terms_disability = delimiter.join(terms)
+terms_disability_count = len(terms)
+
+# General
+terms = term_matching(known_terms_general)
+terms_general = delimiter.join(terms)
+terms_general_count = len(terms)
+
+# Masculine
+terms = term_matching(known_terms_masculine)
+terms_masculine = delimiter.join(terms)
+terms_masculine_count = len(terms)
+
+# Feminine
+terms = term_matching(known_terms_feminine)
+terms_feminine = delimiter.join(terms)
+terms_feminine_count = len(terms)
+
+# Racial
+terms = term_matching(known_terms_racial)
+terms_racial = delimiter.join(terms)
+terms_racial_count = len(terms)
+
+# Sexuality
+terms = term_matching(known_terms_sexuality)
+terms_sexuality = delimiter.join(terms)
+terms_sexuality_count = len(terms)</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>1104</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>age</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>terms</name>
+        <rename>known_terms_age</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1536</xloc>
+      <yloc>736</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>disability</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>terms</name>
+        <rename>known_terms_disability</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1456</xloc>
+      <yloc>736</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>english dataset parquet</name>
+    <type>ParquetFileInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <source_field>document_id</source_field>
+        <target_field>document_id</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>country</source_field>
+        <target_field>country</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>locale</source_field>
+        <target_field>locale</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>language</source_field>
+        <target_field>language</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>source</source_field>
+        <target_field>source</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>scraped_date</source_field>
+        <target_field>scraped_date</target_field>
+        <target_type>Integer</target_type>
+      </field>
+      <field>
+        <source_field>company_id</source_field>
+        <target_field>company_id</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>companyName</source_field>
+        <target_field>companyName</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>city</source_field>
+        <target_field>city</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_id</source_field>
+        <target_field>dataset_id</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_type</source_field>
+        <target_field>dataset_type</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_license</source_field>
+        <target_field>dataset_license</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_source</source_field>
+        <target_field>dataset_source</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_title</source_field>
+        <target_field>dataset_title</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>dataset_url</source_field>
+        <target_field>dataset_url</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>category</source_field>
+        <target_field>category</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>position_name</source_field>
+        <target_field>position_name</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>job_posting</source_field>
+        <target_field>job_posting</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>job_posting_html</source_field>
+        <target_field>job_posting_html</target_field>
+        <target_type>String</target_type>
+      </field>
+    </fields>
+    <filename_field>filename</filename_field>
+    <attributes/>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>720</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>english_dataset (clean)</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <file>
+      <file_required>N</file_required>
+      <filemask>english_clean_dataset-\d+\.parquet\.snappy</filemask>
+      <include_subfolders>N</include_subfolders>
+      <name>${HOP_DATASETS_FOLDER}/english</name>
+    </file>
+    <filefield>N</filefield>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <isaddresult>Y</isaddresult>
+    <limit>0</limit>
+    <raiseAnExceptionIfNoFile>N</raiseAnExceptionIfNoFile>
+    <rownum>N</rownum>
+    <attributes/>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>720</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>feminine</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>terms</name>
+        <rename>known_terms_feminine</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>736</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>general</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>terms</name>
+        <rename>known_terms_general</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>736</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>masculine</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>terms</name>
+        <rename>known_terms_masculine</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>992</xloc>
+      <yloc>736</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>racial</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>terms</name>
+        <rename>known_terms_racial</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1088</xloc>
+      <yloc>736</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>sexuality</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>terms</name>
+        <rename>known_terms_sexuality</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>1184</xloc>
+      <yloc>736</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>taxonomies</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <file>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>${HOP_DATASETS_FOLDER}/outputs/bias_taxonomies/bias_taxonomies.parquet</name>
+    </file>
+    <filefield>N</filefield>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <isaddresult>Y</isaddresult>
+    <limit>0</limit>
+    <raiseAnExceptionIfNoFile>N</raiseAnExceptionIfNoFile>
+    <rownum>N</rownum>
+    <attributes/>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>taxonomies parquet</name>
+    <type>ParquetFileInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <source_field>category</source_field>
+        <target_field>category</target_field>
+        <target_type>String</target_type>
+      </field>
+      <field>
+        <source_field>term</source_field>
+        <target_field>term</target_field>
+        <target_type>String</target_type>
+      </field>
+    </fields>
+    <filename_field>filename</filename_field>
+    <attributes/>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>592</yloc>
+    </GUI>
+  </transform>
+  <transform_error_handling>
+  </transform_error_handling>
+  <attributes/>
+</pipeline>

@@ -1,0 +1,30 @@
+[
+  {
+    "role": "user",
+    "content": "In the context of job description or job advertisements, explain what ${category} bias and non-inclusive language is."
+  },
+  {
+    "role": "assistant",
+    "content": "Sexuality bias and non-inclusive language in a job description refer to the use of terms and phrases that exclude, stereotype, or show preference towards certain sexual orientations, gender identities, or expressions, making the job description non-inclusive by potentially alienating or discriminating against LGBTQ+ individuals; this can include categories like gendered language, heteronormative assumptions, and the lack of recognition for diverse family structures."
+  },
+  {
+    "role": "user",
+    "content": "<role>Please act as a job description implicit bias and non-inclusive language classifier. The input can only be classified as either having ${category} bias or not.<\/role><task>Evaluate the job description provided below and respond with 1 if ${category} bias is detected or 0 if NO ${category} bias is detected. The response must be either 0 or 1.<\/task><job_description>We are seeking a dedicated and energetic salesman to join our team in a fast-paced environment. The ideal candidate will have a strong work ethic and be willing to go the extra mile to close deals and provide excellent customer service. Our company values family-oriented individuals who can balance work with traditional family responsibilities. Candidates should be prepared to attend after-work social events with spouses to build camaraderie and network within the industry.<\/job_description>"
+  },
+  {
+    "role": "assistant",
+    "content": "1"
+  },
+  {
+    "role": "user",
+    "content": "We are seeking a dedicated individual to join our team. The successful candidate will be responsible for managing a diverse range of projects, ensuring that all tasks are completed efficiently and to the highest standard. Applicants should have excellent organisational and communication skills, along with a solid background in project management. We welcome candidates with various levels of experience and from all educational backgrounds. Our inclusive workplace values diverse perspectives and is committed to providing equal opportunities for all. We encourage applicants from any location to apply, as we offer flexible working arrangements to accommodate different needs and preferences. This role requires the ability to collaborate effectively with team members, adapt to evolving priorities, and guide projects to completion with thoughtful oversight. If you are motivated by challenging work and passionate about making a meaningful impact, we would love to hear from you."
+  },
+  {
+    "role": "assistant",
+    "content": "0"
+  },
+  {
+    "role": "user",
+    "content": "<role>Please act as a job description implicit bias classifier. The input can only be classified as either having ${category} bias or not.<\/role><task>Evaluate the job description provided below and respond with 1 if ${category} bias is detected or 0 if NO ${category} bias is detected. The response must be either 0 or 1.<\/task><job_description>${job_description}<\/job_description>"
+  }
+]

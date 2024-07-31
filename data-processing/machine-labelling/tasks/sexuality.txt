@@ -1,0 +1,2 @@
+Classify the following job description as having sexuality bias by using "<0>" or NOT sexuality bias by using "<0>":
+

@@ -1,0 +1,643 @@
+age::athletic::1::The term "athletic" implies a preference for physically active individuals, potentially disadvantaging older candidates who may not be as athletic.
+age::Athletic or athletically inclined::1::The term "athletic or athletically inclined" can introduce age bias by implying a preference for younger, more physically active candidates, potentially disadvantaging older applicants who may not be as athletic.
+age::digital native::1::The term "digital native" implies a preference for younger candidates who grew up with digital technology, potentially excluding older individuals.
+age::elderly::1::The term "elderly" can be seen as patronising and ageist, potentially disadvantaging older candidates by focusing on their age rather than their abilities.
+age::energetic person::1::The phrase "energetic person" can imply a preference for younger candidates, potentially excluding older individuals who may not be perceived as energetic.
+age::Geezer::1::The term "geezer" is a derogatory and ageist term that devalues older individuals, leading to potential bias against older candidates.
+age::Great opportunity for student::1::The phrase "great opportunity for student" implies a preference for individuals who are currently in school or recent graduates, potentially excluding older candidates.
+age::innovative ideas::1::The term "innovative ideas" implies a preference for younger candidates, who are often stereotyped as more creative and forward-thinking.
+age::Junior::1::The term "junior" can introduce age bias by suggesting a preference for younger, less experienced candidates.
+age::Mature person wanted::1::The term "mature person wanted" implies a preference for older candidates, which can disadvantage younger applicants.
+age::Millennials only::1::The phrase "millennials only" explicitly excludes candidates from other age groups, introducing clear age bias.
+age::new graduate::1::The term "new graduate" implies a preference for recently graduated individuals, potentially excluding older candidates with more experience.
+age::new wave::1::The term "new wave" can imply a preference for new, modern thinking often associated with younger candidates, potentially excluding older individuals.
+age::person with fresh::1::The phrase "person with fresh" implies a preference for new, possibly younger perspectives, which can introduce age bias against older candidates.
+age::person with fresh innovative ideas::1::The term "person with fresh innovative ideas" combines "fresh" and "innovative", both of which imply a preference for younger candidates associated with new and creative thinking.
+age::Recent::1::The term "recent" can imply a preference for recent graduates or younger individuals, potentially excluding older candidates with more experience.
+age::recent graduate::1::The term "recent graduate" implies a preference for individuals who have graduated recently, potentially excluding older candidates.
+age::recent graduates::1::The term "recent graduates" implies a preference for a group of recently graduated individuals, potentially excluding older candidates.
+age::senior::1::The term "senior" can imply a preference for older, more experienced candidates, potentially disadvantaging younger applicants.
+age::Supplement your retirement income::1::The phrase "supplement your retirement income" targets older individuals who are retired, introducing age bias against younger candidates.
+age::who can connect with youth::1::The phrase "who can connect with youth" implies a preference for candidates who are younger or have a youthful perspective, potentially excluding older individuals.
+age::young::1::The term "young" explicitly favours younger candidates, introducing clear age bias.
+age::Young and energetic::1::The phrase "young and energetic" explicitly favours younger candidates, potentially excluding older individuals.
+age::Young-thinking::1::The term "young-thinking" implies a preference for candidates who think like younger individuals, potentially disadvantaging older applicants.
+age::Youthful::1::The term "youthful" suggests a preference for younger candidates, introducing age bias.
+disability::a crippled::1::The term "a crippled" is pejorative and dehumanizing, reducing a person to their disability.
+disability::a dwarf::1::The term "a dwarf" can be offensive; "person with dwarfism" is more respectful and person-centred.
+disability::a midget::1::The term "a midget" is considered highly offensive and outdated; "person of short stature" or "person with dwarfism" is preferred.
+disability::a victim of::1::The term "a victim of" portrays individuals as passive sufferers rather than as people with agency, which is disempowering.
+disability::able bodied::1::The term "able bodied" can create a dichotomy that marginalizes people with disabilities; "non-disabled" is a more inclusive term.
+disability::abled::1::The term "abled" is vague and can imply a standard of normalcy that is exclusionary; "non-disabled" is a clearer and more inclusive term.
+disability::addict::1::The term "addict" is stigmatizing and reduces a person to their condition; "person with a substance use disorder" is more respectful.
+disability::attack::1::The term "attack" can be distressing and is better replaced with "episode" or "incident" to describe medical conditions like seizures.
+disability::balance::1::The term "balance" in job descriptions can exclude individuals with balance impairments, suggesting a physical requirement that may not be necessary for job performance.
+disability::bend::1::The term "bend" implies a physical requirement that can disadvantage individuals with mobility impairments or back conditions, potentially excluding qualified candidates.
+disability::blind-sided::1::The term "blind-sided" is problematic because it uses "blind" in a negative context, reinforcing stereotypes about blindness.
+disability::borderline personality::1::The term "borderline personality" is sensitive and should be avoided unless directly relevant, as it can carry negative connotations about mental health conditions.
+disability::brain damage::1::The term "brain damage" is often used pejoratively and can stigmatise individuals with neurological conditions.
+disability::brave::1::The term "brave" can be patronising when used to describe people with disabilities, implying that living with a disability requires exceptional courage.
+disability::climb::1::The term "climb" suggests a need for physical ability that could exclude individuals with mobility disabilities, potentially discriminating against them.
+disability::climbing::1::The term "climbing" indicates a physical activity that may not be inclusive of individuals with mobility or strength impairments, potentially biasing against them.
+disability::Confined to a wheelchair::1::The term "confined to a wheelchair" implies restriction and limitation, instead of highlighting the wheelchair as a tool for mobility and independence.
+disability::courageous::1::The term "courageous" can be seen as patronising when used to describe individuals with disabilities, suggesting their daily lives require unusual bravery.
+disability::crawl::1::The term "crawl" can be insensitive when used to describe people with mobility issues, as it may trivialise their condition.
+disability::crazy::1::The term "crazy" is a derogatory term for mental illness and should be avoided.
+disability::Crippled::1::The term "crippled" is derogatory and outdated, carrying negative connotations and diminishing the dignity of individuals with disabilities.
+disability::cripples::1::The term "cripples" is derogatory and dehumanising, and should not be used to refer to people with disabilities.
+disability::crouch::1::The term "crouch" suggests a physical requirement that can disadvantage individuals with mobility impairments, excluding them from consideration.
+disability::deaf::1::The term "deaf" can be problematic if used to describe a limitation rather than a characteristic of candidates, potentially biasing against individuals with hearing impairments.
+disability::deformed::1::The term "deformed" is offensive and outdated, often used to describe physical abnormalities in a derogatory manner.
+disability::demented::1::The term "demented" is derogatory and stigmatising towards individuals with dementia or similar conditions.
+disability::disabled::1::The term "disabled" used broadly can be reductive and stigmatising, potentially biasing against individuals with disabilities by emphasising limitations rather than abilities.
+disability::Disabled community::1::The term "Disabled community" can be seen as stigmatising if used inappropriately in job descriptions, potentially reinforcing a focus on disability rather than inclusion and ability.
+disability::disabled sport::1::The term "disabled sport" may be irrelevant to the job context and can unnecessarily emphasise disability, potentially biasing against candidates by focusing on their limitations.
+disability::Downs person::1::The term "Downs person" is disrespectful and reduces individuals to their condition; the preferred term is "person with Down syndrome."
+disability::dumb::1::The term "dumb" is offensive as it derogatorily refers to individuals with speech impairments.
+disability::dummy::1::The term "dummy" is derogatory and can be offensive when used to describe someone as unintelligent.
+disability::dwarf::1::The term "dwarf" can be acceptable if it aligns with individual preference, though "person of short stature" or "little person" is often preferred.
+disability::emotionally disturbed::1::The term "emotionally disturbed" can be stigmatising and should be used with caution, opting for more specific, respectful language when describing mental health conditions.
+disability::epileptic::1::The term "epileptic" can be seen as reducing an individual to their condition; "person with epilepsy" is more person-centred.
+disability::fit::1::The term "fit" can imply a physical ability that might exclude individuals with various disabilities, suggesting they may not be suitable for the role due to physical requirements.
+disability::handicap::1::The term "handicap" is outdated and can be considered offensive, as it implies a disadvantage imposed on individuals due to their disabilities rather than societal barriers.
+disability::handicapped::1::The term "handicapped" is considered outdated and offensive as it labels individuals by their disabilities rather than recognising them as people first.
+disability::handicapped bathrooms::1::The phrase "handicapped bathrooms" is outdated and potentially offensive; "accessible bathrooms" is a more respectful and accurate term.
+disability::Handicapped parking::1::The term "handicapped parking" is outdated and can be seen as offensive; "accessible parking" is a more appropriate term.
+disability::healthy::1::Using the term "healthy" in contexts contrasting with disability can imply that individuals with disabilities are inherently unhealthy, which is not accurate and perpetuates stigma.
+disability::healthy people::1::The term "healthy people" can imply that individuals with disabilities are unhealthy, which is a biased and inaccurate generalisation.
+disability::hear::1::The term "hear" implies a requirement for auditory ability, potentially excluding individuals with hearing impairments.
+disability::hearing impaired::1::The term "hearing impaired" is often considered outdated and less preferred compared to "Deaf" or "hard of hearing," as it frames hearing differences negatively.
+disability::heroic::1::Referring to people with disabilities as "heroic" for simply living their lives can be patronising and reinforce the idea that disability is something to be pitied or overcome in an extraordinary way.
+disability::insane::1::The term "insane" is outdated and pejorative, carrying negative connotations and stigma towards individuals with mental health conditions.
+disability::inspiring::1::While intended positively, calling people with disabilities "inspiring" for ordinary activities can be patronising and reduce their identity to their disability.
+disability::is stricken with::1::The phrase "is stricken with" a disability suggests a negative, pitiable condition, which is an outdated and biased view of disability.
+disability::kneel::1::The term "kneel" can be biased if used in contexts that assume all candidates can perform this physical action, excluding those with mobility impairments.
+disability::learning disability::1::The term "learning disability" can be problematic if used to set unnecessary barriers or if not relevant to job performance, potentially discriminating against individuals with learning impairments.
+disability::learning disabled::1::The term "learning disabled" labels individuals by their disability rather than recognising them as people first, which can be seen as dehumanising.
+disability::mentally ill::1::The term "mentally ill" can carry stigma and negative connotations; "person with a mental health condition" is often a more respectful phrasing.
+disability::midget::1::The term "midget" is highly offensive and outdated, referring derogatorily to individuals with dwarfism.
+disability::mongol::1::The term "mongol" is an offensive and outdated term historically used to describe individuals with Down syndrome and should be avoided.
+disability::mongolism::1::The term "mongolism" is an outdated and offensive term for Down syndrome, and its use is inappropriate and disrespectful.
+disability::mongoloid::1::The term "mongoloid" is an offensive, outdated term historically used to describe people with Down syndrome and is highly inappropriate.
+disability::mute::1::The term "mute" is outdated and can be offensive; "non-verbal" or "person who is non-verbal" is more respectful.
+disability::non-verbal::1::The term "non-verbal" can be exclusionary if it suggests that only verbal communication is valued or required, potentially biasing against individuals with communication disabilities.
+disability::normal::1::Using "normal" to describe people without disabilities implies that individuals with disabilities are abnormal, which is biased and derogatory.
+disability::Normal body::1::The term "normal body" implies that bodies with disabilities are abnormal, which is stigmatizing and ableist.
+disability::normal people::1::The phrase "normal people" implies that those with disabilities are abnormal, which is biased and demeaning.
+disability::nuts::1::The term "nuts" is a derogatory and informal term for individuals with mental health conditions and should be avoided.
+disability::paraplegic::1::While "paraplegic" is a clinical term, it is often better to use "person with paraplegia" to avoid labelling individuals solely by their condition.
+disability::Person afflicted with::1::The term "person afflicted with" suggests suffering and victimhood, which is patronizing and not reflective of the individual's experience.
+disability::Person with a birth defect::1::The term "person with a birth defect" is seen as pejorative; "person with a congenital disability" is more respectful.
+disability::psycho::1::The term "psycho" is derogatory and stigmatising towards individuals with mental health conditions.
+disability::quadriplegic::1::While "quadriplegic" is a clinical term, it is often better to use "person with quadriplegia" to avoid labelling individuals solely by their condition.
+disability::retarded::1::The term "retarded" is highly offensive and outdated, and its use is inappropriate and disrespectful.
+disability::sanity check::1::The term "sanity check" can be considered insensitive as it makes light of mental health conditions.
+disability::sit::1::The term "sit" implies a physical requirement that can disadvantage individuals with mobility or posture impairments, potentially excluding qualified candidates.
+disability::sitting::1::The term "sitting" suggests a physical requirement that may not be inclusive of individuals with certain mobility impairments.
+disability::slow learner::1::The term "slow learner" is pejorative and can be seen as demeaning; "person with a learning disability" is more respectful.
+disability::Special::1::The term "special" is often used euphemistically and can be condescending, implying that individuals with disabilities are fundamentally different.
+disability::Special ed student::1::The term "special ed student" is stigmatizing and can be seen as diminishing; "student receiving special education services" is more respectful.
+disability::special education student::1::The term "special education student" can be stigmatising and irrelevant in a job context, potentially discriminating against individuals with disabilities by focusing on their educational background in a limiting way.
+disability::specially abled::1::The term "specially abled" can be seen as patronising; "person with a disability" is more widely accepted.
+disability::specially-abled::1::The term "specially-abled" can be seen as patronising; "person with a disability" is more widely accepted.
+disability::spell::1::The term "spell" implies a specific skill that can disadvantage individuals with dyslexia or other learning disabilities, potentially excluding them from consideration.
+disability::stand::1::The term "stand" can be biased as it assumes that all candidates have the ability to stand, potentially excluding those with mobility impairments.
+disability::stoop::1::The term "stoop" can be biased as it presumes all candidates can perform physical bending, which may exclude individuals with certain physical disabilities.
+disability::suffers from::1::The term "suffers from" is biased as it portrays disabilities negatively, implying that individuals with disabilities are in a constant state of suffering.
+disability::talk::1::The term "talk" can be biased as it assumes all candidates can speak, which may exclude those with speech impairments.
+disability::the autistic::1::The term "the autistic" is biased as it labels individuals solely by their disability, reducing them to their condition instead of recognising them as people first.
+disability::the blind::1::The term "the blind" is biased as it labels individuals solely by their disability, reducing them to their condition instead of recognising them as people first.
+disability::the deaf::1::The term "the deaf" is biased as it labels individuals solely by their disability, reducing them to their condition instead of recognising them as people first.
+disability::the differently abled::1::The term "the differently abled" is biased as it is a euphemism that can be seen as patronising, failing to directly address the reality of disabilities.
+disability::the disabled::1::The term "the disabled" is biased as it labels individuals solely by their disability, reducing them to their condition instead of recognising them as people first.
+disability::The handicapped::1::The term "the handicapped" is outdated and objectifying; "people with disabilities" is a more appropriate term.
+disability::type::1::The term "type" can be biased as it assumes all candidates have the ability to type, potentially excluding those with certain physical impairments affecting hand function.
+disability::typing::1::The term "typing" can be biased as it assumes all candidates have the ability to type, potentially excluding those with certain physical impairments affecting hand function.
+disability::walk::1::The term "walk" can be biased as it assumes all candidates have the ability to walk, potentially excluding those with mobility impairments.
+disability::walking::1::The term "walking" can be biased as it assumes all candidates have the ability to walk, potentially excluding those with mobility impairments.
+disability::walkthrough::1::The term "walkthrough" can imply a physical ability to walk, potentially excluding individuals with mobility impairments.
+disability::walkthroughs::1::The term "walkthroughs" suggests a need for physical mobility, which can disadvantage individuals with mobility impairments.
+disability::wheelchair bound::1::The term "wheelchair bound" is biased as it focuses on the limitations rather than the mobility provided by the wheelchair, suggesting a negative and restrictive view of disability.
+disability::whole people::1::The term "whole people" is biased as it implies that individuals with disabilities are incomplete or less whole, which is demeaning and inaccurate.
+feminine::actress::1::The term "actress" is gender-specific and reinforces traditional gender roles, which introduces bias by excluding male and non-binary candidates.
+feminine::be heard::1::The phrase "be heard" can introduce bias as it aligns with the stereotype of women needing to assert themselves to be listened to, implying a feminine struggle for recognition.
+feminine::collaborate::1::The term "collaborate" can introduce bias as it emphasizes teamwork and cooperation, qualities traditionally associated with feminine roles.
+feminine::collaboration::1::The term "collaboration" can introduce bias as it aligns with the stereotype of women being more communal and cooperative.
+feminine::collaboratively::1::The term "collaboratively" can introduce bias as it emphasizes working together, aligning with the stereotype that women are more team-oriented.
+feminine::commitment::1::The term "commitment" can introduce bias as it aligns with nurturing and supportive characteristics often stereotypically attributed to women.
+feminine::Committed::1::The term "committed" can introduce bias as it is often associated with a nurturing or supportive role, which traditionally aligns with feminine stereotypes.
+feminine::Community::1::The term "community" can introduce bias as it is often associated with roles that emphasize social connections and care, which are traditionally seen as feminine qualities.
+feminine::connect::1::The term "connect" can introduce bias as it aligns with the stereotype of women being more relational and emotionally connected.
+feminine::cool::1::The term "cool" can be seen as gendered slang that might resonate more with male candidates, potentially alienating female candidates.
+feminine::customer::1::The term "customer" does not inherently introduce feminine bias on its own, but the context in job descriptions can imply customer service roles typically associated with women.
+feminine::customers::1::Similar to "customer," the term "customers" itself is neutral, but it can be contextually associated with roles stereotypically held by women in service or support positions.
+feminine::Dependable::1::The term "dependable" can introduce bias as it aligns with nurturing and supportive characteristics often stereotypically attributed to women.
+feminine::develop::1::The term "develop" does not inherently introduce feminine bias; however, it might be contextually associated with nurturing or growth, which can subtly favour female candidates.
+feminine::develop warm client relationships::1::The phrase "develop warm client relationships" can introduce bias as it emphasizes warmth and relational skills, aligning with feminine stereotypes.
+feminine::exciting::1::The term "exciting" can be seen as gender-neutral, but it may be coded to appeal more to women, reflecting societal associations with enthusiasm and engagement.
+feminine::gals::1::The term "gals" introduces bias as it is a gender-specific term referring to women, excluding male and non-binary candidates.
+feminine::growth::1::The term "growth" can imply nurturing and development, qualities often stereotypically associated with women, potentially favouring female candidates.
+feminine::her::1::The term "her" introduces bias as it is a gender-specific pronoun, excluding male and non-binary candidates.
+feminine::honest::1::The term "honest" may subtly resonate more with women due to societal expectations of honesty and integrity often attributed to female roles.
+feminine::hostess::1::The term "hostess" is gender-specific and reinforces traditional gender roles, which introduces bias by excluding male and non-binary candidates.
+feminine::intimately::1::The term "intimately" can introduce bias as it suggests close personal relationships, aligning with stereotypes about women's relational nature.
+feminine::intrinsic::1::The term "intrinsic" can imply internal motivation and personal values, which are often stereotypically associated with female candidates.
+feminine::Intrinsic Aptitude::1::The term "intrinsic aptitude" may introduce bias as it suggests natural ability, which can perpetuate stereotypes about women being naturally suited for certain roles.
+feminine::Loyal::1::The term "loyal" can introduce bias as it implies steadfastness and commitment, qualities traditionally associated with women in supportive roles.
+feminine::ma::1::The term "ma" introduces bias as it is a gender-specific term for mother, excluding male and non-binary candidates.
+feminine::maternity::1::The term "maternity" introduces bias as it is explicitly gendered, relating to motherhood, which excludes male and non-binary candidates.
+feminine::maternity leave::1::The term "maternity leave" introduces bias as it is explicitly gendered, relating to time off for childbirth, which excludes male and non-binary candidates.
+feminine::Menaissance::1::The term "mennaissance" can introduce bias as it implicitly references gender, aligning with stereotypes about renewal or resurgence associated with feminine qualities.
+feminine::mom::1::The term "mom" introduces bias as it is a gender-specific term for mother, excluding male and non-binary candidates.
+feminine::mum::1::The term "mum" introduces bias as it is a gender-specific term for mother, excluding male and non-binary candidates.
+feminine::nurture::1::The term "nurture" can introduce bias as it aligns with the stereotype of women being more caring and supportive.
+feminine::personal::1::The term "personal" can introduce bias as it aligns with the stereotype that women are more involved in personal and relational aspects.
+feminine::pleasant::1::The term "pleasant" can introduce bias as it aligns with the stereotype of women being more agreeable and amiable.
+feminine::polite::1::The term "polite" can introduce bias as it aligns with the stereotype of women being more courteous and well-mannered.
+feminine::pretty::1::The term "pretty" introduces bias as it is a gender-specific compliment typically directed towards women, excluding male and non-binary candidates.
+feminine::proactive::1::While generally neutral, the term "proactive" might be seen as aligning with female-coded qualities of anticipation and care.
+feminine::proficient::1::The term "proficient" can subtly favour women as it emphasises competence and skill in a manner that aligns with societal expectations of female professionalism.
+feminine::relationships::1::The term "relationships" can introduce bias as it aligns with the stereotype that women are more relational and emotionally connected.
+feminine::responsible::1::The term "responsible" might favour women due to societal expectations of women being dependable and accountable.
+feminine::Sensitive::1::The term "sensitive" can introduce bias as it aligns with the stereotype that women are more emotionally perceptive and empathetic.
+feminine::server hostess::1::The term "server hostess" is gender-specific and reinforces traditional gender roles, which introduces bias by excluding male and non-binary candidates.
+feminine::serverhostess::1::The term "serverhostess" is gender-specific and reinforces traditional gender roles, which introduces bias by excluding male and non-binary candidates.
+feminine::share::1::The term "share" can introduce bias as it aligns with the stereotype of women being more communal and collaborative.
+feminine::she::1::The term "she" introduces bias as it is a gender-specific pronoun, excluding male and non-binary candidates.
+feminine::sister::1::The term "sister" introduces bias as it is a gender-specific term, excluding male and non-binary candidates.
+feminine::spokeswoman::1::The term "spokeswoman" is gender-specific and reinforces traditional gender roles, which introduces bias by excluding male and non-binary candidates.
+feminine::stewardess::1::The term "stewardess" is gender-specific and reinforces traditional gender roles, which introduces bias by excluding male and non-binary candidates.
+feminine::teach::1::The term "teach" can introduce bias as it aligns with the stereotype of women being more nurturing and supportive, often associated with caregiving roles.
+feminine::team environment::1::The term "team environment" can introduce bias as it emphasizes collaboration and cooperation.
+feminine::understanding::1::The term "understanding" can be seen as gender-coded language that might resonate more with female candidates, who are often stereotypically perceived as more empathetic.
+feminine::value::1::The term "value" can resonate more with women as it suggests principles and worth, often linked with female roles and expectations.
+feminine::waitress::1::The term "waitress" is a gender-specific job title that excludes male candidates and should be replaced with a gender-neutral term like "server".
+feminine::widow::1::The term "widow" is gender-specific and should be avoided unless specifically relevant to the job context, as it excludes male counterparts ("widower").
+feminine::wives::1::The term "wives" is gender-specific and excludes unmarried women and men, as well as those in non-heterosexual partnerships.
+feminine::Womyn::1::The term "womyn" is explicitly gendered, excluding non-female candidates and thus introduces bias.
+general::able bodied::1::The term "able bodied" is ableist and implies that those with disabilities are less capable, which can exclude or demean individuals based on their physical abilities.
+general::Additional tasks and responsibilities as needed::1::The term "Additional tasks and responsibilities as needed" can lead to ambiguity and may exploit employees by not clearly defining job expectations, potentially leading to overwork without additional compensation.
+general::adoptive parent::1::The term "adoptive parent" is generally used correctly to distinguish from biological parents but can be biased if used unnecessarily, emphasising the distinction in a way that may seem negative.
+general::Afflicted::1::The term "Afflicted" is outdated and can be seen as derogatory, implying a negative or pitiable condition for individuals with disabilities or health issues.
+general::afflicted of::1::The phrase "afflicted of" is outdated and can be seen as derogatory, implying a negative or pitiable condition for individuals with disabilities or health issues.
+general::animal::1::Using "animal" as a descriptor for people can be dehumanising and derogatory, potentially introducing bias by implying negative traits.
+general::antifa::1::The term "antifa" is politically charged and can introduce bias by polarising views and associating individuals with extreme political activism.
+general::BA required::1::"BA required" can introduce socio-economic bias by potentially excluding capable candidates who lack formal education but possess relevant experience or skills.
+general::bend::1::The term "bend" might imply flexibility, which can be biased against individuals with physical disabilities or those unable to adapt to physically demanding tasks.
+general::bleeding edge::1::The term "bleeding edge" can be considered jargon that may be exclusionary or unclear to those unfamiliar with industry-specific lingo.
+general::bleeding-edge::1::Similar to "bleeding edge," "bleeding-edge" is jargon that can be unclear or exclusionary to those not familiar with the term.
+general::blue-collar::1::The term "blue-collar" can introduce socio-economic bias by implying a distinction between manual labour and white-collar professional jobs, potentially devaluing certain types of work.
+general::challenged::1::The term "challenged" can be seen as a euphemism for disabilities, potentially patronising or minimising the experiences of individuals with disabilities.
+general::clean-shaven::1::The requirement for "clean-shaven" can introduce gender and cultural bias, as it may exclude those who maintain facial hair for religious or personal reasons.
+general::communication skills::1::The term "communication skills" can be biased as it often undervalues the different ways individuals from diverse backgrounds and abilities communicate effectively.
+general::competitive salary::1::The term "competitive salary" is vague and can lead to socio-economic bias by not providing clear information about the actual salary range.
+general::conceptualise::1::The term "conceptualise" can introduce bias towards individuals with certain educational backgrounds, favouring those who have been trained in abstract thinking.
+general::conceptualize::1::The same rationale as "conceptualise," favouring specific educational or cognitive styles.
+general::crazy::1::The term "crazy" is derogatory and can stigmatise mental health conditions, implying instability or irrationality.
+general::criminal background check::1::The term "criminal background check" can introduce bias by potentially excluding individuals with criminal histories who may have been rehabilitated and are qualified for the role.
+general::cutting edge::1::The term "cutting edge" can be biased as it may favour younger candidates presumed to be more familiar with the latest advancements, thereby potentially excluding older candidates.
+general::cutting-edge::1::Similar to "cutting edge," "cutting-edge" can introduce bias by favouring younger candidates presumed to be more up-to-date with modern technologies and innovations.
+general::Degree from a top school::1::"Degree from a top school" can introduce socio-economic bias by favouring candidates from prestigious institutions, potentially overlooking skilled candidates from less-known schools.
+general::differently::1::The term "differently" can be vague and may imply non-normative behaviour or abilities without being specific, potentially leading to unintended exclusion or bias.
+general::divorcee::1::The term "divorcee" can introduce bias by focusing on an individual's marital status, which is irrelevant to their professional qualifications and can lead to discrimination.
+general::divorcé::1::Similar to "divorcee," the term "divorcé" can introduce bias by drawing attention to an individual's marital status, which is not pertinent to their job capabilities.
+general::Divorcée::1::The term "Divorcée" is unnecessary and invasive, potentially introducing bias based on marital status and implying negative connotations associated with divorce.
+general::driver’s licence::1::Requiring a "driver’s licence" for roles that do not necessitate driving can exclude qualified candidates who may not have one due to various reasons such as disabilities or socio-economic factors.
+general::dumb::1::The term "dumb" is derogatory and ableist, and its use can create a hostile environment by demeaning individuals with speech or cognitive impairments.
+general::Entrepreneurial::1::The term "entrepreneurial" can subtly favour candidates from certain socio-economic backgrounds or those with specific personality traits, potentially leading to bias.
+general::Execute::1::The term "Execute" might favour candidates with a more aggressive or action-oriented approach, often associated with masculine traits.
+general::extensive experience::1::The phrase "extensive experience" can introduce bias by favouring older candidates over younger ones who may have the necessary skills but fewer years in the workforce.
+general::fast paced::1::The term "fast paced" can introduce bias by implying a need for high energy levels, which may disadvantage older candidates or those with certain disabilities.
+general::fast-paced::1::Similar to "fast paced," "fast-paced" can introduce bias by suggesting a high-energy environment, potentially excluding older candidates or those with disabilities.
+general::feel::1::The term "feel" can introduce bias by favouring candidates who are more emotionally expressive, potentially leading to exclusion of those who are not.
+general::females::1::Using the term "females" can be seen as objectifying and may contribute to a non-inclusive work environment by reducing women to their biological characteristics.
+general::Feminazi::1::The term "Feminazi" is highly derogatory and offensive, used to demean and marginalise feminist individuals or women advocating for gender equality.
+general::forced sex::1::The term "forced sex" is highly inappropriate and offensive in any job context, as it refers to sexual violence and can create a hostile environment.
+general::funky::1::The term "funky" can introduce bias as it is subjective and can be interpreted differently based on cultural or generational perspectives, potentially leading to misunderstanding or exclusion.
+general::girl::1::The term "girl" can be infantilising and diminish the professionalism of adult women, contributing to gender bias.
+general::Give for adoption::1::The phrase "Give for adoption" can be insensitive and carries negative connotations, potentially stigmatising birth parents or adoptive families.
+general::given up for adoption::1::The phrase "given up for adoption" can be insensitive and stigmatise individuals based on their adoption status, which is irrelevant to their job performance.
+general::grandfather clause::1::The term "grandfather clause" has origins in discriminatory practices and can be offensive, especially to racial minorities.
+general::has nothing to do with::1::The phrase "has nothing to do with" can be dismissive and unprofessional, potentially leading to an unwelcoming tone in the job description.
+general::homeless::1::The term "homeless" can introduce bias by focusing on an individual's living situation rather than their qualifications or skills.
+general::homeless shelter::1::Mentioning "homeless shelter" in a job context can introduce bias by highlighting socio-economic status inappropriately, potentially leading to discrimination.
+general::implement::1::The term "implement" can subtly favour individuals with practical experience, potentially disadvantaging those with theoretical or strategic backgrounds.
+general::individuals::1::The term "individuals" can be seen as biased if used to emphasise individual work over team efforts, which can subtly favour certain personality types.
+general::is adopted::1::The phrase "is adopted" can be insensitive and irrelevant to a job context, potentially leading to bias against individuals based on their personal history.
+general::Is woke::1::The term "Is woke" is often used pejoratively, carrying political and ideological biases that can polarise and alienate individuals.
+general::kill::1::The term "kill" can be aggressive and violent, creating a hostile work environment and potentially intimidating candidates.
+general::killed::1::Similar to "kill," the term "killed" can be aggressive and create a hostile environment, potentially intimidating candidates.
+general::killed it::1::The phrase "killed it" can introduce bias by using aggressive language, which may not be inclusive or welcoming to all candidates.
+general::kimono::1::The term "kimono" can introduce cultural bias by inappropriately appropriating or stereotyping Japanese culture, which can be insensitive and exclusionary.
+general::lame::1::The term "lame" is derogatory and ableist, and its use can create a hostile environment by demeaning individuals with physical disabilities.
+general::left::1::The term "left" can have political connotations, potentially introducing bias based on political beliefs.
+general::Libtard::1::The term "Libtard" is a derogatory and offensive term used to insult and demean liberal individuals, introducing political and ideological bias.
+general::live and breathe::1::The term "live and breathe" can imply an expectation of extreme dedication that may disadvantage those with significant personal or family commitments.
+general::low class people::1::The term "low class people" is derogatory and perpetuates socio-economic discrimination.
+general::maiden::1::The term "maiden" is outdated and can perpetuate gender stereotypes by implying traditional or conservative views on women's roles and status.
+general::marital rape::1::The term "marital rape" is sensitive and potentially triggering, and its use in a job description is highly inappropriate and unprofessional.
+general::maternal leave::1::The term "maternal leave" can imply that only mothers take leave for childcare, excluding fathers or non-binary parents.
+general::maternity::1::The term "maternity" specifically refers to mothers, potentially excluding other parental identities and roles.
+general::maternity leave::1::The term "maternity leave" focuses on mothers and may exclude fathers or non-binary parents who also take leave for childcare.
+general::my maiden aunt::1::The term "my maiden aunt" perpetuates outdated gender norms and assumptions about unmarried women.
+general::nasty::1::The term "nasty" is derogatory and can be seen as an unfair characterisation that may introduce unnecessary negativity.
+general::next-level::1::The term "next-level" is jargon that can be unclear or exclusionary to those unfamiliar with the term.
+general::nip in the bud::1::The phrase "nip in the bud" is colloquial and can be unclear or exclusionary to non-native English speakers or those unfamiliar with the idiom.
+general::obsessed::1::The term "obsessed" can imply an unhealthy fixation and may introduce negative connotations about someone's dedication or interests.
+general::OCD::1::Using "OCD" casually or incorrectly can trivialise and stigmatise mental health conditions, implying an insensitivity towards those diagnosed with obsessive-compulsive disorder.
+general::old maid::1::The term "old maid" is derogatory and perpetuates negative stereotypes about unmarried women.
+general::open kimono::1::The term "open kimono" is culturally insensitive and can be seen as trivialising Japanese cultural practices.
+general::optimize::1::The term "optimize" might imply a bias towards candidates with a technical or analytical background, potentially disadvantaging those with different skill sets.
+general::orphan::1::The term "orphan" can carry negative connotations and might be seen as labelling someone based on their familial status.
+general::orphan(s)::1::The term "orphan(s)" can carry negative connotations and might be seen as labelling someone based on their familial status.
+general::paternity::1::The term "paternity" focuses on fathers, potentially excluding other parental identities and roles.
+general::paternity leave::1::The term "paternity leave" focuses on fathers and may exclude mothers or non-binary parents who also take leave for childcare.
+general::Pathologically::1::The term "Pathologically" can introduce bias by implying a medical or psychological condition, potentially stigmatising individuals based on perceived or actual health issues.
+general::peanut gallery::1::The term "peanut gallery" has historical classist connotations, referring to the cheapest seats in a theatre and implying lesser status.
+general::person that::1::The phrase "person that" is grammatically incorrect and unprofessional, potentially leading to confusion or a negative impression.
+general::poor::1::The term "poor" can be derogatory and perpetuates socio-economic discrimination.
+general::pray for you::1::The phrase "pray for you" may introduce religious assumptions that may not be inclusive of all beliefs.
+general::retarded::1::The term "retarded" is derogatory and offensive, perpetuating ableist language.
+general::right::1::The term "right" can have political connotations, potentially introducing bias based on political beliefs.
+general::ruthless::1::The term "ruthless" can have negative connotations and may introduce unnecessary negativity about someone's character.
+general::sanity check::1::The term "sanity check" can be seen as insensitive to mental health issues, perpetuating ableist language.
+general::see::1::The term "see" can be non-inclusive to individuals with visual impairments, potentially introducing bias.
+general::sexy::1::The term "sexy" is inappropriate for professional contexts and can introduce gendered and objectifying connotations.
+general::skin in the game::1::The phrase "skin in the game" is jargon that can be unclear or exclusionary to those unfamiliar with the term.
+general::slaving::1::The term "slaving" is insensitive and trivialises the historical and ongoing impacts of slavery.
+general::smart::1::The term "smart" can be subjective and lead to bias by favouring certain personality traits or educational backgrounds.
+general::smell::1::The term "smell" can be non-inclusive to individuals with olfactory impairments, potentially introducing bias.
+general::Spinster::1::The term "Spinster" is outdated and derogatory, carrying negative connotations about unmarried women, often implying they are undesirable or past their prime.
+general::suffer from::1::The term "suffer from" can be seen as perpetuating a negative and passive view of individuals with health conditions or disabilities.
+general::sweet::1::The term "sweet" can introduce gendered connotations, often associated with infantilising or patronising women.
+general::synergize::1::The term "synergize" is jargon that can be unclear or exclusionary to those unfamiliar with the term.
+general::taste::1::The term "taste" can be non-inclusive to individuals with gustatory impairments, potentially introducing bias.
+general::the disabled::1::The term "the disabled" is outdated and objectifying, preferring person-first language like "people with disabilities".
+general::the hungry::1::The term "the hungry" can be seen as objectifying and reduces individuals to a condition, preferring person-first language like "people experiencing hunger".
+general::the needy::1::The term "the needy" can be seen as objectifying and reduces individuals to a condition, preferring person-first language like "people in need".
+general::top::1::The term "top" can be subjective and lead to bias by favouring certain hierarchies or perceptions of quality.
+general::top school::1::The term "top school" can perpetuate educational elitism and disadvantage candidates from less prestigious institutions.
+general::Tree-hugger::1::The term "Tree-hugger" is often used pejoratively to demean environmentalists, introducing bias by mocking or trivialising their concerns and efforts.
+general::up and coming neighbourhood::1::The term "up and coming neighbourhood" can imply gentrification and socio-economic displacement.
+general::up and coming neighourhood::1::The phrase "up and coming neighbourhood" can have socio-economic connotations and potentially introduce bias based on socio-economic status.
+general::Up-and-coming neighborhood::1::Similar to "up and coming neighbourhood," "up-and-coming neighborhood" can have socio-economic connotations and potentially introduce bias based on socio-economic status.
+general::Up-and-coming neighbourhood::1::The term "Up-and-coming neighbourhood" can imply socio-economic bias, often masking gentrification and its associated displacement of long-term, often lower-income residents.
+general::veteran status::1::Mentioning "veteran status" without context can introduce bias by favouring or excluding individuals based on their military background.
+general::Victim of::1::The term "Victim of" can be problematic as it may perpetuate a victim mentality and does not focus on the individual's resilience or strength.
+general::visually inspect::1::The term "visually inspect" can be non-inclusive to individuals with visual impairments, potentially introducing bias.
+general::walk::1::The term "walk" can be seen as ableist if used in contexts where mobility should not be assumed, preferring more inclusive language like "move" or "proceed".
+general::way out in left field::1::The phrase "way out in left field" is colloquial and can be unclear or exclusionary to non-native English speakers or those unfamiliar with the idiom.
+general::welfare reliant::1::The term "welfare reliant" can perpetuate socio-economic stigma and negative stereotypes about individuals receiving public assistance.
+general::welfare-reliant::1::The term "welfare-reliant" can perpetuate socio-economic stigma and negative stereotypes about individuals receiving public assistance.
+general::wokerati::1::The term "wokerati" is derogatory and dismissive, often used to undermine or belittle progressive social justice movements.
+general::Work hard play hard::1::The phrase "Work hard play hard" can introduce bias by favouring a certain lifestyle and work culture, potentially excluding those who prefer different work-life balance approaches.
+general::workaholic::1::The term "workaholic" can glorify excessive work habits and introduce negative connotations about a person's work-life balance or mental health.
+general::Years of experience::1::The requirement for "Years of experience" can introduce age and socio-economic bias, favouring older candidates and those who have had uninterrupted career paths, potentially excluding younger or less traditionally experienced candidates.
+general::you must::1::The phrase "you must" can be overly authoritative and off-putting, potentially leading to a negative tone in the job description.
+general::you need to::1::The phrase "you need to" can be authoritative and off-putting, potentially leading to a negative tone in the job description.
+masculine::a huge plus::1::The term "a huge plus" implies an aggressive emphasis, which is often associated with masculine language, potentially deterring candidates who may prefer a more collaborative or inclusive approach.
+masculine::a killer::1::The term "a killer" uses aggressive, gender-coded language that may resonate more with male candidates.
+masculine::AAV crewman::1::The term "AAV crewman" uses "crewman," a gendered job title that implicitly favours male candidates by using "man."
+masculine::active::1::The term "active" can be seen as favouring energetic and dynamic behaviour, which aligns with stereotypically masculine traits, possibly discouraging those who may not identify with such characteristics.
+masculine::actor::1::The term "actor" is traditionally gender-specific, though it is becoming more accepted as gender-neutral; context matters.
+masculine::Advocate::1::The term "Advocate" can imply assertiveness and a strong stance, traits that are often culturally coded as masculine, potentially alienating candidates who may not resonate with these traits.
+masculine::aggresive::1::The term "aggresive" (misspelled) is a gender-coded word that typically resonates more with male candidates.
+masculine::aggresively::1::The term "aggresively" (misspelled) is a gender-coded word that typically resonates more with male candidates.
+masculine::aggressive::1::The term "aggressive" is a gender-coded word that typically resonates more with male candidates.
+masculine::ambitious::1::The term "ambitious" is often associated with competitive and goal-oriented behaviour, which are stereotypically masculine traits, possibly discouraging candidates who value collaboration over competition.
+masculine::Amphib combat veh (ACV) crewman::1::The term "crewman" is gendered, favouring male candidates by including "man."
+masculine::analyse::1::The term "analyse" suggests a focus on logical and analytical thinking, traits culturally coded as masculine, which might discourage candidates who identify more with empathetic or relational skills.
+masculine::analysis::1::Similar to "analyse," "analysis" suggests a preference for logical and analytical skills, which are often associated with masculine traits, potentially deterring candidates who identify with different strengths.
+masculine::anchorman::1::The term "anchorman" uses gender-specific language that favours male candidates, excluding others.
+masculine::artillery man::1::The term "artillery man" uses gender-specific language, favouring male candidates and excluding others.
+masculine::assault craft crewman::1::The term "assault craft crewman" uses gender-specific language that favours male candidates, excluding others.
+masculine::assembly man::1::The term "assembly man" uses gender-specific language, favouring male candidates and excluding others.
+masculine::assemblyman::1::The term "assemblyman" uses gender-specific language that favours male candidates, excluding others.
+masculine::assertive::1::The term "assertive" is a gender-coded word that typically resonates more with male candidates.
+masculine::banter::1::The term "banter" can imply a workplace culture that may be more male-dominated and potentially exclusionary.
+masculine::Baristas::1::The term "Baristas," though seemingly neutral, can have a bias if used in a context that implies a stereotypically masculine environment, potentially deterring candidates who do not fit that stereotype.
+masculine::Basic engr const and equip man::1::The term "equip man" is gendered, implying a male candidate.
+masculine::Basic tank and aslt amphib crewman::1::The term "crewman" is gendered, implicitly favouring male candidates.
+masculine::Blah blah::1::The dismissive tone of "blah blah" can come across as brash and irreverent, traits often associated with masculine communication styles, potentially deterring candidates who may value a more respectful tone.
+masculine::boast::1::The term "boast" uses gender-coded language that typically resonates more with male candidates.
+masculine::boasts::1::The term "boasts" uses gender-coded language that typically resonates more with male candidates.
+masculine::build::1::The term "build" implies construction and creation, often associated with masculine activities, possibly discouraging candidates who may not identify with this action-oriented language.
+masculine::build/strong::1::The phrase "build/strong" reinforces a focus on strength and creation, traits culturally coded as masculine, which could deter candidates who do not resonate with these traits.
+masculine::busboy::1::The term "busboy" uses gender-specific language, favouring male candidates and excluding others.
+masculine::business man::1::The term "business man" uses gender-specific language, favouring male candidates and excluding others.
+masculine::businessman::1::The term "businessman" uses gender-specific language, favouring male candidates and excluding others.
+masculine::cameraman::1::The term "cameraman" uses gender-specific language, favouring male candidates and excluding others.
+masculine::carry::1::The term "carry" suggests physical strength, often associated with masculine traits, potentially deterring candidates who may not identify with or possess physical strength.
+masculine::cave man::1::The term "cave man" uses gender-specific language, favouring male candidates and excluding others.
+masculine::caveman::1::The term "caveman" uses gender-specific language, favouring male candidates and excluding others.
+masculine::chairman::1::The term "chairman" uses gender-specific language, favouring male candidates and excluding others.
+masculine::clergyman::1::The term "clergyman" uses gender-specific language, favouring male candidates and excluding others.
+masculine::competition::1::The term "competition" implies a competitive environment, a trait often associated with masculinity, potentially discouraging candidates who prefer collaborative or non-competitive settings.
+masculine::competitive::1::The term "competitive" is a gender-coded word that typically resonates more with male candidates.
+masculine::Competitive pay::1::The phrase "Competitive pay" implies a focus on competition and winning, traits culturally coded as masculine, which might deter candidates who are motivated by other factors.
+masculine::confident::1::The term "confident" can be seen as gender-coded, resonating more with male candidates.
+masculine::congressman::1::The term "congressman" uses gender-specific language, favouring male candidates and excluding others.
+masculine::construction man::1::The term "construction man" uses gender-specific language, favouring male candidates and excluding others.
+masculine::Councilman::1::The term "Councilman" is gendered, favouring male candidates by using "man."
+masculine::country man::1::The term "country man" uses gender-specific language, favouring male candidates and excluding others.
+masculine::countryman::1::The term "countryman" uses gender-specific language, favouring male candidates and excluding others.
+masculine::Craftsman::1::The term "Craftsman" is gendered, implicitly favouring male candidates.
+masculine::creative::1::While "creative" can be neutral, it is sometimes used in contexts that imply an assertive and innovative approach, traits often associated with masculine environments.
+masculine::Crewman::1::The term "Crewman" is gendered, favouring male candidates.
+masculine::dad::1::The term "dad" directly references a male parental role, potentially alienating candidates who do not identify as male or do not have traditional family roles.
+masculine::deadline driven::1::The term "deadline driven" suggests a high-pressure, goal-oriented environment, traits often associated with masculine workplaces, which might deter candidates who prefer a more flexible approach.
+masculine::deadline-driven::1::As with "deadline driven," the hyphenated form reinforces a focus on meeting strict deadlines, which can be seen as a masculine trait.
+masculine::decision::1::The term "decision" implies decisiveness, a trait often culturally coded as masculine, potentially discouraging candidates who may value a more collaborative decision-making process.
+masculine::decision making::1::The phrase "decision making" suggests a focus on decisiveness and authority, traits associated with masculinity, which might deter candidates who prefer collaborative decision-making.
+masculine::decision-making::1::As with "decision making," the hyphenated form reinforces a focus on decisiveness, a trait often associated with masculinity.
+masculine::decisions::1::The term "decisions" implies authority and decisiveness, traits culturally coded as masculine, potentially deterring candidates who value a more consultative approach.
+masculine::detail oriented::1::The term "detail oriented" suggests a focus on precision and meticulousness, traits often associated with masculine job descriptions.
+masculine::detail-oriented::1::As with "detail oriented," the hyphenated form reinforces a focus on precision, which can be seen as a masculine trait.
+masculine::determined::1::The term "determined" can be seen as gender-coded, resonating more with male candidates.
+masculine::Dominant::1::The term "Dominant" is gender-coded, resonating more with male candidates.
+masculine::Doorman::1::The term "Doorman" is gendered, favouring male candidates.
+masculine::drive::1::The term "drive" can be seen as gender-coded, resonating more with male candidates.
+masculine::driven by::1::The phrase "driven by" suggests a strong motivation and determination, traits often culturally coded as masculine, which might deter candidates who prefer a more balanced approach.
+masculine::dynamic::1::The term "dynamic" suggests energy and constant change, traits often associated with masculinity, potentially discouraging candidates who prefer stability.
+masculine::enterprise::1::The term "enterprise" implies a focus on business and entrepreneurship, traits culturally coded as masculine, which might deter candidates who do not identify with this focus.
+masculine::entrepreneur::1::The term "entrepreneur" suggests a risk-taking and innovative mindset, traits often associated with masculinity, potentially discouraging candidates who value stability and security.
+masculine::evangelist::1::The term "evangelist" suggests a passionate and persuasive advocate, traits culturally coded as masculine, which might deter candidates who do not identify with this assertive approach.
+masculine::extremely::1::The term "extremely" implies intensity and a high degree of something, traits often associated with masculine job descriptions.
+masculine::fast paced::1::The phrase "fast paced" suggests a high-energy, rapid environment, traits often associated with masculinity, potentially deterring candidates who prefer a more measured approach.
+masculine::fast-paced::1::As with "fast paced," the hyphenated form reinforces a focus on a high-energy environment, which can be seen as a masculine trait.
+masculine::fastest::1::The term "fastest" implies competition and speed, traits culturally coded as masculine, potentially deterring candidates who value thoroughness over speed.
+masculine::Field artillery fire control man / fire control man::1::The term "fire control man" is gendered, favouring male candidates by using "man."
+masculine::Field artillery operations man::1::The term "operations man" is gendered, favouring male candidates.
+masculine::Fire support man::1::The term "Fire support man" is gendered, implicitly favouring male candidates.
+masculine::Fireman::1::The term "Fireman" is gendered, favouring male candidates.
+masculine::forefather::1::The term "forefather" uses gender-specific language, favouring male candidates and excluding others.
+masculine::forefathers::1::The term "forefathers" uses gender-specific language, favouring male candidates and excluding others.
+masculine::Foreman::1::The term "Foreman" is gendered, implicitly favouring male candidates.
+masculine::founding fathers::1::The term "founding fathers" uses gender-specific language, favouring male candidates and excluding others.
+masculine::Freshman::1::The term "Freshman" is gendered, favouring male candidates by using "man."
+masculine::Garbage Man::1::The term "Garbage Man" is gendered, favouring male candidates.
+masculine::Garbageman::1::The term "Garbageman" is gendered, implicitly favouring male candidates.
+masculine::gentleman::1::The term "gentleman" uses gender-specific language, favouring male candidates and excluding others.
+masculine::grandfather clause::1::The term "grandfather clause" can introduce masculine bias due to its historical association with male ancestry, which can subtly exclude or alienate female candidates.
+masculine::grandfathered::1::The term "grandfathered" has masculine connotations and can imply a male-oriented perspective, potentially alienating non-male candidates.
+masculine::grandfathered plan::1::"Grandfathered plan" carries masculine connotations and may subtly reinforce a male-centric viewpoint, which can be exclusive to female candidates.
+masculine::growth::1::The term "growth" suggests expansion and progress, traits often associated with masculinity, potentially deterring candidates who prefer stability.
+masculine::guru::1::"Guru" often evokes a male image, potentially introducing a subtle masculine bias in the context of job descriptions.
+masculine::guys::1::Using "guys" to refer to a group can introduce masculine bias by implicitly assuming a male default, which can be non-inclusive.
+masculine::hacker::1::The term "hacker" implies a tech-savvy, risk-taking individual, traits often associated with masculinity, potentially deterring candidates who do not identify with this persona.
+masculine::Handyman::1::The term "Handyman" is gendered, favouring male candidates.
+masculine::he::1::Using "he" as a default pronoun can introduce masculine bias, making female and non-binary candidates feel excluded.
+masculine::high energy::1::The phrase "high energy" suggests a dynamic and intense environment, traits culturally coded as masculine, which might deter candidates who prefer a more relaxed setting.
+masculine::highly-demanding::1::The phrase "highly-demanding" suggests a challenging and intense environment, traits often associated with masculinity, potentially deterring candidates who prefer a balanced workload.
+masculine::his::1::Using "his" as a default pronoun can introduce masculine bias, excluding female and non-binary candidates.
+masculine::huge plus::1::As with "a huge plus," the term implies an aggressive emphasis, which is often associated with masculine language.
+masculine::human::1::While "human" is neutral, it can imply a focus on human-centric roles that align with masculine traits if used in certain contexts.
+masculine::husband::1::The term "husband" introduces masculine bias by explicitly referring to a male, excluding female and non-binary candidates.
+masculine::independently::1::The term "independently" suggests a focus on self-reliance and autonomy, traits culturally coded as masculine, potentially deterring candidates who value teamwork.
+masculine::individual::1::The term "individual" implies a focus on individual achievement and autonomy, traits often associated with masculinity, which might deter candidates who value collaboration.
+masculine::Individually::1::As with "individual," the term suggests a focus on personal achievement, which can be seen as a masculine trait.
+masculine::individuals::1::The term "individuals" implies a focus on separate achievements rather than collective success, traits culturally coded as masculine.
+masculine::infantry assaultman::1::"Infantry assaultman" explicitly refers to males, introducing a clear masculine bias.
+masculine::infantry man::1::The term "infantry man" explicitly refers to males, introducing a clear masculine bias.
+masculine::infantryman::1::"Infantryman" explicitly refers to males, introducing a clear masculine bias.
+masculine::influencing::1::The term "influencing" suggests a persuasive and assertive role, traits often associated with masculinity, potentially deterring candidates who do not identify with this approach.
+masculine::innovative::1::The term "innovative" implies a focus on new and creative solutions, traits often associated with masculinity, potentially deterring candidates who value traditional methods.
+masculine::invalid::1::The term "invalid" suggests exclusion and finality, which can be associated with a decisive, masculine approach.
+masculine::jedi::1::The term "jedi" implies a heroic and action-oriented persona, traits culturally coded as masculine, potentially deterring candidates who do not identify with this stereotype.
+masculine::killer::1::The term "killer" can introduce masculine bias due to its aggressive connotations, which may resonate more with male stereotypes.
+masculine::ladies::1::"Ladies" introduces gender-specific language, creating a feminine bias and excluding male and non-binary candidates.
+masculine::layman::1::The term "layman" explicitly refers to males, introducing a clear masculine bias.
+masculine::lead::1::The term "lead" suggests authority and control, traits often associated with masculinity, potentially deterring candidates who prefer collaborative leadership.
+masculine::leaders::1::The term "leaders" implies authority and decisiveness, traits culturally coded as masculine, which might deter candidates who value shared leadership.
+masculine::leadership::1::As with "leaders," the term suggests a focus on authority and control, often associated with masculine traits.
+masculine::leading::1::The term "leading" implies taking charge and being in control, traits culturally coded as masculine, potentially deterring candidates who prefer a more collaborative approach.
+masculine::lift::1::The term "lift" implies physical strength, often associated with masculine traits, potentially deterring candidates who may not identify with or possess physical strength.
+masculine::light armour vehicle crewman::1::The term "light armour vehicle crewman" uses "crewman", a gender-specific term, which may favour male candidates over female or non-binary candidates.
+masculine::Longshoreman::1::The term "Longshoreman" is gendered, favouring male candidates.
+masculine::M1A1 tank crewman::1::The term "crewman" is gendered, implicitly favouring male candidates.
+masculine::Mailman::1::The term "Mailman" is gendered, favouring male candidates.
+masculine::Maintenance Man::1::The term "Maintenance Man" is gendered, implicitly favouring male candidates.
+masculine::man::1::The term "man" is gender-specific and may exclude or alienate female or non-binary candidates when used generically.
+masculine::man made::1::The term "man made" suggests male dominance in creation, which can be exclusive of women and non-binary individuals.
+masculine::man-hour::1::The term "man-hour" is gender-specific, implying that only men perform the work, which is not inclusive of all genders.
+masculine::man-made::1::Similar to "man made," "man-made" can suggest male dominance in creation, excluding women and non-binary individuals.
+masculine::management::1::The term "management" suggests authority and control, traits often associated with masculinity, potentially deterring candidates who prefer less hierarchical environments.
+masculine::manhour::1::The term "manhour" is gender-specific and not inclusive of all genders, similar to "man-hour".
+masculine::mankind::1::The term "mankind" traditionally refers to humanity but can be seen as male-centric and exclusive of women and non-binary individuals.
+masculine::manmade::1::Similar to "man-made," "manmade" implies male dominance in creation, which can exclude women and non-binary individuals.
+masculine::manpower::1::The term "manpower" is gender-specific and may imply that only men provide labour or effort, which is not inclusive.
+masculine::mate::1::The term "mate" can have gendered connotations, particularly in certain cultures where it is used predominantly among males.
+masculine::middleman::1::The term "middleman" is gender-specific and excludes women and non-binary individuals.
+masculine::missileman::1::The term "missileman" is gender-specific and not inclusive of all genders.
+masculine::most capable::1::The phrase "most capable" implies competition and superiority, traits culturally coded as masculine, potentially deterring candidates who value collaboration over competition.
+masculine::most powerful::1::The phrase "most powerful" suggests a focus on dominance and authority, traits often associated with masculinity, potentially deterring candidates who do not value these traits.
+masculine::multi tasker::1::The term "multi tasker" suggests a high-energy, fast-paced approach, traits culturally coded as masculine.
+masculine::multi-tasker::1::As with "multi tasker," the hyphenated form reinforces a focus on fast-paced, high-energy environments, often associated with masculinity.
+masculine::ninja::1::The term "ninja" can have connotations of a male-dominated role, which may introduce bias.
+masculine::obsessed::1::The term "obsessed" implies intense focus and passion, traits often culturally coded as masculine, potentially deterring candidates who value balance.
+masculine::passionate::1::The term "passionate" can imply an intense and driven approach, traits often associated with masculinity, potentially deterring candidates who prefer a more measured approach.
+masculine::paternity::1::The term "paternity" directly references male parental roles, potentially alienating candidates who do not identify as male or do not have traditional family roles.
+masculine::paternity leave::1::As with "paternity," the phrase "paternity leave" references male parental roles, potentially excluding candidates who do not fit this model.
+masculine::patrol man::1::The term "patrol man" is gender-specific and excludes women and non-binary individuals.
+masculine::Patrolman::1::The term "Patrolman" is gendered, favouring male candidates.
+masculine::pizza man::1::The term "pizza man" is gender-specific and not inclusive of all genders.
+masculine::pizzaman::1::Similar to "pizza man", "pizzaman" is gender-specific and not inclusive of all genders.
+masculine::play hard::1::The term "play hard" can have connotations of a male-dominated or aggressive culture, potentially introducing bias.
+masculine::policeman::1::The term "policeman" is gender-specific and not inclusive of all genders.
+masculine::principles::1::The term "principles" can suggest a strong and assertive stance, traits culturally coded as masculine.
+masculine::proactive::1::The term "proactive" suggests taking initiative and being forward-thinking, traits often associated with masculinity, potentially deterring candidates who prefer a more reactive approach.
+masculine::Proud::1::The term "proud" implies a strong, assertive confidence, traits culturally coded as masculine.
+masculine::Recon man::1::The term "Recon man" uses gender-specific language, favouring male candidates and excluding others who do not identify as men.
+masculine::Recon man parachute qual::1::The term "Recon man parachute qual" contains gender-specific language that favours male candidates and excludes others.
+masculine::Reconman::1::The term "Reconman" uses gender-specific language, which can be exclusionary to individuals who do not identify as men.
+masculine::Reconnaissance man::1::The term "Reconnaissance man" employs gender-specific language that favours male candidates, excluding others.
+masculine::required::1::The term "required" suggests strictness and authority, traits often associated with masculinity, potentially deterring candidates who prefer flexibility.
+masculine::resilient::1::The term "resilient" implies toughness and perseverance, traits culturally coded as masculine, potentially deterring candidates who do not identify with these traits.
+masculine::results oriented::1::The phrase "results oriented" suggests a focus on outcomes and efficiency, traits often associated with masculinity.
+masculine::results-orineted::1::As with "results oriented," the hyphenated form reinforces a focus on outcomes and efficiency, traits culturally coded as masculine.
+masculine::riverine assault craft crewman::1::The term "riverine assault craft crewman" uses the gender-specific term "crewman," which can implicitly favour male candidates by not including female or non-binary individuals.
+masculine::rock star::1::The term "rock star" often carries a masculine connotation, potentially resonating more with male candidates due to its association with male-dominated music genres and lifestyles.
+masculine::rockstar::1::Similar to "rock star," "rockstar" tends to have masculine associations, which can subtly favour male candidates.
+masculine::rule of thumb::1::The phrase "rule of thumb" has historical connotations linked to masculine dominance, which can introduce subtle gender bias.
+masculine::rule-of-thumb::1::The hyphenated form "rule-of-thumb" carries the same historical masculine connotations as "rule of thumb," potentially introducing bias.
+masculine::salesman::1::The term "salesman" explicitly uses a male gender marker, excluding female and non-binary individuals.
+masculine::self motivated::1::The term "self motivated" (or "self-motivated") can favour masculine stereotypes of independence and self-reliance, potentially disadvantaging those who don't fit this stereotype.
+masculine::self reliant::1::"Self reliant" (or "self-reliant") promotes a masculine-coded trait of independence, which can subtly favour male candidates.
+masculine::self starter::1::"Self starter" (or "self-starter") aligns with masculine-coded traits of initiative and autonomy, potentially disadvantaging candidates who value collaboration more.
+masculine::self-motivated::1::The term "self-motivated" suggests independence and drive, traits often associated with masculinity.
+masculine::Self-reliant::1::The term "Self-reliant" resonates with masculine traits of independence and self-sufficiency, potentially discouraging collaborative-minded individuals.
+masculine::self-starter::1::The term "self-starter" is often associated with masculine-coded traits of initiative and independence, potentially discouraging team-oriented candidates.
+masculine::sir::1::The term "sir" is explicitly male, which can alienate female and non-binary candidates.
+masculine::skilled tradesman::1::The term "tradesman" uses a male gender marker, excluding female and non-binary individuals.
+masculine::spokesman::1::The term "spokesman" is gender-specific to males, excluding female and non-binary candidates.
+masculine::steward::1::"Steward" traditionally has a male connotation, which can subtly favour male candidates.
+masculine::strategy::1::The term "strategy" can subtly favour candidates with a competitive or hierarchical mindset, often associated with masculine traits.
+masculine::strong::1::The term "strong" often aligns with masculine stereotypes of physical and emotional strength, potentially disadvantaging those who do not fit this stereotype.
+masculine::stuntman::1::The term "stuntman" is explicitly male, excluding female and non-binary individuals.
+masculine::Subject matter expert::1::The term "Subject matter expert" might favour individuals who assert expertise confidently, a trait often stereotypically associated with men.
+masculine::success::1::The term "success" can be biased towards candidates who align with competitive, achievement-oriented values, often associated with masculine traits.
+masculine::successful::1::The same rationale as "success," favouring competitive and achievement-oriented candidates.
+masculine::superior::1::The term "superior" can carry a connotation of hierarchical dominance, which is often associated with masculine traits.
+masculine::support::1::The term "support" might be associated with subordinate roles, traditionally linked to female-coded positions, yet in a masculine context, it can imply a robust, structural backing.
+masculine::talent::1::The term "talent" might favour candidates perceived as having innate ability, a trait often aligned with masculine-coded perceptions of brilliance.
+masculine::te common man::1::The phrase "the common man" explicitly uses a male gender marker, excluding female and non-binary individuals.
+masculine::team player::1::The term "team player" can be biased as it might imply a preference for competitive, goal-oriented team dynamics often associated with masculine environments.
+masculine::team-player::1::The same rationale as "team player," potentially favouring competitive, goal-oriented dynamics.
+masculine::Veterans and their wives::1::The term "Veterans and their wives" assumes veterans are male, which excludes female veterans and those with non-female partners.
+masculine::Veterans and/or their widows::1::The term "Veterans and/or their widows" assumes veterans are male, which excludes female veterans and those with non-female partners.
+masculine::Waiter::1::The term "Waiter" is gender-specific, favouring male candidates and excluding those who do not identify as men.
+masculine::warrior::1::The term "warrior" often carries a masculine connotation associated with combat and aggression, potentially favouring male candidates.
+masculine::weather man::1::The term "weather man" is explicitly male, excluding female and non-binary individuals.
+masculine::weatherman::1::The term "weatherman" is explicitly male, excluding female and non-binary individuals.
+masculine::widower::1::The term "widower" is explicitly male, potentially excluding female and non-binary individuals.
+masculine::wizard::1::The term "wizard" traditionally carries a masculine connotation, potentially favouring male candidates.
+masculine::work hard::1::The phrase "work hard" can align with masculine stereotypes of physical and strenuous effort, which can subtly favour male candidates.
+masculine::workmanship::1::The term "workmanship" includes a male gender marker, potentially excluding female and non-binary individuals.
+racial::Aborigine::1::The term "Aborigine" can be considered outdated and offensive, as it reduces individuals to a single aspect of their identity and carries colonial connotations.
+racial::Alien::1::Similar to "Aliens," the term "Alien" is dehumanising and othering, reducing individuals to non-human entities, which is offensive, especially in immigration contexts.
+racial::Alien(s)::1::The term "Alien(s)" is dehumanising and othering, reducing individuals to non-human entities, which can be particularly offensive in the context of immigration and citizenship.
+racial::Aliens::1::The term "Aliens" is dehumanising and othering, reducing individuals to non-human entities, which is particularly offensive in the context of immigration and citizenship.
+racial::American time::1::The term "American time" can imply that Americans are more punctual, reinforcing negative stereotypes about other cultures and their time management.
+racial::Anglo Saxon::1::The term "Anglo Saxon" can imply a preference for white, English-descended individuals, thereby excluding and devaluing other racial and ethnic groups.
+racial::Asian virus::1::Referring to a virus as "Asian" reinforces harmful stereotypes and xenophobia, particularly towards Asian communities.
+racial::Basket case::1::Although not explicitly racial, the term "Basket case" can be offensive due to its historical use to describe individuals traumatised by war, often in a racially insensitive context.
+racial::Blacklist::1::The term "Blacklist" has negative connotations associated with being blacklisted, implying exclusion or punishment, which can perpetuate negative stereotypes linked to race.
+racial::Blackmail::1::The term "Blackmail" associates negative actions with the colour black, reinforcing harmful stereotypes.
+racial::Brown::1::Using "Brown" to describe people can be reductive and objectifying, reducing individuals to their skin colour and perpetuating racial stereotypes.
+racial::Brown bag session::1::The term "Brown-bag" can refer to a discriminatory practice where skin colour was judged by comparison to a brown paper bag, often used to exclude darker-skinned individuals.
+racial::Brown-bag::1::The term "Brown-bag" can refer to a discriminatory practice where skin colour was judged by comparison to a brown paper bag, often used to exclude darker-skinned individuals.
+racial::Brown-bag session::1::The term "Brown-bag" can refer to a discriminatory practice where skin colour was judged by comparison to a brown paper bag, often used to exclude darker-skinned individuals.
+racial::Brown-bag-session::1::The term "Brown-bag" can refer to a discriminatory practice where skin colour was judged by comparison to a brown paper bag, often used to exclude darker-skinned individuals.
+racial::Cake walk::1::The term "Cake walk" originated from a dance performed by enslaved people, making it racially insensitive due to its trivialisation of a historical context of oppression.
+racial::Cakewalk::1::The term "Cakewalk" originated from a dance performed by enslaved people, making it racially insensitive due to its trivialisation of a historical context of oppression.
+racial::Call a spade a spade::1::This phrase can be offensive due to its potential to evoke racial slurs, particularly the use of "spade" as a derogatory term for Black people.
+racial::Chinese New Year::1::Although commonly used, it is more inclusive to refer to the holiday as "Lunar New Year" to acknowledge the celebration by various cultures, not just Chinese.
+racial::Chinese virus::1::Referring to a virus by a nationality fosters xenophobia and racism, particularly towards people of Chinese descent.
+racial::Circle the wagons::1::The phrase "Circle the wagons" can be offensive due to its historical context related to settler colonialism and conflict with indigenous peoples.
+racial::Colored person::1::The term "Colored person" is outdated and considered offensive, as it harks back to segregation and racial discrimination.
+racial::Coloured person::1::The term "Coloured person" is outdated and considered offensive, as it harks back to segregation and racial discrimination.
+racial::Culture fit::1::The term "Culture fit" can be exclusionary and subjective, often used to perpetuate homogeneity and exclude diverse candidates.
+racial::Culture-fit::1::The term "Culture fit" can be exclusionary and subjective, often used to perpetuate homogeneity and exclude diverse candidates.
+racial::Down under::1::The term "Down under" can be seen as reductive and geographically biased, particularly towards Australians, reducing their identity to a simplistic location reference.
+racial::English native speaker::1::Requiring a "native English speaker" can exclude non-native speakers and imply a bias against individuals from non-English-speaking backgrounds.
+racial::Eskimo::1::The term "Eskimo" is considered derogatory and outdated; the preferred terms are "Inuit" or "Yupik" depending on the specific indigenous group.
+racial::European time::1::The term "European time" can imply that European cultures are more punctual or efficient, reinforcing negative stereotypes about other cultures.
+racial::Exotic::1::Describing people or cultures as "Exotic" is othering and can be seen as fetishising and objectifying non-Western identities.
+racial::Flip::1::The term "Flip" is a derogatory term for Filipinos and is highly offensive, perpetuating harmful racial stereotypes.
+racial::Ghetto::1::The term "Ghetto" has negative connotations associated with poverty and crime, often disproportionately affecting racial minorities.
+racial::Going Dutch::1::The phrase "Going Dutch" can be seen as stereotyping Dutch people as being particularly frugal, which can be offensive.
+racial::H-1Bs only::1::Specifying "H-1Bs only" excludes a significant portion of the workforce based on their visa status, which can disproportionately affect certain racial and national groups.
+racial::Hapa::1::The term "Hapa" is often used to describe individuals of mixed Asian and Pacific Islander heritage but can be controversial and potentially offensive depending on usage and context.
+racial::Hold down the fort::1::The phrase "Hold down the fort" can be considered offensive due to its historical context related to colonialism and the subjugation of indigenous peoples.
+racial::Illegal::1::Referring to people as "Illegal" is dehumanising and reduces individuals to their immigration status, which is offensive and inappropriate.
+racial::Illegal alien::1::Referring to people as "Illegal alien" is dehumanising and reduces individuals to their immigration status, which is offensive and inappropriate.
+racial::Illegal alien(s)::1::Referring to people as "Illegal alien(s)" is dehumanising and reduces individuals to their immigration status, which is offensive and inappropriate.
+racial::Illegal allien::1::Referring to people as "Illegal allien" is dehumanising and reduces individuals to their immigration status, which is offensive and inappropriate.
+racial::Illegal alliens::1::Referring to people as "Illegal alliens" is dehumanising and reduces individuals to their immigration status, which is offensive and inappropriate.
+racial::Illegal immigrants::1::Referring to people as "Illegal immigrants" is dehumanising and reduces individuals to their immigration status, which is offensive and inappropriate.
+racial::Illegal(s)::1::Referring to people as "Illegal(s)" is dehumanising and reduces individuals to their immigration status, which is offensive and inappropriate.
+racial::Indian::1::The term "Indian" can be ambiguous and outdated when referring to Native Americans, who prefer to be called by their specific tribal name or as Indigenous peoples.
+racial::Indian time::1::The term "Indian time" is a stereotype suggesting that people of Indian descent or Native Americans are habitually late, which is both offensive and unfounded.
+racial::Jap Paki::1::The term "Jap Paki" is highly offensive racial slur that targets Japanese and Pakistani individuals, perpetuating xenophobia and racism.
+racial::Jew::1::Although "Jew" is not inherently offensive, its usage can be contextually derogatory and needs to be handled with sensitivity to avoid perpetuating stereotypes.
+racial::Kike::1::The term "Kike" is an extremely offensive racial slur against Jewish people, perpetuating hatred and anti-Semitism.
+racial::Latino::1::The term "Latino" is not inherently offensive, but it's essential to use the term preferred by the individual or community, such as "Latinx" or "Hispanic."
+racial::Legal Citizens Only::1::"Legal Citizens Only" can exclude non-citizens, many of whom belong to minority racial groups, thus indirectly introducing racial bias.
+racial::Master::1::The term "Master" can evoke imagery of slavery and racial oppression, making it an insensitive choice in the context of race relations.
+racial::Master branch::1::Using "Master branch" can evoke imagery of slavery and racial oppression, making it an insensitive choice in the context of race relations.
+racial::Master/slave::1::The term "Master/slave" is directly associated with slavery, a deeply traumatic historical experience for many racial groups, making it highly inappropriate and offensive.
+racial::Master/slave data architecture::1::The term "Master/slave data architecture" is directly associated with slavery, a deeply traumatic historical experience for many racial groups, making it highly inappropriate and offensive.
+racial::Middle Eastern::1::Using "Middle Eastern" can be too broad and vague, potentially reinforcing stereotypes and not recognising the diversity within the region.
+racial::Middle Eastern Muslim::1::Combining "Middle Eastern" with "Muslim" can reinforce negative stereotypes and conflate ethnicity with religion, which is inappropriate.
+racial::Minority::1::The term "Minority" can be seen as reductive and othering, often used to emphasise difference rather than inclusivity.
+racial::Mulatto::1::The term "Mulatto" is outdated and offensive, as it carries historical connotations of racial classification and discrimination.
+racial::Must have a green card::1::Requiring a green card similarly excludes non-citizens and can disproportionately affect certain racial groups, introducing bias into the hiring process.
+racial::Must have a U.S. Passport::1::Requiring a U.S. passport can exclude non-citizens, disproportionately affecting certain racial groups and implying a preference for certain nationalities.
+racial::Must speak good English::1::The phrase "Must speak good English" can be exclusionary and imply a bias against non-native English speakers, many of whom belong to racial minorities.
+racial::Native::1::The term "Native" can be ambiguous and potentially offensive, as it may not accurately represent the specific identity of indigenous peoples.
+racial::Native English speaker::1::Requiring a "native English speaker" can exclude non-native speakers and imply a bias against individuals from non-English-speaking backgrounds.
+racial::Native English speaking::1::Requiring "native English speaking" can exclude non-native speakers and imply a bias against individuals from non-English-speaking backgrounds.
+racial::Natives::1::The term "Natives" can be ambiguous and potentially offensive, as it may not accurately represent the specific identity of indigenous peoples.
+racial::Negro::1::The term "Negro" is outdated and considered offensive due to its historical use during periods of racial segregation and discrimination.
+racial::Non-white::1::The term "Non-white" centres whiteness as the norm, othering and marginalising all other racial groups.
+racial::Nonwhite::1::The term "Nonwhite" centres whiteness as the norm, othering and marginalising all other racial groups.
+racial::Off the reservation::1::The phrase "Off the reservation" is offensive due to its historical context related to Native American reservations and implies disobedience or deviation.
+racial::Only Candidates who do not require visa sponsorship::1::This requirement can exclude non-citizens, disproportionately affecting certain racial and national groups, thus introducing bias.
+racial::Only U.S. Citizens::1::Limiting candidates to U.S. citizens excludes non-citizens, many of whom belong to minority racial groups, thus introducing bias.
+racial::Only US Citizens or Green Card Holders::1::This requirement similarly excludes non-citizens and can disproportionately affect certain racial groups, introducing bias.
+racial::Open the kimono::1::The phrase "Open the kimono" is offensive and culturally insensitive, reducing a significant cultural garment to a business metaphor.
+racial::Oriental::1::The term "Oriental" is outdated and considered offensive as it exoticises and objectifies people from Asian backgrounds.
+racial::Pow wow::1::Using "Pow wow" in a non-Indigenous context is culturally appropriative and disrespectful to the significance of this term for Native American communities.
+racial::Pow-wow::1::Using "Pow-wow" in a non-Indigenous context is culturally appropriative and disrespectful to the significance of this term for Native American communities.
+racial::Quarterbacked::1::Although "Quarterbacked" is not explicitly racial, it can reinforce stereotypes about leadership and athleticism often associated with particular racial groups.
+racial::Red::1::The term "Red" can be offensive when used to describe Native American people, as it reduces their identity to a skin colour.
+racial::Redneck::1::The term "Redneck" is a derogatory term that perpetuates stereotypes about rural white people, which can be offensive and divisive.
+racial::Scum::1::Although not explicitly racial, the term "Scum" is derogatory and dehumanising, often used in contexts that can exacerbate racial or socio-economic divisions.
+racial::Servant::1::The term "Servant" has connotations of servitude and subjugation, which can be racially charged, especially in historical contexts of slavery and colonialism.
+racial::Servant leader::1::Although "Servant leader" is a common leadership term, its historical connotations with servitude and slavery can be uncomfortable or offensive in certain contexts.
+racial::Servant leadership::1::Although "Servant leadership" is a common leadership term, its historical connotations with servitude and slavery can be uncomfortable or offensive in certain contexts.
+racial::Slave::1::The term "Slave" is highly offensive due to its historical context of dehumanisation and racial oppression, making it inappropriate in any modern context.
+racial::Spanish::1::Referring to people as "Spanish" can be inaccurate and offensive if they are from other Spanish-speaking countries; "Hispanic" or specific national terms are preferred.
+racial::Spanish speaking::1::Requiring Spanish language skills can unintentionally exclude non-Hispanic candidates and implies a preference based on ethnicity.
+racial::Stamp4 Visa only::1::Specifying a particular visa type can exclude many candidates based on their immigration status, which can disproportionately affect certain racial groups.
+racial::The undocumented::1::Referring to people as "The undocumented" can be dehumanising and reduce individuals to their immigration status, which is inappropriate.
+racial::Third world::1::The term "Third world" is outdated and offensive, as it implies a hierarchical and pejorative view of developing countries.
+racial::Tribal::1::The term "Tribal" can be seen as reductive and stereotypical, often used to other and exoticise indigenous or ethnic groups.
+racial::Tribe::1::The term "Tribe" can be seen as reductive and stereotypical, often used to other and exoticise indigenous or ethnic groups.
+racial::Underdeveloped nations::1::The term "Underdeveloped nations" is outdated and offensive, as it implies a hierarchical and pejorative view of developing nations.
+racial::Undeveloped countries::1::The term "Undeveloped countries" is outdated and offensive, as it implies a hierarchical and pejorative view of developing nations.
+racial::WASP::1::The term "WASP" (White Anglo-Saxon Protestant) is exclusionary and can perpetuate stereotypes, creating a non-inclusive environment.
+racial::West African time::1::The term "West African time" is a stereotype suggesting that West Africans are habitually late, which is both offensive and unfounded.
+racial::White::1::Although "White" is not inherently offensive, its usage can be contextually sensitive, especially if it implies a preference or normativity over other racial groups.
+racial::White Anglo Saxon::1::The term "White Anglo Saxon" can imply a preference for white, English-descended individuals, thereby excluding and devaluing other racial and ethnic groups.
+racial::White Anglo Saxon Protestant::1::The term "White Anglo Saxon Protestant" is exclusionary and can perpetuate stereotypes, creating a non-inclusive environment.
+racial::Whitelist::1::The term "Whitelist" implies that white is good and pure, reinforcing a racial bias by contrasting it with "blacklist."
+racial::work under::1::The phrase "work under" can subtly imply a hierarchical dynamic that may be racially insensitive or exclusionary in multicultural settings.
+racial::Yellow::1::The term "Yellow" is offensive when used to describe people of East Asian descent, as it reduces individuals to a skin colour and perpetuates harmful racial stereotypes.
+sexuality::Admitted homosexual::1::The term "Admitted homosexual" implies that homosexuality is something to be confessed or revealed, which can carry a negative connotation and suggest shame.
+sexuality::avowed homosexual::1::The term "Avowed homosexual" suggests that one must publicly declare or confess their sexuality, implying it is something out of the norm.
+sexuality::biologically female::1::The term "Biologically female" is non-inclusive and fails to recognise transgender and non-binary identities, reinforcing a rigid binary view of gender.
+sexuality::Biologically male::1::The term "Biologically male" is non-inclusive and fails to recognise transgender and non-binary identities, reinforcing a rigid binary view of gender.
+sexuality::bisexual::1::The term "bisexual" can introduce bias by potentially singling out and stereotyping individuals based on their sexual orientation, which can be irrelevant to job performance.
+sexuality::bisexual lifestyle::1::The term "Bisexual lifestyle" implies that bisexuality is a choice or a phase, rather than a legitimate sexual orientation.
+sexuality::born a man::1::The term "Born a man" disregards the gender identity of transgender individuals, reducing their identity to their assigned sex at birth.
+sexuality::born a woman::1::The term "Born a woman" disregards the gender identity of transgender individuals, reducing their identity to their assigned sex at birth.
+sexuality::deceptive::1::The term "Deceptive" in the context of transgender individuals implies intentional deceit and perpetuates negative stereotypes.
+sexuality::fooling::1::The term "Fooling" suggests that transgender individuals are deceiving others about their gender identity, which is offensive and harmful.
+sexuality::Gay::1::The term "Gay" can be biased as it may lead to stereotyping or discrimination against individuals based on their sexual orientation.
+sexuality::gay lifestyle::1::The term "Gay lifestyle" implies that being gay is a choice or a set of behaviours, rather than an inherent aspect of identity.
+sexuality::Gender identity disorder::1::The term "Gender identity disorder" is outdated and pathologises transgender identities; the correct term is "gender dysphoria."
+sexuality::genetically female::1::The term "Genetically female" is non-inclusive and reduces gender to genetics, disregarding transgender and non-binary identities.
+sexuality::genetically male::1::The term "Genetically male" is non-inclusive and reduces gender to genetics, disregarding transgender and non-binary identities.
+sexuality::Hermaphrodite::1::The term "Hermaphrodite" is outdated and considered offensive; the appropriate term is "intersex."
+sexuality::homo::1::The term "Homo" is a derogatory slang term for a homosexual person and is offensive.
+sexuality::Homosexual::1::The term "Homosexual" can be perceived as clinical and outdated, often carrying a negative connotation compared to "gay" or "lesbian."
+sexuality::Homosexuality::1::The term "Homosexuality" can carry a clinical and outdated tone, implying that being gay or lesbian is abnormal.
+sexuality::is a gay::1::The term "Is a gay" is grammatically incorrect and can sound demeaning; "is gay" is the correct and respectful term.
+sexuality::lesbian::1::The term "lesbian" can introduce bias by potentially leading to stereotyping or discrimination based on sexual orientation.
+sexuality::lesbian lifestyle::1::The term "Lesbian lifestyle" implies that being lesbian is a choice or a set of behaviours, rather than an inherent aspect of identity.
+sexuality::lesbianism::1::The term "Lesbianism" can sound clinical and outdated, potentially reducing the identity to a condition.
+sexuality::masquerading::1::The term "Masquerading" implies deceit and dishonesty regarding one's gender identity, which is offensive and harmful.
+sexuality::normal::1::The term "Normal" implies that other sexual orientations are abnormal, which is exclusionary and offensive.
+sexuality::openly gay::1::The term "Openly gay" can imply that being gay is something usually hidden or shameful, although context matters.
+sexuality::opposite sex::1::The term "Opposite sex" reinforces a binary view of gender and can exclude non-binary identities.
+sexuality::Passing::1::The term "Passing" implies deceit when a transgender person is accepted as their gender identity, which can be offensive.
+sexuality::posing::1::The term "Posing" implies deceit regarding one's gender identity, which is offensive and harmful.
+sexuality::post-operative::1::The term "Post-operative" reduces transgender individuals to their surgical status, which can be intrusive and irrelevant.
+sexuality::pre-operative::1::The term "Pre-operative" reduces transgender individuals to their surgical status, which can be intrusive and irrelevant.
+sexuality::pretending::1::The term "Pretending" implies that transgender individuals are not genuine in their gender identity, which is offensive.
+sexuality::same-sex attractions::1::The term "Same-sex attractions" can be seen as clinical and detached, often used in contexts that pathologise homosexuality.
+sexuality::Sex change::1::The term "Sex change" is outdated and overly simplistic; "gender confirmation surgery" or "transition" are preferred terms.
+sexuality::sex reassignment::1::The term "Sex reassignment" is less preferred compared to "gender confirmation surgery," which is more accurate and respectful.
+sexuality::sex-change operation::1::The term "Sex-change operation" is outdated and overly simplistic; "gender confirmation surgery" or "transition" are preferred terms.
+sexuality::sexual identity::1::The term "sexual identity" might introduce bias as it can bring unnecessary focus on an individual's personal characteristics that are irrelevant to job performance.
+sexuality::Sexual preference::1::The term "Sexual preference" incorrectly implies that sexual orientation is a choice, whereas "sexual orientation" is more accurate.
+sexuality::sodomite::1::The term "Sodomite" is archaic and highly offensive, historically used to condemn homosexual individuals.
+sexuality::special rights::1::The term "Special rights" is often used pejoratively to argue against equality measures for LGBTQ+ individuals, implying they seek privileges rather than equal rights.
+sexuality::Spirit::1::The term "Spirit" in the context of the Holy Spirit can introduce bias against LGBTQ+ individuals by implying a preference for religious or spiritual beliefs that may not align with or be inclusive of diverse sexual orientations.
+sexuality::stealth::1::The term "Stealth" can imply secrecy or deceit when used to describe transgender individuals who do not disclose their transgender status.
+sexuality::the men and women::1::The term "The men and women" reinforces a binary view of gender and excludes non-binary identities.
+sexuality::tranny::1::The term "Tranny" is a derogatory slang term for a transgender person and is highly offensive.
+sexuality::Transgendered::1::The term "Transgendered" is grammatically incorrect and can be seen as offensive; the correct term is "transgender."
+sexuality::Transgenderism::1::The term "Transgenderism" pathologises being transgender, implying it is a condition or ideology rather than an identity.
+sexuality::trap::1::The term "Trap" is offensive slang implying deceit when a transgender person is accepted as their gender identity.

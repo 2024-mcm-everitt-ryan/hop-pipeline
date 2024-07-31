@@ -1,0 +1,58 @@
+[
+  {
+    "role": "user",
+    "content": "In the context of the language used in job descriptions, I will first ask you to define 7 forms of bias categories that may alienate or discourage candidates from diverse backgrounds or with varying characteristics from applying. Then I will provide you a job description and then ask you to perform a classification task. Lets start with the first bias category:\n\nage"
+  },
+  {
+    "role": "assistant",
+    "content": "Age bias in job descriptions occurs when language or requirements subtly favour certain age groups over others, while non-inclusive language involves terms and phrases that may alienate or discourage candidates from diverse backgrounds or with varying characteristics from applying."
+  },
+  {
+    "role": "user",
+    "content": "disability"
+  },
+  {
+    "role": "assistant",
+    "content": "Disability bias and non-inclusive language in job descriptions involve the use of terms or requirements that inadvertently exclude or disadvantage individuals based on disabilities, which can include physical, mental, sensory, or cognitive impairments."
+  },
+  {
+    "role": "user",
+    "content": "feminine"
+  },
+  {
+    "role": "assistant",
+    "content": "Feminine bias in job descriptions refers to language that subtly favours female candidates, often through terms that culturally resonate more with women, making the text less inclusive; common categories include gender-coded words (e.g., \"nurturing,\" \"supportive\"), domestic or caregiving metaphors, an emphasis on collaborative over individualistic skills, and gendered job titles (e.g., \"hostess\") and pronouns (e.g., \"she/her\")."
+  },
+  {
+    "role": "user",
+    "content": "masculine"
+  },
+  {
+    "role": "assistant",
+    "content": "Masculine bias in job descriptions refers to language that subtly favours male candidates, often through terms that culturally resonate more with men, making the text less inclusive; common categories include gender-coded words (e.g., \"dominant,\" \"competitive\"), sports or military metaphors, an emphasis on individualistic over collaborative skills, and gendered job titles (e.g., \"salesman\") and pronouns (e.g., \"he/him\")."
+  },
+  {
+    "role": "user",
+    "content": "racial"
+  },
+  {
+    "role": "assistant",
+    "content": "Racial bias and non-inclusive language in a job description refer to terms or phrasing that unfairly favour certain racial groups or exclude others, which can manifest through stereotypes, cultural assumptions, or exclusionary language, ultimately discouraging diverse applicants and perpetuating inequality. This form of bias can include categories such as ethnic stereotypes, culturally specific jargon, and assumptions about linguistic proficiency or background."
+  },
+  {
+    "role": "user",
+    "content": "sexuality"
+  },
+  {
+    "role": "assistant",
+    "content": "Sexuality bias and non-inclusive language in a job description refer to the use of terms and phrases that exclude, stereotype, or show preference towards certain sexual orientations, gender identities, or expressions, making the job description non-inclusive by potentially alienating or discriminating against LGBTQ+ individuals; this can include categories like gendered language, heteronormative assumptions, and the lack of recognition for diverse family structures."
+  },
+  {
+    "role": "user",
+    "content": "general"
+  },
+  {
+    "role": "assistant",
+    "content": "In the context of job descriptions, general non-inclusive language refers to the use of terms or phrases that unfairly exclude or show preference towards candidates based on characteristics such as education level, socio-economic status, gender (beyond masculine/feminine coded language), affinity with current team members, criminal history, religion, veteran status, or political beliefs, thereby limiting diversity and fairness in the hiring process."
+  }
+]
